@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
 
-function App() {
-  return <div>App component</div>;
-}
+import { Home } from "./pages";
+
+const App = (): JSX.Element => {
+  return <Home />;
+};
 
 export default App;
