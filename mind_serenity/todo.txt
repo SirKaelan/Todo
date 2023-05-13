@@ -1,0 +1,24 @@
+High level tasks:   <-- Add new ones as problems/ideas occur
+  # Start implementing folder structure
+  # Create a new branch for MVP
+  # Finish project MVP
+
+-------- Details of tasks --------
+
+
+
+
+
+-------- Archive --------
+# Generate CRA project with TS
+# Brainstorm MVP features
+# Setup project folder
+# Research app/code architecture (decided to just follow a folder structure; maybe when this project gets a backend a code architecture will be required?)
+  - Google around to understand software architectures
+    > https://www.youtube.com/watch?v=lTkL1oIMiaU&list=PLSyLGd0D0b4ThfElztKEueqQ5SIHJjUEU (on 3nd video)
+# Look into React testing (test after having written some code)
+  - Google around to get a basic idea on how to do testing in React (philosophy and all that)
+  - https://www.youtube.com/watch?v=OVNjsIto9xM
+  - https://www.youtube.com/watch?v=Flo268xRpV0
+  - We test from the perspective of an end user interacting with the app
+# Decide which state management tool to use
