@@ -1,2 +1,11 @@
-// TODO: Write component code
-export {}; // Needed to fix an error
+import React from "react";
+
+type CreateTodoFormProps = {
+  placeholderText: string;
+};
+
+export const CreateTodoForm = ({
+  placeholderText,
+}: CreateTodoFormProps): JSX.Element => {
+  return <input type="text" placeholder={placeholderText} />;
+};

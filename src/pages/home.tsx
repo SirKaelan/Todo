@@ -1,12 +1,11 @@
 import React from "react";
 
-import { TodoList } from "../features/todos";
+import { CreateTodoForm } from "../features/todos/create-todo-form";
 
 export const Home = (): JSX.Element => {
   return (
     <>
-      <div>Home page</div>
-      <TodoList />
+      <CreateTodoForm placeholderText="Enter a task..." />
     </>
   );
 };

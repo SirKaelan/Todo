@@ -1,7 +1,8 @@
 High level tasks:   <-- Add new ones as problems/ideas occur
-  # Start implementing folder structure
-  # Create a new branch for MVP
+  > Start implementing folder structure
   # Finish project MVP
+  # Change to use semantic HTML for MVP project
+  # Add tests to MVP
 
 -------- Details of tasks --------
 
@@ -22,3 +23,4 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   - https://www.youtube.com/watch?v=Flo268xRpV0
   - We test from the perspective of an end user interacting with the app
 # Decide which state management tool to use
+# Create a new branch for MVP
