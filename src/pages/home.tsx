@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CreateTodoForm } from "../features/todos/create-todo-form";
+import { CreateTodoForm } from "../features/todos";
 
 export const Home = (): JSX.Element => {
   return (

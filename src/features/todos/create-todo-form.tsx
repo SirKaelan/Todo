@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 type CreateTodoFormProps = {
   placeholderText: string;
@@ -7,5 +7,14 @@ type CreateTodoFormProps = {
 export const CreateTodoForm = ({
   placeholderText,
 }: CreateTodoFormProps): JSX.Element => {
-  return <input type="text" placeholder={placeholderText} />;
+  const [todoTask, setTodoTask] = useState<string>("");
+
+  return (
+    <input
+      type="text"
+      placeholder={placeholderText}
+      value={todoTask}
+      onChange={(e) => setTodoTask(e.target.value)}
+    />
+  );
 };
