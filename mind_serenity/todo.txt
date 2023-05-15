@@ -1,12 +1,15 @@
 High level tasks:   <-- Add new ones as problems/ideas occur
   > Start implementing folder structure
-  # Finish project MVP
+  > Finish project MVP
   # Change to use semantic HTML for MVP project
   # Add tests to MVP
 
 -------- Details of tasks --------
 
-
+# Finish project MVP
+  > Look into html forms and how they'd work in React
+  > Make some sort of submit event and collect todo tasks somewhere
+  > Use the list of tasks and render them
 
 
 
