@@ -1,7 +1,13 @@
 import React from "react";
 
-// Import and use todo item (might not need to do that)
+import { useGetTodos } from "./TodosContext";
 
 export const TodoList = (): JSX.Element => {
-  return <div>Todo list</div>;
+  const todos = useGetTodos();
+
+  const renderedTodos = todos.map((todo): JSX.Element => {
+    return <div>{todo.content}</div>;
+  });
+
+  return <div>{renderedTodos}</div>;
 };

@@ -9,11 +9,9 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 # Finish project MVP
   > Look into html forms and how they'd work in React
     - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
-  > Create TodoContext in todos folder
-    - figure out where the provider has to be placed
   > Make some sort of submit event and collect todo tasks in context
   > Add form/input validation
-  > Use the context to send grab a list of tasks and render them
+  > Study about semantic HTML and implement it here
 
 
 
