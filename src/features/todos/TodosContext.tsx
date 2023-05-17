@@ -13,7 +13,9 @@ type TodosProviderProps = {
   children: JSX.Element;
 };
 
-export const TodosContext = React.createContext<TodosContextType | null>(null);
+const TodosContext = React.createContext<TodosContextType>(
+  [] as unknown as TodosContextType
+);
 
 export const TodosProvider = ({
   children,
@@ -30,3 +32,7 @@ export const TodosProvider = ({
 };
 
 // Hooks
+export const useGetTodos = (): Todo[] => {
+  const [todos] = React.useContext(TodosContext);
+  return todos;
+};

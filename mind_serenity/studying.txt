@@ -1,0 +1,2 @@
+An article for using Generics in React:
+  - https://devtrium.com/posts/react-typescript-using-generics-in-react

@@ -10,7 +10,6 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Look into html forms and how they'd work in React
     - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
   > Create TodoContext in todos folder
-    - https://www.freecodecamp.org/news/react-context-for-beginners/
     - figure out where the provider has to be placed
   > Make some sort of submit event and collect todo tasks in context
   > Add form/input validation
