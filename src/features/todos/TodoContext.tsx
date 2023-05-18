@@ -13,32 +13,30 @@ type TodosProviderProps = {
   children: JSX.Element;
 };
 
-const TodosContext = React.createContext<TodosContextType>(
+const TodoContext = React.createContext<TodosContextType>(
   [] as unknown as TodosContextType
 );
 
-export const TodosProvider = ({
-  children,
-}: TodosProviderProps): JSX.Element => {
+export const TodoProvider = ({ children }: TodosProviderProps): JSX.Element => {
   const [todos, setTodos] = React.useState<Todo[]>([
     { content: "First todo test" },
   ]);
 
   return (
-    <TodosContext.Provider value={[todos, setTodos]}>
+    <TodoContext.Provider value={[todos, setTodos]}>
       {children}
-    </TodosContext.Provider>
+    </TodoContext.Provider>
   );
 };
 
 // Hooks
 export const useGetTodos = (): Todo[] => {
-  const [todos] = React.useContext(TodosContext);
+  const [todos] = React.useContext(TodoContext);
   return todos;
 };
 
 export const useAddTodo = (todoContent: string): void => {
-  const [_, setTodos] = React.useContext(TodosContext);
+  const [_, setTodos] = React.useContext(TodoContext);
 
   const newTodo: Todo = {
     content: todoContent,

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useGetTodos } from "./TodosContext";
+import { useGetTodos } from "./TodoContext";
 
 export const TodoList = (): JSX.Element => {
   const todos = useGetTodos();
