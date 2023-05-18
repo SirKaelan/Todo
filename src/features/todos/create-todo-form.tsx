@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAddTodo } from "./TodoContext";
 
 type CreateTodoFormProps = {
   placeholderText: string;
@@ -10,10 +11,13 @@ type InputEvent = React.ChangeEvent<HTMLInputElement>;
 export const CreateTodoForm = ({
   placeholderText,
 }: CreateTodoFormProps): JSX.Element => {
+  const addTodo = useAddTodo();
+
   const [todo, setTodo] = useState<string>("");
 
   const handleTodoSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
+    addTodo(todo);
     setTodo("");
   };
 

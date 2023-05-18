@@ -35,12 +35,16 @@ export const useGetTodos = (): Todo[] => {
   return todos;
 };
 
-export const useAddTodo = (todoContent: string): void => {
+type AddTodo = () => (todoContent: string) => void;
+
+export const useAddTodo: AddTodo = () => {
   const [_, setTodos] = React.useContext(TodoContext);
 
-  const newTodo: Todo = {
-    content: todoContent,
-  };
+  return (todoContent: string): void => {
+    const newTodo: Todo = {
+      content: todoContent,
+    };
 
-  setTodos((currTodos: Todo[]) => [...currTodos, newTodo]);
+    setTodos((currTodos: Todo[]) => [...currTodos, newTodo]);
+  };
 };
