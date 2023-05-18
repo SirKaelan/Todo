@@ -10,15 +10,15 @@ type InputEvent = React.ChangeEvent<HTMLInputElement>;
 export const CreateTodoForm = ({
   placeholderText,
 }: CreateTodoFormProps): JSX.Element => {
-  const [todoTask, setTodoTask] = useState<string>("");
+  const [todo, setTodo] = useState<string>("");
 
   const handleTodoSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
-    setTodoTask("");
+    setTodo("");
   };
 
   const handleTodoInput = (e: InputEvent): void => {
-    setTodoTask(e.currentTarget.value);
+    setTodo(e.currentTarget.value);
   };
 
   return (
@@ -26,7 +26,7 @@ export const CreateTodoForm = ({
       <input
         type="text"
         placeholder={placeholderText}
-        value={todoTask}
+        value={todo}
         onChange={handleTodoInput}
       />
       <button type="submit">Add task</button>
