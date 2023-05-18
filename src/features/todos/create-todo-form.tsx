@@ -1,26 +1,35 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 type CreateTodoFormProps = {
   placeholderText: string;
 };
 
-type EventType = React.ChangeEvent<HTMLInputElement>;
+type SubmitEvent = React.FormEvent<HTMLFormElement>;
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
 export const CreateTodoForm = ({
   placeholderText,
 }: CreateTodoFormProps): JSX.Element => {
   const [todoTask, setTodoTask] = useState<string>("");
 
-  const handleTodoInput = useCallback((e: EventType): void => {
+  const handleTodoSubmit = (e: SubmitEvent): void => {
+    e.preventDefault();
+    setTodoTask("");
+  };
+
+  const handleTodoInput = (e: InputEvent): void => {
     setTodoTask(e.currentTarget.value);
-  }, []);
+  };
 
   return (
-    <input
-      type="text"
-      placeholder={placeholderText}
-      value={todoTask}
-      onChange={handleTodoInput}
-    />
+    <form onSubmit={handleTodoSubmit}>
+      <input
+        type="text"
+        placeholder={placeholderText}
+        value={todoTask}
+        onChange={handleTodoInput}
+      />
+      <button type="submit">Add task</button>
+    </form>
   );
 };

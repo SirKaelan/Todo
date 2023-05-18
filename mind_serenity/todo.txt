@@ -3,14 +3,16 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Finish project MVP
   # Change to use semantic HTML for MVP project
   # Add tests to MVP
+  # Use routing to change between the different pages
 
 -------- Details of tasks --------
 
 # Finish project MVP
   > Look into html forms and how they'd work in React
     - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
-  > Make some sort of submit event and collect todo tasks in context
+  > Make todo context hook to add todos
   > Add form/input validation
+  > Add edit and delete functionality to todos
   > Study about semantic HTML and implement it here
 
 
