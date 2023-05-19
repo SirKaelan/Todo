@@ -35,9 +35,9 @@ export const useGetTodos = (): Todo[] => {
   return todos;
 };
 
-type AddTodo = () => (todoContent: string) => void;
+type AddTodo = (todoContent: string) => void;
 
-export const useAddTodo: AddTodo = () => {
+export const useAddTodo = (): AddTodo => {
   const [_, setTodos] = React.useContext(TodoContext);
 
   return (todoContent: string): void => {
@@ -47,5 +47,17 @@ export const useAddTodo: AddTodo = () => {
     };
 
     setTodos((currTodos: Todo[]) => [...currTodos, newTodo]);
+  };
+};
+
+type RemoveTodo = (id: string) => void;
+
+export const useRemoveTodo = (): RemoveTodo => {
+  const [_, setTodos] = React.useContext(TodoContext);
+
+  return (id: string) => {
+    setTodos((currTodos: Todo[]) =>
+      currTodos.filter((todo: Todo) => todo.id !== id)
+    );
   };
 };
