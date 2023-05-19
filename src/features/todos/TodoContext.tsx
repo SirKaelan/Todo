@@ -1,6 +1,8 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 type Todo = {
+  id: string;
   content: string;
 };
 
@@ -18,9 +20,7 @@ const TodoContext = React.createContext<TodosContextType>(
 );
 
 export const TodoProvider = ({ children }: TodosProviderProps): JSX.Element => {
-  const [todos, setTodos] = React.useState<Todo[]>([
-    { content: "First todo test" },
-  ]);
+  const [todos, setTodos] = React.useState<Todo[]>([]);
 
   return (
     <TodoContext.Provider value={[todos, setTodos]}>
@@ -42,6 +42,7 @@ export const useAddTodo: AddTodo = () => {
 
   return (todoContent: string): void => {
     const newTodo: Todo = {
+      id: uuidv4(),
       content: todoContent,
     };
 
