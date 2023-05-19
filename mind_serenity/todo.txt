@@ -8,13 +8,10 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Look into html forms and how they'd work in React
-    - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
-  > Add form/input validation
+  > Learn how to generate unique IDs and use then on Todos
   > Add edit and delete functionality to todos
   > Study about semantic HTML and implement it here
   > Export context ts types in a separate file
-  > Learn how to generate unique IDs and use then on Todos
 
 
 

@@ -33,7 +33,9 @@ export const CreateTodoForm = ({
         value={todo}
         onChange={handleTodoInput}
       />
-      <button type="submit">Add task</button>
+      <button type="submit" disabled={!todo ? true : false}>
+        Add task
+      </button>
     </form>
   );
 };

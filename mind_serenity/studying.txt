@@ -1,2 +1,5 @@
 An article for using Generics in React:
   - https://devtrium.com/posts/react-typescript-using-generics-in-react
+
+An article for building forms in React:
+  - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
