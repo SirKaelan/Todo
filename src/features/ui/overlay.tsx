@@ -4,11 +4,17 @@ import "./overlay.css";
 
 type OverlayProps = {
   children: JSX.Element;
+  hideOverlay: () => void;
 };
 
-export const Overlay = ({ children }: OverlayProps): React.ReactPortal => {
+export const Overlay = ({
+  children,
+  hideOverlay,
+}: OverlayProps): React.ReactPortal => {
   return ReactDOM.createPortal(
-    <div className="overlay">{children}</div>,
+    <div className="overlay" onClick={hideOverlay}>
+      {children}
+    </div>,
     document.getElementById("overlay")!
   );
 };
