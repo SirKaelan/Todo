@@ -6,20 +6,20 @@ type Todo = {
   content: string;
 };
 
-type TodosContextType = [
+type TodoContextType = [
   todos: Todo[],
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 ];
 
-type TodosProviderProps = {
+type TodoProviderProps = {
   children: JSX.Element;
 };
 
-const TodoContext = React.createContext<TodosContextType>(
-  [] as unknown as TodosContextType
+const TodoContext = React.createContext<TodoContextType>(
+  [] as unknown as TodoContextType
 );
 
-export const TodoProvider = ({ children }: TodosProviderProps): JSX.Element => {
+export const TodoProvider = ({ children }: TodoProviderProps): JSX.Element => {
   const [todos, setTodos] = React.useState<Todo[]>([]);
 
   return (
