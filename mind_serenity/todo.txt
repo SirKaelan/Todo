@@ -3,6 +3,7 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Finish project MVP
   # Change to use semantic HTML for MVP project
   # Add tests to MVP
+  # Install and use SASS
   # Use routing to change between the different pages
 
 -------- Details of tasks --------

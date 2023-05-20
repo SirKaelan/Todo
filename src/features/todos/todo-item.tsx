@@ -16,6 +16,7 @@ export const TodoItem = ({ id, content }: TodoItemProps): JSX.Element => {
   return (
     <div>
       <span>{content}</span>
+      <button>Edit</button>
       <button onClick={handleRemoveClick}>Remove</button>
     </div>
   );
