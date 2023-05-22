@@ -9,7 +9,6 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Add edit functionality to todos
   > Study about semantic HTML and implement it here
   > Export context ts types in a separate file
 
