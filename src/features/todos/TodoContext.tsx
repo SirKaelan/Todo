@@ -61,3 +61,28 @@ export const useRemoveTodo = (): RemoveTodo => {
     );
   };
 };
+
+export const useGetTodo = (id: string): Todo => {
+  const [todos] = React.useContext(TodoContext);
+  const todo: Todo = todos.find((todo: Todo) => todo.id === id) as Todo;
+  return todo;
+};
+
+type EditTodo = (payload: Todo) => void;
+
+export const useEditTodo = (): EditTodo => {
+  const [_, setTodos] = React.useContext(TodoContext);
+
+  return (payload: Todo): void => {
+    const newTodos = (currTodos: Todo[]): Todo[] => {
+      const todos: Todo[] = [...currTodos];
+      const todoIndex: number = todos.findIndex(
+        (todo: Todo) => todo.id === payload.id
+      );
+      todos[todoIndex] = payload;
+      return todos;
+    };
+
+    setTodos(newTodos);
+  };
+};
