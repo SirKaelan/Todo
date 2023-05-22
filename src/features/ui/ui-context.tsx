@@ -9,7 +9,7 @@ type UIContextType = [
   setUIElements: React.Dispatch<React.SetStateAction<UIElementState>>
 ];
 
-type UIProviderProps = {
+type UIStateProviderProps = {
   children: JSX.Element;
 };
 
@@ -21,7 +21,9 @@ const initialState: UIElementState = {
   showOverlay: false,
 };
 
-export const UIProvider = ({ children }: UIProviderProps): JSX.Element => {
+export const UIStateProvider = ({
+  children,
+}: UIStateProviderProps): JSX.Element => {
   const [UIElements, setUIElements] =
     React.useState<UIElementState>(initialState);
 

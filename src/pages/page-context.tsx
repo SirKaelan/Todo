@@ -9,7 +9,7 @@ type PageContextType = [
   setComponentData: React.Dispatch<React.SetStateAction<ComponentDataState>>
 ];
 
-type PageProviderProps = {
+type PageDataProviderProps = {
   children: JSX.Element;
 };
 
@@ -21,7 +21,9 @@ const initialState = {
   todoId: "",
 };
 
-export const PageProvider = ({ children }: PageProviderProps): JSX.Element => {
+export const PageDataProvider = ({
+  children,
+}: PageDataProviderProps): JSX.Element => {
   const [componentData, setComponentData] =
     React.useState<ComponentDataState>(initialState);
 
