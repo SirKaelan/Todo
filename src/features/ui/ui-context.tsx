@@ -1,30 +1,51 @@
 import React from "react";
 
-// Fix names and types
+type UIElementState = {
+  showOverlay: boolean;
+};
+
 type UIContextType = [
-  elements: {},
-  setElements: React.Dispatch<React.SetStateAction<{}>>
+  UIElements: UIElementState,
+  setUIElements: React.Dispatch<React.SetStateAction<UIElementState>>
 ];
 
 type UIProviderProps = {
   children: JSX.Element;
 };
 
-// Create context
 const UIContext = React.createContext<UIContextType>(
   [] as unknown as UIContextType
 );
 
-// Provider
+const initialState: UIElementState = {
+  showOverlay: false,
+};
+
 export const UIProvider = ({ children }: UIProviderProps): JSX.Element => {
-  // Name of state - subject to change
-  const [elements, setElements] = React.useState({});
+  const [UIElements, setUIElements] =
+    React.useState<UIElementState>(initialState);
 
   return (
-    <UIContext.Provider value={[elements, setElements]}>
+    <UIContext.Provider value={[UIElements, setUIElements]}>
       {children}
     </UIContext.Provider>
   );
 };
 
 // Hooks
+export const useGetOverlay = (): boolean => {
+  const [{ showOverlay }] = React.useContext(UIContext);
+  return showOverlay;
+};
+
+type SetOverlay = (value: boolean) => void;
+
+export const useSetOverlay = (): SetOverlay => {
+  const [_, setUIElements] = React.useContext(UIContext);
+
+  return (value: boolean): void => {
+    setUIElements((currUIElements) => {
+      return { ...currUIElements, showOverlay: value };
+    });
+  };
+};
