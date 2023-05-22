@@ -11,7 +11,7 @@ export const Overlay = ({
   children,
   setOverlay,
 }: OverlayProps): React.ReactPortal => {
-  const handleOverlayClick = () => setOverlay(false);
+  const handleOverlayClick = (): void => setOverlay(false);
 
   return ReactDOM.createPortal(
     <div className="overlay" onClick={handleOverlayClick}>
