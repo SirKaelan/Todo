@@ -44,7 +44,7 @@ export const useSetOverlay = (): SetOverlay => {
   const [_, setUIElements] = React.useContext(UIContext);
 
   return (value: boolean): void => {
-    setUIElements((currUIElements) => {
+    setUIElements((currUIElements: UIElementState): UIElementState => {
       return { ...currUIElements, showOverlay: value };
     });
   };

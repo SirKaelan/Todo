@@ -46,7 +46,7 @@ export const useAddTodo = (): AddTodo => {
       content: todoContent,
     };
 
-    setTodos((currTodos: Todo[]) => [...currTodos, newTodo]);
+    setTodos((currTodos: Todo[]): Todo[] => [...currTodos, newTodo]);
   };
 };
 
@@ -56,7 +56,7 @@ export const useRemoveTodo = (): RemoveTodo => {
   const [_, setTodos] = React.useContext(TodoContext);
 
   return (id: string) => {
-    setTodos((currTodos: Todo[]) =>
+    setTodos((currTodos: Todo[]): Todo[] =>
       currTodos.filter((todo: Todo) => todo.id !== id)
     );
   };
