@@ -2,10 +2,12 @@ import React from "react";
 
 import { TodoList, CreateTodoForm, EditTodoForm } from "../features/todos";
 import { Overlay, useGetOverlay, useSetOverlay } from "../features/ui";
+import { useGetTodoId } from "./page-context";
 
 export const Home = (): JSX.Element => {
   const showOverlay = useGetOverlay();
   const setOverlay = useSetOverlay();
+  const todoId = useGetTodoId();
 
   return (
     <>
@@ -13,7 +15,7 @@ export const Home = (): JSX.Element => {
       <TodoList />
       {showOverlay && (
         <Overlay setOverlay={setOverlay}>
-          <EditTodoForm />
+          <EditTodoForm todoId={todoId} />
         </Overlay>
       )}
     </>

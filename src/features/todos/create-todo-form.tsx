@@ -5,8 +5,8 @@ type CreateTodoFormProps = {
   placeholderText: string;
 };
 
-type SubmitEvent = React.FormEvent<HTMLFormElement>;
-type InputEvent = React.ChangeEvent<HTMLInputElement>;
+type FormSubmitEvent = React.FormEvent<HTMLFormElement>;
+type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 export const CreateTodoForm = ({
   placeholderText,
@@ -15,13 +15,13 @@ export const CreateTodoForm = ({
 
   const [todo, setTodo] = useState<string>("");
 
-  const handleTodoSubmit = (e: SubmitEvent): void => {
+  const handleTodoSubmit = (e: FormSubmitEvent): void => {
     e.preventDefault();
     addTodo(todo);
     setTodo("");
   };
 
-  const handleTodoInput = (e: InputEvent): void => {
+  const handleTodoInput = (e: InputChangeEvent): void => {
     setTodo(e.currentTarget.value);
   };
 
