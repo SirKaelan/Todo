@@ -4,15 +4,17 @@ import "./overlay.css";
 
 type OverlayProps = {
   children: JSX.Element;
-  hideOverlay: () => void;
+  setOverlay: (value: boolean) => void;
 };
 
 export const Overlay = ({
   children,
-  hideOverlay,
+  setOverlay,
 }: OverlayProps): React.ReactPortal => {
+  const handleOverlayClick = () => setOverlay(false);
+
   return ReactDOM.createPortal(
-    <div className="overlay" onClick={hideOverlay}>
+    <div className="overlay" onClick={handleOverlayClick}>
       {children}
     </div>,
     document.getElementById("overlay")!

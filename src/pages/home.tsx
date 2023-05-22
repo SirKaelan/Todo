@@ -1,31 +1,21 @@
 import React from "react";
 
-import { CreateTodoForm } from "../features/todos";
-import { EditTodoForm } from "../features/todos";
-import { TodoList } from "../features/todos";
-import { Overlay } from "../features/ui";
+import { TodoList, CreateTodoForm, EditTodoForm } from "../features/todos";
+import { Overlay, useGetOverlay, useSetOverlay } from "../features/ui";
 
 export const Home = (): JSX.Element => {
-  const [show, setShow] = React.useState<boolean>(false);
-
-  const showOverlay = () => {
-    setShow(true);
-  };
-
-  const hideOverlay = () => {
-    setShow(false);
-  };
+  const showOverlay = useGetOverlay();
+  const setOverlay = useSetOverlay();
 
   return (
     <>
       <CreateTodoForm placeholderText="Enter a task..." />
       <TodoList />
-      {show && (
-        <Overlay hideOverlay={hideOverlay}>
+      {showOverlay && (
+        <Overlay setOverlay={setOverlay}>
           <EditTodoForm />
         </Overlay>
       )}
-      <button onClick={showOverlay}>Show Overlay</button>
     </>
   );
 };
