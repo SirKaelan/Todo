@@ -32,6 +32,7 @@ export const CreateTodoForm = ({
         placeholder={placeholderText}
         value={todo}
         onChange={handleTodoInput}
+        aria-label="Enter todo"
       />
       <button type="submit" disabled={!todo ? true : false}>
         Add task
