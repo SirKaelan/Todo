@@ -36,6 +36,7 @@ export const EditTodoForm = ({ todoId }: EditTodoProps): JSX.Element => {
   return (
     <form onClick={handleFormClick} onSubmit={handleFormSubmit}>
       <input
+        aria-label="Edit todo"
         type="text"
         value={todoContent}
         onChange={handleTodoInput}

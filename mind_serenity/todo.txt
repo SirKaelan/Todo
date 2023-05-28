@@ -9,7 +9,6 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Finish creating unit and integration tests for components
   > Start work on separate HTML+SASS project to build out the app design
     - Ideally, copy+paste HTML blocks and SASS rules over to React project
   > Study about semantic HTML and implement it here
