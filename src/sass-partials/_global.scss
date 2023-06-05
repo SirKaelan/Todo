@@ -1,0 +1,66 @@
+@import "./variables";
+
+/* ------ STYLE RESET ------ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+/* ------ GENERAL ------ */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $default-font-family;
+  font-size: $default-font-size;
+  color: $default-text-color;
+  font-weight: 400;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+/* ------ REUSABLE ------ */
+.container {
+  height: 100vh;
+}
+
+.selected {
+  background-color: $btn-background-color;
+}
+
+// This might need to get moved to the ui folder in features
+.arrow {
+  display: inline-block;
+  border: solid $arrow-icon-color;
+  border-width: 0 $arrow-icon-thickness $arrow-icon-thickness 0;
+  padding: $arrow-icon-height;
+  transform: translateY(-50%) rotate(45deg);
+  // transition: 0.3s transform ease-in;
+
+  // &:hover {
+  //   transform: rotate(-45deg) translateY(-50%);
+  // }
+}

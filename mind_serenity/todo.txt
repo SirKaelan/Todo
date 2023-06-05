@@ -9,6 +9,8 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
+  > Work on view and component HTML and styles
+  > Start learning about React Router (be it from docks or article)
   > Start work on separate HTML+SASS project to build out the app design
     - Ideally, copy+paste HTML blocks and SASS rules over to React project
   > Install React Router
