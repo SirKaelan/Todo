@@ -11,6 +11,9 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 # Finish project MVP
   > Start work on separate HTML+SASS project to build out the app design
     - Ideally, copy+paste HTML blocks and SASS rules over to React project
+  > Install React Router
+  > Rename "home" page to something like "todo-page", it will house all todo features in a single page
+    - create a side bar in App component that will navigate between the different pages for the different features
   > Study about semantic HTML and implement it here
   > Export context ts types in a separate file
   > Create tests for custom hooks and context

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useAddTodo } from "./TodoContext";
+import styles from "./create-todo-form.module.scss";
+import { useAddTodo } from "../TodoContext";
 
 type CreateTodoFormProps = {
   placeholderText: string;
@@ -34,7 +35,11 @@ export const CreateTodoForm = ({
         onChange={handleTodoInput}
         aria-label="Enter todo"
       />
-      <button type="submit" disabled={!todo ? true : false}>
+      <button
+        className={styles.submitBtn}
+        type="submit"
+        disabled={!todo ? true : false}
+      >
         Add task
       </button>
     </form>

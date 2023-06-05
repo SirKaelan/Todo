@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { setup } from "../../../testUtils/setup";
-import { CreateTodoForm } from "../create-todo-form";
+import { CreateTodoForm } from "./create-todo-form";
 import { TodoProvider } from "../TodoContext";
 
 describe("create-todo-form component tests", () => {
