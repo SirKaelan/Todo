@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { setup } from "../../testUtils/setup";
-import { Home } from "../home";
+import { Home } from "./home";
 import { UIStateProvider } from "../../features/ui";
 import { PageDataProvider } from "../page-context";
 import { TodoProvider } from "../../features/todos";
