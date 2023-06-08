@@ -28,12 +28,14 @@ export const Home = (): JSX.Element => {
           </nav>
         </aside>
 
-        <section>
-          <Routes>
-            <Route index element={<Inbox />} />
-            <Route path="completed" element={<Completed />} />
-          </Routes>
-        </section>
+        <article className={styles.tasks__manager}>
+          <div className={styles.tasks__manager__container}>
+            <Routes>
+              <Route index element={<Inbox />} />
+              <Route path="completed" element={<Completed />} />
+            </Routes>
+          </div>
+        </article>
       </BrowserRouter>
     </main>
   );

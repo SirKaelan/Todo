@@ -1,0 +1,16 @@
+@import "../../../sass-partials/variables";
+
+.tasks__manager {
+  &__taskContainer {
+    display: flex;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid $border-separator-color;
+  }
+
+  &__checkbox {
+  }
+
+  &__taskContent {
+    margin-left: 1.5rem;
+  }
+}

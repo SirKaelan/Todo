@@ -9,14 +9,29 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Work on view and component HTML and styles
-  > Start work on separate HTML+SASS project to build out the app design
-    - Ideally, copy+paste HTML blocks and SASS rules over to React project
+  > Look into dialog HTML element and try to use it
+  > Decide what to do with "task input" and "task item" buttons
+    - Add a blue button next to the input
+    - Edit button will be "task content click" (it will open a form in a dialog)
+    - Remove button will be inside the dropdown menu that you open from the tripple dot button (if i don't manage to create the menu, then have a red button for remove next to the task item)
+  > Understand how to create a tripple dot button that opens a dropdown menu
+  > Redo SASS class names
+  > Redo SASS class selector organization
+  > Add more SASS variables
+    - Ideally, most of the design could be edited through the variables (like a config file for SASS)
+  > Check where Mixins/Placeholders could be used to make the code more DRY
+  > Understand how CSS class toggling works in React (for Click events)
+  > Understand how CSS rule manipulation works in React
+    - Hopefully it doesn't use "refs"
+  > Add necessary class toggling on Click events
+  > Decide on additional pieces of state that need to be managed/kept
+  > Decide where those pieces of state will need to be stored
+  > Decide which icon provider to use
   > Rename "home" page to something like "todo-page", it will house all todo features in a single page
     - create a side bar in App component that will navigate between the different pages for the different features
-  > Study about semantic HTML and implement it here
   > Decide on wether to use "todos" or "tasks"
   > Export context ts types in a separate file
+  > Fix Create Todo Form validation (if i end up removing the button)
   > Create tests for custom hooks and context
 
 

@@ -1,9 +1,11 @@
 @import "../../sass-partials/variables";
 
+// Tasks page container
 .tasks {
   display: flex;
   height: 100%;
 
+  // Nav container
   &__nav {
     flex: 0 1 $tasks-navigation-width;
     padding: 3rem 2rem;
@@ -38,6 +40,18 @@
       align-items: center;
       font-size: $tasks-nav-number-font-size;
       color: $tasks-nav-number-color;
+    }
+  }
+
+  // Tasks page container/manager
+  &__manager {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    padding: 2.8rem;
+
+    &__container {
+      flex: 0 1 $tasks-manager-width;
     }
   }
 }

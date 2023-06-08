@@ -29,6 +29,7 @@ export const CreateTodoForm = ({
   return (
     <form onSubmit={handleTodoSubmit}>
       <input
+        className={styles.tasks__manager__taskInput}
         type="text"
         placeholder={placeholderText}
         value={todo}

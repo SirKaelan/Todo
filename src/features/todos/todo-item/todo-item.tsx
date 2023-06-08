@@ -1,7 +1,8 @@
 import React from "react";
-import { useRemoveTodo } from "./TodoContext";
-import { useSetTodoId } from "../../pages";
-import { useSetOverlay } from "../ui";
+import styles from "./todo-item.module.scss";
+import { useRemoveTodo } from "../TodoContext";
+import { useSetTodoId } from "../../../pages";
+import { useSetOverlay } from "../../ui";
 
 type TodoItemProps = {
   id: string;
@@ -21,10 +22,11 @@ export const TodoItem = ({ id, content }: TodoItemProps): JSX.Element => {
   const handleRemoveClick = (): void => removeTodo(id);
 
   return (
-    <div>
-      <span>{content}</span>
+    <li className={styles.tasks__manager__taskContainer}>
+      <input className={styles.tasks__manager__checkbox} type="checkbox" />
+      <p className={styles.tasks__manager__taskContent}>{content}</p>
       <button onClick={handleEditClick}>Edit</button>
       <button onClick={handleRemoveClick}>Remove</button>
-    </div>
+    </li>
   );
 };

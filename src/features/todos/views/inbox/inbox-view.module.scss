@@ -1,0 +1,12 @@
+@import "../../../../sass-partials/variables";
+
+.tasks__manager {
+  &__headerContainer {
+    margin-bottom: $tasks-header-margin;
+  }
+
+  &__headerTitle {
+    font-size: 2rem;
+    margin-bottom: $tasks-header-margin;
+  }
+}

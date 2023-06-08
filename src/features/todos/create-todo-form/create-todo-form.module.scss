@@ -1,9 +1,17 @@
-// Everything below is test code
+@import "../../../sass-partials/variables";
 
-$btn-text-color: salmon;
-$btn-text-size: 30px;
+.tasks__manager {
+  &__taskInput {
+    width: 100%;
+    padding: $task-input-padding;
+    background-color: $task-input-bg-color;
+    border: none;
+    border-radius: $element-border-radius;
+    // This is temporary, for now
+    outline: none;
 
-.submitBtn {
-  color: $btn-text-color;
-  font-size: $btn-text-size;
+    &::placeholder {
+      color: $task-input-placeholder-color;
+    }
+  }
 }

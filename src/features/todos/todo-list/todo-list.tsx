@@ -1,6 +1,7 @@
 import React from "react";
-import { useGetTodos } from "./TodoContext";
-import { TodoItem } from "./todo-item";
+import styles from "./todo-list.module.scss";
+import { useGetTodos } from "../TodoContext";
+import { TodoItem } from "../todo-item/todo-item";
 
 export const TodoList = (): JSX.Element => {
   const todos = useGetTodos();
@@ -9,5 +10,7 @@ export const TodoList = (): JSX.Element => {
     return <TodoItem key={id} id={id} content={content} />;
   });
 
-  return <div>{renderedTodos}</div>;
+  return (
+    <ul className={styles.tasks__manager__tasksContainer}>{renderedTodos}</ul>
+  );
 };
