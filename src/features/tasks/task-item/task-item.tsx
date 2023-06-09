@@ -1,25 +1,25 @@
 import React from "react";
-import styles from "./todo-item.module.scss";
-import { useRemoveTodo } from "../TodoContext";
-import { useSetTodoId } from "../../../pages";
+import styles from "./task-item.module.scss";
+import { useRemoveTask } from "../TaskContext";
+import { useSetTaskId } from "../../../pages";
 import { useSetOverlay } from "../../ui";
 
-type TodoItemProps = {
+type TaskItemProps = {
   id: string;
   content: string;
 };
 
-export const TodoItem = ({ id, content }: TodoItemProps): JSX.Element => {
-  const removeTodo = useRemoveTodo();
-  const setTodoId = useSetTodoId();
+export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
+  const removeTask = useRemoveTask();
+  const setTaskId = useSetTaskId();
   const setOverlay = useSetOverlay();
 
   const handleEditClick = (): void => {
-    setTodoId(id);
+    setTaskId(id);
     setOverlay(true);
   };
 
-  const handleRemoveClick = (): void => removeTodo(id);
+  const handleRemoveClick = (): void => removeTask(id);
 
   return (
     <li className={styles.tasks__manager__taskContainer}>

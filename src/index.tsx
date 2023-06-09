@@ -4,7 +4,7 @@ import "./sass-partials/_global.scss";
 import App from "./App";
 import { UIStateProvider } from "./features/ui";
 import { PageDataProvider } from "./pages";
-import { TodoProvider } from "./features/todos";
+import { TaskProvider } from "./features/tasks";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <UIStateProvider>
       <PageDataProvider>
-        <TodoProvider>
+        <TaskProvider>
           <App />
-        </TodoProvider>
+        </TaskProvider>
       </PageDataProvider>
     </UIStateProvider>
   </React.StrictMode>

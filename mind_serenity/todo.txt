@@ -10,6 +10,11 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 
 # Finish project MVP
   > Look into dialog HTML element and try to use it
+    - https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25
+  > Look into using "useReducer" for updating context state
+  > Understand how CSS class toggling works in React (for Click events)
+    - It works with local state
+    - Check in Google for toggling elements with hook
   > Decide what to do with "task input" and "task item" buttons
     - Add a blue button next to the input
     - Edit button will be "task content click" (it will open a form in a dialog)
@@ -17,10 +22,10 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Understand how to create a tripple dot button that opens a dropdown menu
   > Redo SASS class names
   > Redo SASS class selector organization
+    - Start using reusable SASS components: https://www.proqsolutions.com/css-components/
   > Add more SASS variables
     - Ideally, most of the design could be edited through the variables (like a config file for SASS)
   > Check where Mixins/Placeholders could be used to make the code more DRY
-  > Understand how CSS class toggling works in React (for Click events)
   > Understand how CSS rule manipulation works in React
     - Hopefully it doesn't use "refs"
   > Add necessary class toggling on Click events
@@ -29,7 +34,6 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Decide which icon provider to use
   > Rename "home" page to something like "todo-page", it will house all todo features in a single page
     - create a side bar in App component that will navigate between the different pages for the different features
-  > Decide on wether to use "todos" or "tasks"
   > Export context ts types in a separate file
   > Fix Create Todo Form validation (if i end up removing the button)
   > Create tests for custom hooks and context

@@ -1,7 +1,7 @@
 import React from "react";
 
 type ComponentDataState = {
-  todoId: string;
+  taskId: string;
 };
 
 type PageContextType = [
@@ -18,7 +18,7 @@ const PageContext = React.createContext<PageContextType>(
 );
 
 const initialState = {
-  todoId: "",
+  taskId: "",
 };
 
 export const PageDataProvider = ({
@@ -35,20 +35,20 @@ export const PageDataProvider = ({
 };
 
 // Hooks
-export const useGetTodoId = (): string => {
-  const [{ todoId }] = React.useContext(PageContext);
-  return todoId;
+export const useGetTaskId = (): string => {
+  const [{ taskId }] = React.useContext(PageContext);
+  return taskId;
 };
 
-type SetTodoId = (id: string) => void;
+type SetTaskId = (id: string) => void;
 
-export const useSetTodoId = (): SetTodoId => {
+export const useSetTaskId = (): SetTaskId => {
   const [_, setComponentData] = React.useContext(PageContext);
 
   return (id: string): void => {
     setComponentData(
       (currComponentData: ComponentDataState): ComponentDataState => {
-        return { ...currComponentData, todoId: id };
+        return { ...currComponentData, taskId: id };
       }
     );
   };

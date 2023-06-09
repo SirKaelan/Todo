@@ -1,26 +1,26 @@
 import React, { useState } from "react";
-import { useGetTodo, useEditTodo } from "./TodoContext";
+import { useGetTask, useEditTask } from "./TaskContext";
 import { useSetOverlay } from "../ui";
 
-type EditTodoProps = {
-  todoId: string;
+type EditTaskProps = {
+  taskId: string;
 };
 // Extract these types to external file
 type FormSubmitEvent = React.FormEvent<HTMLFormElement>;
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type FormClickEvent = React.MouseEvent<HTMLFormElement, MouseEvent>;
 
-export const EditTodoForm = ({ todoId }: EditTodoProps): JSX.Element => {
-  const todo = useGetTodo()(todoId);
-  const editTodo = useEditTodo();
+export const EditTaskForm = ({ taskId }: EditTaskProps): JSX.Element => {
+  const task = useGetTask()(taskId);
+  const editTask = useEditTask();
   const setOverlay = useSetOverlay();
 
   // Not sure if setting the initial state like this is ideal
-  const [todoContent, setTodoContent] = useState<string>(todo.content);
+  const [taskContent, setTaskContent] = useState<string>(task.content);
 
   const handleFormSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
-    editTodo(todoId, todoContent);
+    editTask(taskId, taskContent);
     setOverlay(false);
   };
 
@@ -29,20 +29,20 @@ export const EditTodoForm = ({ todoId }: EditTodoProps): JSX.Element => {
     e.stopPropagation();
   };
 
-  const handleTodoInput = (e: InputChangeEvent): void => {
-    setTodoContent(e.currentTarget.value);
+  const handleTaskInput = (e: InputChangeEvent): void => {
+    setTaskContent(e.currentTarget.value);
   };
 
   return (
     <form onClick={handleFormClick} onSubmit={handleFormSubmit}>
       <input
-        aria-label="Edit todo"
+        aria-label="Edit task"
         type="text"
-        value={todoContent}
-        onChange={handleTodoInput}
+        value={taskContent}
+        onChange={handleTaskInput}
         autoFocus
       />
-      <button type="submit" disabled={!todoContent ? true : false}>
+      <button type="submit" disabled={!taskContent ? true : false}>
         Edit task
       </button>
     </form>

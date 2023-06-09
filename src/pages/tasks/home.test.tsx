@@ -4,49 +4,49 @@ import { setup } from "../../testUtils/setup";
 import { Home } from "./home";
 import { UIStateProvider } from "../../features/ui";
 import { PageDataProvider } from "../page-context";
-import { TodoProvider } from "../../features/todos";
+import { TaskProvider } from "../../features/tasks";
 
 const componentWithProviders = (): JSX.Element => {
   return (
     <UIStateProvider>
       <PageDataProvider>
-        <TodoProvider>
+        <TaskProvider>
           <Home />
-        </TodoProvider>
+        </TaskProvider>
       </PageDataProvider>
     </UIStateProvider>
   );
 };
 
-const addTodo = async (todos: string[], user: UserEvent): Promise<void> => {
-  const createTodoInput = screen.getByRole("textbox", { name: /enter todo/i });
+const addTask = async (tasks: string[], user: UserEvent): Promise<void> => {
+  const createTaskInput = screen.getByRole("textbox", { name: /enter task/i });
   const submitBtn = screen.getByRole("button", { name: /add task/i });
-  for (const todo of todos) {
-    await user.click(createTodoInput);
-    await user.keyboard(todo);
+  for (const task of tasks) {
+    await user.click(createTaskInput);
+    await user.keyboard(task);
     await user.click(submitBtn);
   }
 };
 
 describe("home page tests", () => {
-  test("should see todo in list after form submit", async () => {
+  test("should see task in list after form submit", async () => {
     const { user } = setup(componentWithProviders());
-    await addTodo(["This is a todo!"], user);
-    const todoItem = screen.getByText(/this is a todo/i);
-    expect(todoItem).toBeInTheDocument();
+    await addTask(["This is a todo!"], user);
+    const taskItem = screen.getByText(/this is a todo/i);
+    expect(taskItem).toBeInTheDocument();
   });
 
-  test("should be able to remove a todo", async () => {
+  test("should be able to remove a task", async () => {
     const { user } = setup(componentWithProviders());
-    await addTodo(["Buy an umbrella"], user);
+    await addTask(["Buy an umbrella"], user);
     const removeBtn = screen.getByRole("button", { name: /remove/i });
     await user.click(removeBtn);
-    const todoItem = screen.queryByText(/buy an umbrella/i);
-    expect(todoItem).not.toBeInTheDocument();
+    const taskItem = screen.queryByText(/buy an umbrella/i);
+    expect(taskItem).not.toBeInTheDocument();
   });
 
   // Maybe this test should be split into parts
-  test("should be able to edit a todo", async () => {
+  test("should be able to edit a task", async () => {
     const { user, container } = setup(componentWithProviders());
 
     // To create the overlay container div
@@ -55,17 +55,17 @@ describe("home page tests", () => {
     overlayContainer.setAttribute("id", "overlay");
     container.insertAdjacentElement("beforebegin", overlayContainer);
 
-    await addTodo(["Go outside for a rn"], user);
+    await addTask(["Go outside for a rn"], user);
     const editBtn = screen.getByRole("button", { name: /edit/i });
     await user.click(editBtn);
-    const editTodoInput = screen.getByRole("textbox", { name: /edit todo/i });
+    const editTaskInput = screen.getByRole("textbox", { name: /edit task/i });
     const editFormBtn = screen.getByRole("button", { name: /edit task/i });
-    expect(editTodoInput).toBeVisible();
-    expect(editTodoInput).toHaveFocus();
+    expect(editTaskInput).toBeVisible();
+    expect(editTaskInput).toHaveFocus();
     await user.keyboard("{Backspace}un!");
     await user.click(editFormBtn);
-    expect(editTodoInput).not.toBeVisible();
-    const updatedTodo = screen.getByText("Go outside for a run!");
-    expect(updatedTodo).toBeInTheDocument();
+    expect(editTaskInput).not.toBeVisible();
+    const updatedTask = screen.getByText("Go outside for a run!");
+    expect(updatedTask).toBeInTheDocument();
   });
 });

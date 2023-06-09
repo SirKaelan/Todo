@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./todos.module.scss";
+import styles from "./tasks.module.scss";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import { Inbox } from "../../features/todos";
-import { Completed } from "../../features/todos";
+import { Inbox } from "../../features/tasks";
+import { Completed } from "../../features/tasks";
 
 export const Home = (): JSX.Element => {
   return (
