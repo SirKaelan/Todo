@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./inbox-view.module.scss";
-import { CreateTaskForm } from "../../create-task-form/create-task-form";
-import { EditTaskForm } from "../../edit-task-form";
-import { TaskList } from "../../task-list/task-list";
-import { Overlay, useGetOverlay, useSetOverlay } from "../../../ui";
-import { useGetTaskId } from "../../../../pages/page-context";
+import { CreateTaskForm, EditTaskForm, TaskList } from "features/tasks";
+import { Dialog, useGetOverlay, useSetOverlay } from "features/ui";
+// Maybe change to get this id from the Task Context?
+import { useGetTaskId } from "pages/page-context";
 
-export const Inbox = () => {
-  // const showOverlay = useGetOverlay();
-  // const setOverlay = useSetOverlay();
-  // const taskId = useGetTaskId();
+export const Inbox = (): JSX.Element => {
+  const showOverlay = useGetOverlay();
+  const setOverlay = useSetOverlay();
+  const taskId = useGetTaskId();
+  showOverlay && console.log("Rendered!");
 
   return (
     <>
@@ -19,12 +19,10 @@ export const Inbox = () => {
       </header>
       <section>
         <TaskList />
+        <Dialog open={showOverlay} onClose={() => setOverlay(false)}>
+          {showOverlay && <EditTaskForm taskId={taskId} />}
+        </Dialog>
       </section>
-      {/* {showOverlay && (
-        <Overlay setOverlay={setOverlay}>
-          <EditTaskForm taskId={taskId} />
-        </Overlay>
-      )} */}
     </>
   );
 };

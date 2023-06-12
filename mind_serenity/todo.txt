@@ -9,8 +9,9 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Look into dialog HTML element and try to use it
-    - https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25
+  > Create reusable buttons
+  > Understand how to create a tripple dot button that opens a dropdown menu
+  > Fix dialog content positioning
   > Look into using "useReducer" for updating context state
   > Understand how CSS class toggling works in React (for Click events)
     - It works with local state
@@ -19,7 +20,6 @@ High level tasks:   <-- Add new ones as problems/ideas occur
     - Add a blue button next to the input
     - Edit button will be "task content click" (it will open a form in a dialog)
     - Remove button will be inside the dropdown menu that you open from the tripple dot button (if i don't manage to create the menu, then have a red button for remove next to the task item)
-  > Understand how to create a tripple dot button that opens a dropdown menu
   > Redo SASS class names
   > Redo SASS class selector organization
     - Start using reusable SASS components: https://www.proqsolutions.com/css-components/
@@ -37,7 +37,8 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Export context ts types in a separate file
   > Fix Create Todo Form validation (if i end up removing the button)
   > Create tests for custom hooks and context
-
+  > Fix app container not extending with content vertically
+  > Fix relative imports to absolute
 
 
 -------- Archive --------

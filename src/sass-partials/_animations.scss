@@ -1,0 +1,24 @@
+// Overlay/popup animations
+@keyframes showOverlay {
+  from {
+    opacity: 0;
+    transform: translateY(min(100px, 5vh));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes hideOverlay {
+  from {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(min(100px, 5vh));
+  }
+}
