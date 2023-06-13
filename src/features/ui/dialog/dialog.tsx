@@ -4,7 +4,7 @@ import styles from "./dialog.module.scss";
 type DialogProps = {
   open: boolean;
   onClose: () => void;
-  children: JSX.Element | boolean;
+  children: JSX.Element | boolean | string;
 };
 
 type DialogClickEvent = React.MouseEvent<HTMLDialogElement, MouseEvent>;
@@ -15,7 +15,6 @@ export const Dialog = ({
   children,
 }: DialogProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  console.log(open);
 
   const dialogClasses = () => {
     const arr: string[] = [styles["overlay"]];

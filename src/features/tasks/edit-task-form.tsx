@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useGetTask, useEditTask } from "./TaskContext";
-import { useSetOverlay } from "../ui";
+import { useGetTask, useEditTask } from "features/tasks/TaskContext";
+import { useSetOverlay } from "features/ui";
 
 type EditTaskProps = {
   taskId: string;

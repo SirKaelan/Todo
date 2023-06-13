@@ -3,14 +3,12 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Finish project MVP
   # Change to use semantic HTML for MVP project
   # Add tests to MVP
-  # Install and use SASS
   # Use routing to change between the different pages
 
 -------- Details of tasks --------
 
 # Finish project MVP
   > Create reusable buttons
-  > Understand how to create a tripple dot button that opens a dropdown menu
   > Fix dialog content positioning
   > Look into using "useReducer" for updating context state
   > Understand how CSS class toggling works in React (for Click events)
@@ -39,6 +37,7 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   > Create tests for custom hooks and context
   > Fix app container not extending with content vertically
   > Fix relative imports to absolute
+  > Create a dropdown menu (idea is scrapped for now)
 
 
 -------- Archive --------
@@ -55,3 +54,4 @@ High level tasks:   <-- Add new ones as problems/ideas occur
   - We test from the perspective of an end user interacting with the app
 # Decide which state management tool to use
 # Create a new branch for MVP
+# Install and use SASS

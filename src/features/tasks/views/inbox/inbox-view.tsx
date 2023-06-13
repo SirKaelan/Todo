@@ -9,7 +9,6 @@ export const Inbox = (): JSX.Element => {
   const showOverlay = useGetOverlay();
   const setOverlay = useSetOverlay();
   const taskId = useGetTaskId();
-  showOverlay && console.log("Rendered!");
 
   return (
     <>

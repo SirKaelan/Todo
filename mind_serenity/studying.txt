@@ -3,3 +3,6 @@ An article for using Generics in React:
 
 An article for building forms in React:
   - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
+
+An article for making a reusable Dialog component (popup overlay):
+  - https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25

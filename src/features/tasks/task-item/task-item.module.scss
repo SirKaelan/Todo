@@ -3,14 +3,21 @@
 .tasks__manager {
   &__taskContainer {
     display: flex;
-    padding: 0.8rem 0;
+    align-items: center;
+    padding: 0.8rem;
     border-bottom: 1px solid $border-separator-color;
+    cursor: pointer;
+
+    &:hover {
+      backdrop-filter: brightness(0.95);
+    }
   }
 
   &__checkbox {
   }
 
   &__taskContent {
+    flex: 1;
     margin-left: 1.5rem;
   }
 }
