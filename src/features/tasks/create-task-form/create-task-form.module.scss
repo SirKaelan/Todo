@@ -1,7 +1,11 @@
 @import "../../../sass-partials/variables";
 
-.tasks__manager {
-  &__taskInput {
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__input {
     width: 100%;
     padding: $task-input-padding;
     background-color: $task-input-bg-color;

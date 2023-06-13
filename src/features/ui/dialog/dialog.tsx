@@ -16,7 +16,7 @@ export const Dialog = ({
 }: DialogProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const dialogClasses = () => {
+  const dialogClasses = (): string => {
     const arr: string[] = [styles["overlay"]];
     if (!open) arr.push(styles["overlay--closed"]);
 

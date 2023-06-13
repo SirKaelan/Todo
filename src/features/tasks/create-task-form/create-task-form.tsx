@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./create-task-form.module.scss";
 import { useAddTask } from "../TaskContext";
+import { Button } from "features/ui";
 
 type CreateTaskFormProps = {
   placeholderText: string;
@@ -27,22 +28,18 @@ export const CreateTaskForm = ({
   };
 
   return (
-    <form onSubmit={handleTaskSubmit}>
+    <form onSubmit={handleTaskSubmit} className={styles.form}>
       <input
-        className={styles.tasks__manager__taskInput}
+        className={styles.form__input}
         type="text"
         placeholder={placeholderText}
         value={task}
         onChange={handleTaskInput}
         aria-label="Enter task"
       />
-      <button
-        className={styles.submitBtn}
-        type="submit"
-        disabled={!task ? true : false}
-      >
+      <Button color="primary" type="submit" disabled={!task ? true : false}>
         Add task
-      </button>
+      </Button>
     </form>
   );
 };

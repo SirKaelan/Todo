@@ -3,6 +3,7 @@ import styles from "./task-item.module.scss";
 import { useRemoveTask } from "features/tasks/TaskContext";
 import { useSetTaskId } from "pages";
 import { useSetOverlay } from "features/ui";
+import { Button } from "features/ui";
 
 type TaskItemProps = {
   id: string;
@@ -10,7 +11,7 @@ type TaskItemProps = {
 };
 
 type InputClickEvent = React.MouseEvent<HTMLInputElement, MouseEvent>;
-type RemoveBtnClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+type BtnClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -30,7 +31,7 @@ export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
 
   const handleCheckboxClick = (e: InputClickEvent) => e.stopPropagation();
 
-  const handleRemoveClick = (e: RemoveBtnClickEvent): void => {
+  const handleRemoveClick = (e: BtnClickEvent): void => {
     e.stopPropagation();
     removeTask(id);
   };
@@ -48,7 +49,9 @@ export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
         onClick={handleCheckboxClick}
       />
       <p className={styles.tasks__manager__taskContent}>{content}</p>
-      <button onClick={handleRemoveClick}>Remove</button>
+      <Button color="danger" onClick={handleRemoveClick}>
+        Remove
+      </Button>
     </li>
   );
 };

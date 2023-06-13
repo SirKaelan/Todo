@@ -1,0 +1,42 @@
+@import "sass-partials/_variables.scss";
+
+.btn {
+  border-radius: 8px;
+  border-style: none;
+  color: #ffffff;
+  display: inline-block;
+  // font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+  //   sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  height: 40px;
+  outline: none;
+  padding: 6px 12px;
+  transition: background-color 100ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &.btn-primary {
+    background-color: $btn-primary-bg-color-default;
+
+    &:hover {
+      background-color: $btn-primary-bg-color-hover;
+    }
+
+    &:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+  }
+
+  &.btn-danger {
+    background-color: $btn-danger-bg-color-default;
+
+    &:hover {
+      background-color: $btn-danger-bg-color-hover;
+    }
+  }
+}

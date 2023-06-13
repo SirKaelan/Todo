@@ -8,7 +8,6 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Create reusable buttons
   > Fix dialog content positioning
   > Look into using "useReducer" for updating context state
   > Understand how CSS class toggling works in React (for Click events)
