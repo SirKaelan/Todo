@@ -38,18 +38,21 @@ export const TaskItem = ({
   };
 
   return (
-    <li
-      className={styles.tasks__manager__taskContainer}
-      onClick={handleTaskClick}
-    >
+    <li className={styles["task-container"]} onClick={handleTaskClick}>
       <input
-        className={styles.tasks__manager__checkbox}
+        className={styles["task-checkbox"]}
         type="checkbox"
         checked={isChecked}
         onChange={handleCheckboxChange}
         onClick={handleCheckboxClick}
       />
-      <p className={styles.tasks__manager__taskContent}>{task.content}</p>
+      <p
+        className={`${styles["task-content"]} ${
+          isChecked && styles["checked"]
+        }`}
+      >
+        {task.content}
+      </p>
       <Button color="danger" onClick={handleRemoveClick}>
         Remove
       </Button>

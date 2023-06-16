@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
 import {
-  CopyTaskProvider,
   TaskProvider,
   CreateTaskForm,
   EditTaskForm,
@@ -19,20 +18,18 @@ export const Inbox = (): JSX.Element => {
 
   return (
     <TaskProvider>
-      <CopyTaskProvider>
-        <>
-          <header className={styles.tasks__manager__headerContainer}>
-            <h2 className={styles.tasks__manager__headerTitle}>Inbox</h2>
-            <CreateTaskForm placeholderText="Enter a task..." />
-          </header>
-          <section>
-            <TaskList setClickedTask={setClickedTask} />
-            <Dialog open={showOverlay} onClose={() => setOverlay(false)}>
-              {showOverlay && <EditTaskForm task={clickedTask} />}
-            </Dialog>
-          </section>
-        </>
-      </CopyTaskProvider>
+      <>
+        <header className={styles.tasks__manager__headerContainer}>
+          <h2 className={styles.tasks__manager__headerTitle}>Inbox</h2>
+          <CreateTaskForm placeholderText="Enter a task..." />
+        </header>
+        <section>
+          <TaskList setClickedTask={setClickedTask} />
+          <Dialog open={showOverlay} onClose={() => setOverlay(false)}>
+            {showOverlay && <EditTaskForm task={clickedTask} />}
+          </Dialog>
+        </section>
+      </>
     </TaskProvider>
   );
 };
