@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import styles from "./task-item.module.scss";
-import { useRemoveTask } from "features/tasks/TaskContext";
-import { useSetTaskId } from "pages";
-import { useSetOverlay } from "features/ui";
-import { Button } from "features/ui";
+import { ActionType, Task } from "features/tasks/types";
+import { useTask } from "features/tasks/COPY-TaskContext";
+import { useSetOverlay, Button } from "features/ui";
 
 type TaskItemProps = {
-  id: string;
-  content: string;
+  task: Task;
+  setClickedTask: React.Dispatch<React.SetStateAction<Task>>;
 };
 
 type InputClickEvent = React.MouseEvent<HTMLInputElement, MouseEvent>;
 type BtnClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
-export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
+export const TaskItem = ({
+  task,
+  setClickedTask,
+}: TaskItemProps): JSX.Element => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
-  const removeTask = useRemoveTask();
-  const setTaskId = useSetTaskId();
+  const { dispatch } = useTask();
   const setOverlay = useSetOverlay();
 
   const handleTaskClick = (): void => {
-    setTaskId(id);
+    setClickedTask(task);
     setOverlay(true);
   };
 
@@ -33,7 +34,7 @@ export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
 
   const handleRemoveClick = (e: BtnClickEvent): void => {
     e.stopPropagation();
-    removeTask(id);
+    dispatch({ type: ActionType.REMOVE_TASK, payload: task });
   };
 
   return (
@@ -48,7 +49,7 @@ export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
         onChange={handleCheckboxChange}
         onClick={handleCheckboxClick}
       />
-      <p className={styles.tasks__manager__taskContent}>{content}</p>
+      <p className={styles.tasks__manager__taskContent}>{task.content}</p>
       <Button color="danger" onClick={handleRemoveClick}>
         Remove
       </Button>

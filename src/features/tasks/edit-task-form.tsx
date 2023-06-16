@@ -1,26 +1,38 @@
-import React, { useState } from "react";
-import { useGetTask, useEditTask } from "features/tasks/TaskContext";
+import React, { useEffect, useState } from "react";
+import { useTask } from "features/tasks/COPY-TaskContext";
+import {
+  ActionType,
+  FormSubmitEvent,
+  InputChangeEvent,
+  Task,
+} from "features/tasks/types";
 import { useSetOverlay } from "features/ui";
 
 type EditTaskProps = {
-  taskId: string;
+  task: Task;
 };
 // Extract these types to external file
-type FormSubmitEvent = React.FormEvent<HTMLFormElement>;
-type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type FormClickEvent = React.MouseEvent<HTMLFormElement, MouseEvent>;
 
-export const EditTaskForm = ({ taskId }: EditTaskProps): JSX.Element => {
-  const task = useGetTask()(taskId);
-  const editTask = useEditTask();
+export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
+  const [taskContent, setTaskContent] = useState<string>("");
+
+  const { dispatch } = useTask();
   const setOverlay = useSetOverlay();
 
-  // Not sure if setting the initial state like this is ideal
-  const [taskContent, setTaskContent] = useState<string>(task.content);
+  useEffect(() => {
+    setTaskContent(task.content);
+  }, [task]);
 
   const handleFormSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
-    editTask(taskId, taskContent);
+
+    const newTask: Task = {
+      ...task,
+      content: taskContent,
+    };
+
+    dispatch({ type: ActionType.EDIT_TASK, payload: newTask });
     setOverlay(false);
   };
 
