@@ -1,0 +1,38 @@
+@import "sass-partials/variables";
+
+.nav {
+  flex: 0 1 $tasks-navigation-width;
+  padding: 3rem 2rem;
+  background-color: $tasks-nav-background-color;
+
+  &__button {
+    display: flex;
+    padding: 0.5rem;
+    border-radius: $element-border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $btn-background-color;
+    }
+  }
+
+  &__icon {
+  }
+
+  &__text {
+    flex: 1;
+    color: inherit;
+    padding: 0.5rem 0 0.3rem 0.5rem;
+    line-height: 1.2;
+  }
+
+  &__number {
+    display: flex;
+    height: 2.4rem;
+    width: 2.4rem;
+    justify-content: center;
+    align-items: center;
+    font-size: $tasks-nav-number-font-size;
+    color: $tasks-nav-number-color;
+  }
+}

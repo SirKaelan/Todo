@@ -6,5 +6,6 @@ export { Inbox } from "./views/inbox/inbox-view";
 export { Completed } from "./views/completed/completed-view";
 export { ActionType } from "./types";
 // export type { Task } from "./types";
+export { TaskNavigation } from "./task-navigation/task-navigation";
 export { TaskProvider } from "./TaskContext";
 export { CopyTaskProvider, useTask } from "./COPY-TaskContext";
