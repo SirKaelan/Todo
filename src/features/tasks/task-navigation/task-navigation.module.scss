@@ -1,7 +1,11 @@
 @import "sass-partials/variables";
 
 .nav {
-  flex: 0 1 $tasks-navigation-width;
+  // flex: 0 1 $tasks-navigation-width;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  min-width: 26rem;
+  max-width: 30rem;
   padding: 3rem 2rem;
   background-color: $tasks-nav-background-color;
 

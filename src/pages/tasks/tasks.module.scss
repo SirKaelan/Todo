@@ -2,18 +2,24 @@
 
 // Tasks page container
 .tasks {
-  display: flex;
+  // display: flex;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
   height: 100%;
 
   // Tasks page container/manager
   &__manager {
-    flex: 1 1;
-    display: flex;
-    justify-content: center;
+    // flex: 1 1;
+    // display: flex;
+    // justify-content: center;
+    min-width: 40rem;
     padding: 2.8rem;
+    grid-column-start: 5;
+    grid-column-end: 11;
 
     &__container {
-      flex: 0 1 $tasks-manager-width;
+      // flex: 0 1 $tasks-manager-width;
     }
   }
 }

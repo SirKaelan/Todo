@@ -8,18 +8,22 @@ High level tasks:   <-- Add new ones as problems/ideas occur
 -------- Details of tasks --------
 
 # Finish project MVP
-  > Fix dialog popup overflow scrollbar
   > Redo SASS class names
   > Redo SASS class selector organization
   > Add more SASS variables
     - Ideally, most of the design could be edited through the variables (like a config file for SASS)
+  > Check where Mixins/Placeholders could be used to make the code more DRY
+  > Look into how UI libraries work
+  > Create reusable Layout component (and maybe other reusable UI components)
+  > Remove "completed" button from navigation
+  > Cleanup project from unused imports/exports and files
+  > Rename any file that needs that
   > Fix not being able to click on task nav number to change views
   > Fix dialog content positioning
   > Understand how CSS class toggling works in React (for Click events)
     - It works with local state
     - Check in Google for toggling elements with hook
     - Start using reusable SASS components: https://www.proqsolutions.com/css-components/
-  > Check where Mixins/Placeholders could be used to make the code more DRY
   > Decide which icon provider to use
   > Rename "home" page to something like "todo-page", it will house all todo features in a single page
     - create a side bar in App component that will navigate between the different pages for the different features
