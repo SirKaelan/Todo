@@ -1,17 +1,15 @@
 import React from "react";
 import styles from "./task-list.module.scss";
-// import { useGetTasks } from "../TaskContext";
-import { useTask, TaskItem } from "features/tasks";
-import { Task } from "features/tasks/types";
+import { useTasks, TaskItem, Task } from "features/tasks";
 
 type TaskListProps = {
   setClickedTask: React.Dispatch<React.SetStateAction<Task>>;
 };
 
 export const TaskList = ({ setClickedTask }: TaskListProps): JSX.Element => {
-  const { state: tasks } = useTask();
+  const Tasks = useTasks();
 
-  const renderedTasks = tasks.map((task): JSX.Element => {
+  const renderedTasks = Tasks.state.map((task): JSX.Element => {
     return (
       <TaskItem key={task.id} task={task} setClickedTask={setClickedTask} />
     );

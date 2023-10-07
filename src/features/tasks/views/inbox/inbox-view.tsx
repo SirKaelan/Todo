@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
-import {
-  TaskProvider,
-  CreateTaskForm,
-  EditTaskForm,
-  TaskList,
-} from "features/tasks";
+import { CreateTaskForm, EditTaskForm, TaskList } from "features/tasks";
 import { Dialog, useGetOverlay, useSetOverlay } from "features/ui";
 import { Task } from "features/tasks/types";
 

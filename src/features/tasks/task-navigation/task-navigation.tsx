@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./task-navigation.module.scss";
 
-import { useTask } from "features/tasks";
+import { useTasks } from "features/tasks";
 import { Link, useLocation } from "react-router-dom";
 
+// TODO: Move to utils file somewhere
 const capitalizeFirstLetter = (text: string): string => {
   const firstLetter = text.charAt(0);
   const restOfText = text.slice(1);
@@ -11,12 +12,12 @@ const capitalizeFirstLetter = (text: string): string => {
 };
 
 export const TaskNavigation = (): JSX.Element => {
-  const { state: tasks } = useTask();
+  const Tasks = useTasks();
   const location = useLocation();
 
   // Maybe i should get this from props
   const navBtns = [
-    { id: "1", btnText: "inbox", state: tasks },
+    { id: "1", btnText: "inbox", state: Tasks.state },
     { id: "2", btnText: "completed", state: [] },
   ];
 

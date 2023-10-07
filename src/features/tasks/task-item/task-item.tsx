@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./task-item.module.scss";
-import { ActionType, Task } from "features/tasks/types";
-import { useTask } from "features/tasks/COPY-TaskContext";
+import { useTasks, Task } from "features/tasks";
 import { useSetOverlay, Button } from "features/ui";
 
 type TaskItemProps = {
@@ -18,7 +17,7 @@ export const TaskItem = ({
 }: TaskItemProps): JSX.Element => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
-  const { dispatch } = useTask();
+  const Tasks = useTasks();
   const setOverlay = useSetOverlay();
 
   const handleTaskClick = (): void => {
@@ -34,7 +33,7 @@ export const TaskItem = ({
 
   const handleRemoveClick = (e: BtnClickEvent): void => {
     e.stopPropagation();
-    dispatch({ type: ActionType.REMOVE_TASK, payload: task });
+    Tasks.remove(task);
   };
 
   return (

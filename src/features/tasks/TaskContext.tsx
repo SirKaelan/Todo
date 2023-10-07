@@ -1,92 +1,62 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
+import { ActionType, Task, State } from "features/tasks/types";
 
-type Task = {
-  id: string;
-  content: string;
-};
-
-type TaskContextType = [
-  tasks: Task[],
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
-];
+// With this we don't need to pass an initial value
+type TaskContextType =
+  | { state: State; dispatch: React.Dispatch<Action> }
+  | undefined;
 
 type TaskProviderProps = {
   children: JSX.Element;
 };
 
-const TaskContext = React.createContext<TaskContextType>(
-  [] as unknown as TaskContextType
-);
+type Action = {
+  type: ActionType;
+  payload: Task;
+};
+
+const taskReducer = (state: State, action: Action): State => {
+  const { payload } = action;
+
+  switch (action.type) {
+    case ActionType.ADD_TASK:
+      return [...state, payload];
+    case ActionType.EDIT_TASK:
+      return state.map((task) => (task.id === payload.id ? payload : task));
+    case ActionType.REMOVE_TASK:
+      return state.filter((task) => task.id !== payload.id);
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+};
+
+const TaskContext = React.createContext<TaskContextType>(undefined);
+
+const INITIAL_STATE: State = [];
 
 export const TaskProvider = ({ children }: TaskProviderProps): JSX.Element => {
-  const [tasks, setTasks] = React.useState<Task[]>([]);
+  const [state, dispatch] = React.useReducer(taskReducer, INITIAL_STATE);
 
-  return (
-    <TaskContext.Provider value={[tasks, setTasks]}>
-      {children}
-    </TaskContext.Provider>
-  );
+  const value = { state, dispatch };
+
+  return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
 };
 
-// Hooks
-export const useGetTasks = (): Task[] => {
-  const [tasks] = React.useContext(TaskContext);
-  return tasks;
-};
+export const useTasks = () => {
+  const context = React.useContext(TaskContext);
 
-type AddTask = (taskContent: string) => void;
+  if (context === undefined) {
+    throw new Error("useTasks must be used within a TaskProvider");
+  }
 
-export const useAddTask = (): AddTask => {
-  const [_, setTasks] = React.useContext(TaskContext);
+  const { state, dispatch } = context;
 
-  return (taskContent: string): void => {
-    const newTask: Task = {
-      id: uuidv4(),
-      content: taskContent,
-    };
+  const add = (payload: Task) =>
+    dispatch({ type: ActionType.ADD_TASK, payload });
+  const edit = (payload: Task) =>
+    dispatch({ type: ActionType.EDIT_TASK, payload });
+  const remove = (payload: Task) =>
+    dispatch({ type: ActionType.REMOVE_TASK, payload });
 
-    setTasks((currTasks: Task[]): Task[] => [...currTasks, newTask]);
-  };
-};
-
-type RemoveTask = (id: string) => void;
-
-export const useRemoveTask = (): RemoveTask => {
-  const [_, setTasks] = React.useContext(TaskContext);
-
-  return (id: string) => {
-    setTasks((currTasks: Task[]): Task[] =>
-      currTasks.filter((task: Task) => task.id !== id)
-    );
-  };
-};
-
-type GetTask = (id: string) => Task;
-
-export const useGetTask = (): GetTask => {
-  const [tasks] = React.useContext(TaskContext);
-
-  return (id: string): Task => {
-    const task: Task = tasks.find((task: Task) => task.id === id) as Task;
-    return task;
-  };
-};
-
-type EditTask = (id: string, content: string) => void;
-
-export const useEditTask = (): EditTask => {
-  const [_, setTasks] = React.useContext(TaskContext);
-
-  return (id: string, content: string): void => {
-    const newTasks = (currTasks: Task[]): Task[] => {
-      const tasks: Task[] = [...currTasks];
-      const taskIndex: number = tasks.findIndex((task: Task) => task.id === id);
-      const task: Task = tasks[taskIndex];
-      tasks[taskIndex] = { ...task, content };
-      return tasks;
-    };
-
-    setTasks(newTasks);
-  };
+  return { state, add, edit, remove };
 };

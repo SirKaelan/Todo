@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useTask } from "features/tasks/COPY-TaskContext";
 import {
-  ActionType,
   FormSubmitEvent,
   InputChangeEvent,
   Task,
-} from "features/tasks/types";
+  useTasks,
+} from "features/tasks";
 import { useSetOverlay } from "features/ui";
 
 type EditTaskProps = {
@@ -17,7 +16,7 @@ type FormClickEvent = React.MouseEvent<HTMLFormElement, MouseEvent>;
 export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");
 
-  const { dispatch } = useTask();
+  const Tasks = useTasks();
   const setOverlay = useSetOverlay();
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
       content: taskContent,
     };
 
-    dispatch({ type: ActionType.EDIT_TASK, payload: newTask });
+    Tasks.edit(newTask);
     setOverlay(false);
   };
 

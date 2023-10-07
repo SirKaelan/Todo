@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styles from "./create-task-form.module.scss";
 import { v4 as uuidv4 } from "uuid";
-import { useTask } from "features/tasks/COPY-TaskContext";
 import {
   FormSubmitEvent,
   InputChangeEvent,
   Task,
-  ActionType,
-} from "features/tasks/types";
+  useTasks,
+} from "features/tasks";
 import { Button } from "features/ui";
 
 type CreateTaskFormProps = {
@@ -19,7 +18,7 @@ export const CreateTaskForm = ({
 }: CreateTaskFormProps): JSX.Element => {
   const [task, setTask] = useState<string>("");
 
-  const { dispatch } = useTask();
+  const Tasks = useTasks();
 
   const handleTaskSubmit = (e: FormSubmitEvent): void => {
     e.preventDefault();
@@ -29,7 +28,7 @@ export const CreateTaskForm = ({
       content: task,
     };
 
-    dispatch({ type: ActionType.ADD_TASK, payload: newTask });
+    Tasks.add(newTask);
     setTask("");
   };
 
