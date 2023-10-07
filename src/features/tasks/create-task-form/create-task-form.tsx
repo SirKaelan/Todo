@@ -1,25 +1,34 @@
 import React, { useState } from "react";
 import styles from "./create-task-form.module.scss";
-import { useAddTask } from "../TaskContext";
+import { v4 as uuidv4 } from "uuid";
+import {
+  FormSubmitEvent,
+  InputChangeEvent,
+  Task,
+  useTasks,
+} from "features/tasks";
 import { Button } from "features/ui";
 
 type CreateTaskFormProps = {
   placeholderText: string;
 };
 
-type FormSubmitEvent = React.FormEvent<HTMLFormElement>;
-type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
-
 export const CreateTaskForm = ({
   placeholderText,
 }: CreateTaskFormProps): JSX.Element => {
-  const addTask = useAddTask();
-
   const [task, setTask] = useState<string>("");
+
+  const Tasks = useTasks();
 
   const handleTaskSubmit = (e: FormSubmitEvent): void => {
     e.preventDefault();
-    addTask(task);
+
+    const newTask: Task = {
+      id: uuidv4(),
+      content: task,
+    };
+
+    Tasks.add(newTask);
     setTask("");
   };
 

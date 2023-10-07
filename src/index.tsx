@@ -4,19 +4,19 @@ import "./sass-partials/_global.scss";
 import App from "./App";
 import { UIStateProvider } from "./features/ui";
 import { PageDataProvider } from "./pages";
-import { TaskProvider } from "./features/tasks";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <UIStateProvider>
-      <PageDataProvider>
-        <TaskProvider>
+    <BrowserRouter>
+      <UIStateProvider>
+        <PageDataProvider>
           <App />
-        </TaskProvider>
-      </PageDataProvider>
-    </UIStateProvider>
+        </PageDataProvider>
+      </UIStateProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

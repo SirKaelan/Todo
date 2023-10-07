@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import styles from "./task-item.module.scss";
-import { useRemoveTask } from "features/tasks/TaskContext";
-import { useSetTaskId } from "pages";
-import { useSetOverlay } from "features/ui";
-import { Button } from "features/ui";
+import { useTasks, Task } from "features/tasks";
+import { useSetOverlay, Button } from "features/ui";
 
 type TaskItemProps = {
-  id: string;
-  content: string;
+  task: Task;
+  setClickedTask: React.Dispatch<React.SetStateAction<Task>>;
 };
 
 type InputClickEvent = React.MouseEvent<HTMLInputElement, MouseEvent>;
 type BtnClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
-export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
+export const TaskItem = ({
+  task,
+  setClickedTask,
+}: TaskItemProps): JSX.Element => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
-  const removeTask = useRemoveTask();
-  const setTaskId = useSetTaskId();
+  const Tasks = useTasks();
   const setOverlay = useSetOverlay();
 
   const handleTaskClick = (): void => {
-    setTaskId(id);
+    setClickedTask(task);
     setOverlay(true);
   };
 
@@ -33,22 +33,25 @@ export const TaskItem = ({ id, content }: TaskItemProps): JSX.Element => {
 
   const handleRemoveClick = (e: BtnClickEvent): void => {
     e.stopPropagation();
-    removeTask(id);
+    Tasks.remove(task);
   };
 
   return (
-    <li
-      className={styles.tasks__manager__taskContainer}
-      onClick={handleTaskClick}
-    >
+    <li className={styles["task-container"]} onClick={handleTaskClick}>
       <input
-        className={styles.tasks__manager__checkbox}
+        className={styles["task-checkbox"]}
         type="checkbox"
         checked={isChecked}
         onChange={handleCheckboxChange}
         onClick={handleCheckboxClick}
       />
-      <p className={styles.tasks__manager__taskContent}>{content}</p>
+      <p
+        className={`${styles["task-content"]} ${
+          isChecked && styles["checked"]
+        }`}
+      >
+        {task.content}
+      </p>
       <Button color="danger" onClick={handleRemoveClick}>
         Remove
       </Button>

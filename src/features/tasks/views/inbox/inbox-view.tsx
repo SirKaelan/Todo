@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
 import { CreateTaskForm, EditTaskForm, TaskList } from "features/tasks";
 import { Dialog, useGetOverlay, useSetOverlay } from "features/ui";
-// Maybe change to get this id from the Task Context?
-import { useGetTaskId } from "pages/page-context";
+import { Task } from "features/tasks/types";
 
 export const Inbox = (): JSX.Element => {
+  // This makes page context useless (i think)
+  const [clickedTask, setClickedTask] = useState<Task>({} as Task);
+
   const showOverlay = useGetOverlay();
   const setOverlay = useSetOverlay();
-  const taskId = useGetTaskId();
 
   return (
     <>
@@ -17,9 +18,9 @@ export const Inbox = (): JSX.Element => {
         <CreateTaskForm placeholderText="Enter a task..." />
       </header>
       <section>
-        <TaskList />
+        <TaskList setClickedTask={setClickedTask} />
         <Dialog open={showOverlay} onClose={() => setOverlay(false)}>
-          {showOverlay && <EditTaskForm taskId={taskId} />}
+          {showOverlay && <EditTaskForm task={clickedTask} />}
         </Dialog>
       </section>
     </>

@@ -1,23 +1,26 @@
 @import "../../../sass-partials/variables";
 
-.tasks__manager {
-  &__taskContainer {
-    display: flex;
-    align-items: center;
-    padding: 0.8rem;
-    border-bottom: 1px solid $border-separator-color;
-    cursor: pointer;
+// I need to decide on a rule organization and naming
+.task-container {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  border-bottom: 1px solid $border-separator-color;
+  cursor: pointer;
 
-    &:hover {
-      backdrop-filter: brightness(0.95);
-    }
+  &:hover {
+    backdrop-filter: brightness(0.95);
   }
+}
 
-  &__checkbox {
-  }
+.task-checkbox {
+}
 
-  &__taskContent {
-    flex: 1;
-    margin-left: 1.5rem;
+.task-content {
+  flex: 1;
+  margin-left: 1.5rem;
+
+  &.checked {
+    text-decoration: line-through;
   }
 }
