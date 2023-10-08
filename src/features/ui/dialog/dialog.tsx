@@ -17,26 +17,20 @@ export const Dialog = ({
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const dialogClasses = (): string => {
-    const arr: string[] = [styles["overlay"]];
-    if (!open) arr.push(styles["overlay--closed"]);
-
-    return arr.join(" ");
+    const classes: string[] = [styles.dialog];
+    if (!open) classes.push(styles.closed);
+    return classes.join(" ");
   };
 
   const handleDialogClick = ({ target }: DialogClickEvent): void => {
     const { current: dialogEl } = dialogRef;
-
     if (target === dialogEl) onClose();
-  };
-
-  const handleDialogAnimEnd = (): void => {
-    const { current: dialogEl } = dialogRef;
-    if (!open) dialogEl?.close();
   };
 
   useEffect(() => {
     const { current: dialogEl } = dialogRef;
     if (open) dialogEl?.showModal();
+    else dialogEl?.close();
   }, [open]);
 
   return (
@@ -44,7 +38,6 @@ export const Dialog = ({
       ref={dialogRef}
       className={dialogClasses()}
       onClick={handleDialogClick}
-      onAnimationEnd={handleDialogAnimEnd}
     >
       {children}
     </dialog>

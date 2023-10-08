@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
 import { CreateTaskForm, EditTaskForm, TaskList } from "features/tasks";
-import { Dialog, useGetOverlay, useSetOverlay } from "features/ui";
+import { Popup, useGetOverlay, useSetOverlay } from "features/ui";
 import { Task } from "features/tasks/types";
 
 export const Inbox = (): JSX.Element => {
@@ -19,10 +19,10 @@ export const Inbox = (): JSX.Element => {
       </header>
       <section>
         <TaskList setClickedTask={setClickedTask} />
-        <Dialog open={showOverlay} onClose={() => setOverlay(false)}>
-          {showOverlay && <EditTaskForm task={clickedTask} />}
-        </Dialog>
       </section>
+      <Popup show={showOverlay} close={() => setOverlay(false)}>
+        <EditTaskForm task={clickedTask} />
+      </Popup>
     </>
   );
 };
