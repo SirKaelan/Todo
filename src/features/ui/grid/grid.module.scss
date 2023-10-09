@@ -1,0 +1,35 @@
+// Should be put in variables sass file
+$spacing: (
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+);
+
+.grid {
+  &_container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &_item {
+    display: block;
+  }
+
+  // Programatically create similar css rules
+  @for $i from 1 to 13 {
+    // #{} to inject variable values
+    &_cols_#{$i} {
+      flex-basis: $i / 12 * 100%;
+    }
+  }
+
+  @each $key, $value in $spacing {
+    &_spacing_#{$key} {
+      margin: -$value;
+    }
+
+    &_spacing_#{$key} > &_item {
+      padding: $value;
+    }
+  }
+}
