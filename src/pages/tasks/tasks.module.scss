@@ -10,14 +10,14 @@
 
   // Tasks page container/manager
   &__manager {
-    // flex: 1 1;
     // display: flex;
-    // justify-content: center;
-    min-width: 40rem;
+    // align-items: center;
+    // flex-direction: column;
+    // min-width: 40rem;
     padding: 2.8rem;
-    grid-column-start: 5;
-    grid-column-end: 11;
-
+    margin: 0 25% 0 25%;
+    // grid-column-start: 5;
+    // grid-column-end: 11;
     &__container {
       // flex: 0 1 $tasks-manager-width;
     }

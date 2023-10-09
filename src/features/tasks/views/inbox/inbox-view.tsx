@@ -17,7 +17,7 @@ export const Inbox = (): JSX.Element => {
         <h2 className={styles.tasks__manager__headerTitle}>Inbox</h2>
         <CreateTaskForm placeholderText="Enter a task..." />
       </header>
-      <section>
+      <section style={{ width: "100%" }}>
         <TaskList setClickedTask={setClickedTask} />
       </section>
       <Popup show={showOverlay} close={() => setOverlay(false)}>

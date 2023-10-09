@@ -2,12 +2,14 @@
 
 .nav {
   // flex: 0 1 $tasks-navigation-width;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  // grid-column-start: 1;
+  // grid-column-end: 3;
+  // min-width: 26rem;
+  // max-width: 30rem;
   min-width: 26rem;
-  max-width: 30rem;
   padding: 3rem 2rem;
   background-color: $tasks-nav-background-color;
+  height: 100%;
 
   &__button {
     display: flex;
