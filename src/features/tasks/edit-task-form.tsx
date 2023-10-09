@@ -10,8 +10,6 @@ import { useSetOverlay } from "features/ui";
 type EditTaskProps = {
   task: Task;
 };
-// Extract these types to external file
-type FormClickEvent = React.MouseEvent<HTMLFormElement, MouseEvent>;
 
 export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");
@@ -35,17 +33,12 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
     setOverlay(false);
   };
 
-  const handleFormClick = (e: FormClickEvent): void => {
-    // To stop overlay from closing on form element click
-    e.stopPropagation();
-  };
-
   const handleTaskInput = (e: InputChangeEvent): void => {
     setTaskContent(e.currentTarget.value);
   };
 
   return (
-    <form onClick={handleFormClick} onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit}>
       <input
         aria-label="Edit task"
         type="text"
