@@ -4,12 +4,16 @@
   // flex: 0 1 $tasks-navigation-width;
   // grid-column-start: 1;
   // grid-column-end: 3;
-  // min-width: 26rem;
   // max-width: 30rem;
-  min-width: 26rem;
+  min-width: 24rem;
   padding: 3rem 2rem;
   background-color: $tasks-nav-background-color;
   height: 100%;
+  width: 100%;
+
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
 
   &__button {
     display: flex;
