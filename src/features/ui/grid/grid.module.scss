@@ -1,0 +1,103 @@
+// Should be put in variables sass file
+$spacings: (
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+);
+
+$breakpoints: (
+  "sm": 600px,
+  "md": 960px,
+  "lg": 1280px,
+);
+
+$justifyContentDict: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  space-between: space-between,
+);
+
+$alignItemsDict: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+);
+
+@mixin breakpoint($name) {
+  // This is a mobile-first approach
+  @media screen and (min-width: map-get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+.grid {
+  &_container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+  }
+
+  &_item {
+    display: block;
+  }
+
+  // Column generation could be refactored further
+
+  // Programatically create similar css rules
+  @for $i from 1 to 13 {
+    // #{} to inject variable values
+    &_xs_#{$i} {
+      flex-basis: $i / 12 * 100%;
+    }
+  }
+
+  @include breakpoint("sm") {
+    @for $i from 1 to 13 {
+      &_sm_#{$i} {
+        flex-basis: $i / 12 * 100%;
+      }
+    }
+  }
+
+  @include breakpoint("md") {
+    @for $i from 1 to 13 {
+      &_md_#{$i} {
+        flex-basis: $i / 12 * 100%;
+      }
+    }
+  }
+
+  @include breakpoint("lg") {
+    @for $i from 1 to 13 {
+      &_lg_#{$i} {
+        flex-basis: $i / 12 * 100%;
+      }
+    }
+  }
+
+  // Generates gutter spacing
+  @each $sizeAcronym, $pixelValue in $spacings {
+    &_spacing_#{$sizeAcronym} {
+      margin: -$pixelValue;
+    }
+
+    &_spacing_#{$sizeAcronym} > &_item {
+      padding: $pixelValue;
+    }
+  }
+
+  // Generates justify-content values
+  @each $gridValue, $flexValue in $justifyContentDict {
+    &_justifyContent_#{$gridValue} {
+      justify-content: $flexValue;
+    }
+  }
+
+  // Generates align-items values
+  @each $gridValue, $flexValue in $alignItemsDict {
+    &_alignItems_#{$gridValue} {
+      align-items: $flexValue;
+    }
+  }
+}
