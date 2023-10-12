@@ -40,7 +40,7 @@ export const TaskNavigation = (): JSX.Element => {
 
   return (
     <aside className={styles["nav"]}>
-      <nav>
+      <nav className={styles.nav_container}>
         <ul>{renderedNavBtns}</ul>
       </nav>
     </aside>

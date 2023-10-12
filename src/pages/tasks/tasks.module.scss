@@ -1,31 +1,36 @@
 @import "sass-partials/variables";
 
-// Tasks page container
 .tasks {
-  // display: flex;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr;
-  // height: 100%;
 
-  // Tasks page container/manager
-  &__manager {
+  height: 100%;
+
+  &_navigation {
+    grid-column: span 1;
+
+    // TODO: Create a mixin for this
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
+  }
+
+  &_wrapper {
+    grid-column: span 11;
+
     display: flex;
     justify-content: center;
-    // align-items: center;
-    // flex-direction: column;
-    min-width: 26rem;
-    padding: 2.8rem;
-    // width: 100%;
-    // grid-column-start: 5;
-    // grid-column-end: 11;
-    &__container {
-      // flex: 0 1 $tasks-manager-width;
-      flex: 0 1 50rem;
 
-      @media screen and (max-width: 960px) {
-        flex: 1;
-      }
+    padding: $tasks-wrapper-padding;
+
+    // TODO: Create a mixin for this
+    @media screen and (max-width: 960px) {
+      grid-column: span 12;
     }
+  }
+
+  &_manager {
+    flex: 0 1 $tasks-manager-width;
   }
 }

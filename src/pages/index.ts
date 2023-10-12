@@ -1,2 +1,2 @@
-export { Home } from "./tasks/home";
+export { Tasks } from "./tasks/tasks";
 export { PageDataProvider, useSetTaskId } from "./page-context";

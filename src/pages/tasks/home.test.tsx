@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { setup } from "../../testUtils/setup";
-import { Home } from "./home";
+import { Tasks } from "./tasks";
 import { UIStateProvider } from "../../features/ui";
 import { PageDataProvider } from "../page-context";
 import { TaskProvider } from "../../features/tasks";
@@ -11,7 +11,7 @@ const componentWithProviders = (): JSX.Element => {
     <UIStateProvider>
       <PageDataProvider>
         <TaskProvider>
-          <Home />
+          <Tasks />
         </TaskProvider>
       </PageDataProvider>
     </UIStateProvider>

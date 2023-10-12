@@ -1,18 +1,14 @@
 @import "sass-partials/variables";
 
 .nav {
-  // flex: 0 1 $tasks-navigation-width;
-  // grid-column-start: 1;
-  // grid-column-end: 3;
-  // max-width: 30rem;
-  min-width: 24rem;
+  min-width: 28rem;
   padding: 3rem 2rem;
   background-color: $tasks-nav-background-color;
   height: 100%;
-  width: 100%;
 
-  @media screen and (max-width: 960px) {
-    display: none;
+  &_container {
+    position: sticky;
+    top: 3rem; // The same amount as nav top and bottom padding (make into var)
   }
 
   &__button {

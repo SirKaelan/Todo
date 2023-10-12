@@ -2,14 +2,14 @@ import React from "react";
 import "./App.css";
 import { TaskProvider } from "features/tasks";
 
-import { Home } from "./pages";
+import { Tasks } from "./pages";
 
 const App = (): JSX.Element => {
   return (
     // Might need to change how i grab this class
     <div className="container">
       <TaskProvider>
-        <Home />
+        <Tasks />
       </TaskProvider>
     </div>
   );
