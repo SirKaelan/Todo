@@ -29,3 +29,9 @@ $btn-primary-bg-color-default: #007bff;
 $btn-primary-bg-color-hover: #0069d9;
 $btn-danger-bg-color-default: #dc3545;
 $btn-danger-bg-color-hover: #c82333;
+
+$breakpoints: (
+  "sm": 600px,
+  "md": 960px,
+  "lg": 1280px,
+);

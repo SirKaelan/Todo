@@ -1,14 +1,10 @@
+@import "sass-partials/variables";
+
 // Should be put in variables sass file
 $spacings: (
   "sm": 8px,
   "md": 16px,
   "lg": 24px,
-);
-
-$breakpoints: (
-  "sm": 600px,
-  "md": 960px,
-  "lg": 1280px,
 );
 
 $justifyContentDict: (
