@@ -7,9 +7,9 @@ import { TaskNavigation, Inbox, Completed } from "features/tasks";
 export const Tasks = (): JSX.Element => {
   return (
     <main className={styles.tasks}>
-      <nav className={styles.tasks_navigation}>
+      <aside className={styles.tasks_navigation}>
         <TaskNavigation />
-      </nav>
+      </aside>
       <section className={styles.tasks_wrapper}>
         <article className={styles.tasks_manager}>
           <Routes>

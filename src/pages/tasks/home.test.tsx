@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
-import { setup } from "../../testUtils/setup";
+import { testUtils } from "utils";
 import { Tasks } from "./tasks";
 import { UIStateProvider } from "../../features/ui";
 import { PageDataProvider } from "../page-context";
@@ -30,14 +30,14 @@ const addTask = async (tasks: string[], user: UserEvent): Promise<void> => {
 
 describe("home page tests", () => {
   test("should see task in list after form submit", async () => {
-    const { user } = setup(componentWithProviders());
+    const { user } = testUtils.setup(componentWithProviders());
     await addTask(["This is a todo!"], user);
     const taskItem = screen.getByText(/this is a todo/i);
     expect(taskItem).toBeInTheDocument();
   });
 
   test("should be able to remove a task", async () => {
-    const { user } = setup(componentWithProviders());
+    const { user } = testUtils.setup(componentWithProviders());
     await addTask(["Buy an umbrella"], user);
     const removeBtn = screen.getByRole("button", { name: /remove/i });
     await user.click(removeBtn);
@@ -47,7 +47,7 @@ describe("home page tests", () => {
 
   // Maybe this test should be split into parts
   test("should be able to edit a task", async () => {
-    const { user, container } = setup(componentWithProviders());
+    const { user, container } = testUtils.setup(componentWithProviders());
 
     // To create the overlay container div
     // in which we render to with React Portal

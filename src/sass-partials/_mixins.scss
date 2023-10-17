@@ -1,5 +1,4 @@
-// If things don't work, this could be the culprit
-@import "sass-partials/_variables.scss";
+@import "sass-partials/variables";
 
 // For adding breakpoints
 @mixin respond-to($breakpoint) {

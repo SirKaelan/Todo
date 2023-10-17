@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { setup } from "../../../testUtils/setup";
+import { testUtils } from "utils";
 import { CreateTaskForm } from "./create-task-form";
 import { TaskProvider } from "../TaskContext";
 
 describe("create-task-form component tests", () => {
   test("should be able to type in input", async () => {
-    const { user } = setup(
+    const { user } = testUtils.setup(
       <CreateTaskForm placeholderText="Enter a task..." />
     );
     const taskInputEl: HTMLInputElement = screen.getByRole("textbox", {
@@ -25,7 +25,7 @@ describe("create-task-form component tests", () => {
   });
 
   test("should see empty input and disabled btn after adding task", async () => {
-    const { user } = setup(
+    const { user } = testUtils.setup(
       <TaskProvider>
         <CreateTaskForm placeholderText="Enter a task..." />
       </TaskProvider>

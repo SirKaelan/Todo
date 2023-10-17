@@ -1,19 +1,19 @@
 @import "sass-partials/variables";
 
 .nav {
-  min-width: 28rem;
-  padding: 3rem 2rem;
+  min-width: $tasks-nav-width;
+  padding: $tasks-nav-padding;
   background-color: $tasks-nav-background-color;
   height: 100%;
 
   &_container {
     position: sticky;
-    top: 3rem; // The same amount as nav top and bottom padding (make into var)
+    top: $tasks-nav-container-top-padding;
   }
 
-  &__button {
+  &_button {
     display: flex;
-    padding: 0.5rem;
+    padding: $tasks-nav-button-padding;
     border-radius: $element-border-radius;
     cursor: pointer;
 
@@ -22,23 +22,22 @@
     }
   }
 
-  &__icon {
+  &_icon {
   }
 
-  &__text {
+  &_text {
     flex: 1;
-    color: inherit;
-    padding: 0.5rem 0 0.3rem 0.5rem;
-    line-height: 1.2;
+    color: $default-text-color;
+    padding: $tasks-nav-text-padding;
   }
 
-  &__number {
+  &_number {
     display: flex;
-    height: 2.4rem;
-    width: 2.4rem;
     justify-content: center;
-    align-items: center;
-    font-size: $tasks-nav-number-font-size;
+    align-items: flex-end;
+    height: $tasks-nav-number-box-size;
+    width: $tasks-nav-number-box-size;
     color: $tasks-nav-number-color;
+    font-size: $tasks-nav-number-font-size;
   }
 }

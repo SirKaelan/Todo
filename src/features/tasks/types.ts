@@ -12,7 +12,11 @@ export type Task = {
 
 export type State = Task[];
 
-// Global? (eventually these probably should be in an external file)
 export type FormSubmitEvent = React.FormEvent<HTMLFormElement>;
 
 export type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
+export type NavigationButton = {
+  label: string;
+  taskCount: number;
+};
