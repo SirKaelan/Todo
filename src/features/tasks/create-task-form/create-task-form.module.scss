@@ -1,11 +1,11 @@
-@import "../../../sass-partials/variables";
+@import "sass-partials/variables";
 
 .form {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: $task-form-element-gap;
 
-  &__input {
+  &_input {
     width: 100%;
     padding: $task-input-padding;
     background-color: $task-input-bg-color;

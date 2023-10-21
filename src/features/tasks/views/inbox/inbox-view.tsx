@@ -24,7 +24,7 @@ export const Inbox = (): JSX.Element => {
     <>
       <header className={styles.tasks__manager__headerContainer}>
         <h2 className={styles.tasks__manager__headerTitle}>Inbox</h2>
-        <CreateTaskForm placeholderText="Enter a task..." />
+        <CreateTaskForm />
       </header>
       <TaskList>
         {Tasks.state.map((task) => (

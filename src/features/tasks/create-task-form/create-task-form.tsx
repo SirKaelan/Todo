@@ -9,15 +9,8 @@ import {
 } from "features/tasks";
 import { Button } from "features/ui";
 
-type CreateTaskFormProps = {
-  placeholderText: string;
-};
-
-export const CreateTaskForm = ({
-  placeholderText,
-}: CreateTaskFormProps): JSX.Element => {
-  const [task, setTask] = useState<string>("");
-
+export const CreateTaskForm = (): JSX.Element => {
+  const [taskContent, setTaskContent] = useState<string>("");
   const Tasks = useTasks();
 
   const handleTaskSubmit = (e: FormSubmitEvent): void => {
@@ -25,28 +18,32 @@ export const CreateTaskForm = ({
 
     const newTask: Task = {
       id: uuidv4(),
-      content: task,
+      content: taskContent,
     };
 
     Tasks.add(newTask);
-    setTask("");
+    setTaskContent("");
   };
 
   const handleTaskInput = (e: InputChangeEvent): void => {
-    setTask(e.currentTarget.value);
+    setTaskContent(e.currentTarget.value);
   };
 
   return (
     <form onSubmit={handleTaskSubmit} className={styles.form}>
       <input
-        className={styles.form__input}
+        className={styles.form_input}
         type="text"
-        placeholder={placeholderText}
-        value={task}
+        placeholder="Enter a task..."
+        value={taskContent}
         onChange={handleTaskInput}
         aria-label="Enter task"
       />
-      <Button color="primary" type="submit" disabled={!task ? true : false}>
+      <Button
+        color="primary"
+        type="submit"
+        disabled={!taskContent ? true : false}
+      >
         Add task
       </Button>
     </form>

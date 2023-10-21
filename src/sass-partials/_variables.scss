@@ -27,12 +27,15 @@ $task-item-padding: 0.8rem;
 $task-item-border-bottom: 1px solid $border-separator-color;
 $task-item-element-gap: 1.5rem;
 
-$tasks-header-margin: 2rem;
-$tasks-manager-width: 60rem;
-$tasks-wrapper-padding: 2.8rem;
+// Create task form (Maybe Edit task form too)
 $task-input-padding: 1rem 1.4rem;
 $task-input-bg-color: rgb(245, 245, 245);
 $task-input-placeholder-color: rgb(170, 170, 170);
+$task-form-element-gap: 1rem;
+
+$tasks-header-margin: 2rem;
+$tasks-manager-width: 60rem;
+$tasks-wrapper-padding: 2.8rem;
 $task-category-spacing: 0.5rem;
 $task-list-inset: 1.5rem;
 
