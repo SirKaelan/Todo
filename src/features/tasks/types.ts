@@ -20,3 +20,7 @@ export type NavigationButton = {
   label: string;
   taskCount: number;
 };
+
+export type InputClickEvent = React.MouseEvent<HTMLInputElement, MouseEvent>;
+
+export type ButtonClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;

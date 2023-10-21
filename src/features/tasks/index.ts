@@ -11,6 +11,8 @@ export type {
   ActionType,
   Task,
   FormSubmitEvent,
+  InputClickEvent,
   InputChangeEvent,
   NavigationButton,
+  ButtonClickEvent,
 } from "./types";
