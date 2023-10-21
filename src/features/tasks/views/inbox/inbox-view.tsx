@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
-import { CreateTaskForm, EditTaskForm, TaskList } from "features/tasks";
 import { Popup, useGetOverlay, useSetOverlay } from "features/ui";
-import { Task } from "features/tasks/types";
+import {
+  CreateTaskForm,
+  EditTaskForm,
+  TaskList,
+  useTasks,
+  TaskItem,
+  Task,
+} from "features/tasks";
 
 export const Inbox = (): JSX.Element => {
-  // This makes page context useless (i think)
+  // TODO: Think about changing this value to be an ID
+  // and make this component search for the task from state
   const [clickedTask, setClickedTask] = useState<Task>({} as Task);
+  const Tasks = useTasks();
 
+  // TODO: Fix UI state to use a more concise form of the API
   const showOverlay = useGetOverlay();
   const setOverlay = useSetOverlay();
 
@@ -17,9 +26,11 @@ export const Inbox = (): JSX.Element => {
         <h2 className={styles.tasks__manager__headerTitle}>Inbox</h2>
         <CreateTaskForm placeholderText="Enter a task..." />
       </header>
-      <section style={{ width: "100%" }}>
-        <TaskList setClickedTask={setClickedTask} />
-      </section>
+      <TaskList>
+        {Tasks.state.map((task) => (
+          <TaskItem key={task.id} task={task} setClickedTask={setClickedTask} />
+        ))}
+      </TaskList>
       <Popup show={showOverlay} close={() => setOverlay(false)}>
         <EditTaskForm task={clickedTask} />
       </Popup>
