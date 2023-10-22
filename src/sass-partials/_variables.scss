@@ -10,11 +10,14 @@ $btn-background-color: rgb(238, 238, 238);
 $border-separator-color: rgb(238, 238, 238);
 $element-border-radius: 6px;
 
-$tasks-header-margin: 2rem;
 $tasks-manager-width: 60rem;
 $tasks-wrapper-padding: 2.8rem;
 $task-category-spacing: 0.5rem;
 $task-list-inset: 1.5rem;
+
+// Inbox page header
+$inbox-header-margin: 2rem;
+$inbox-header-title-fontSize: 2rem;
 
 // Tasks page navigation
 $tasks-nav-background-color: rgb(250, 250, 250);

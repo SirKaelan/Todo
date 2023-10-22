@@ -22,8 +22,8 @@ export const Inbox = (): JSX.Element => {
 
   return (
     <>
-      <header className={styles.tasks__manager__headerContainer}>
-        <h2 className={styles.tasks__manager__headerTitle}>Inbox</h2>
+      <header className={styles.header_container}>
+        <h2 className={styles.header_title}>Inbox</h2>
         <CreateTaskForm />
       </header>
       <TaskList>
