@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "./create-task-form.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import {
   FormSubmitEvent,
@@ -7,7 +6,7 @@ import {
   Task,
   useTasks,
 } from "features/tasks";
-import { Button, Form } from "features/ui";
+import { Button, Form, Input } from "features/ui";
 
 export const CreateTaskForm = (): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");
@@ -31,13 +30,12 @@ export const CreateTaskForm = (): JSX.Element => {
 
   return (
     <Form onFormSubmit={handleTaskSubmit}>
-      <input
-        className={styles.form_input}
+      <Input
         type="text"
         placeholder="Enter a task..."
         value={taskContent}
-        onChange={handleTaskInput}
-        aria-label="Enter task"
+        onInputChange={handleTaskInput}
+        ariaLabel="Enter task"
       />
       <Button
         color="primary"

@@ -1,0 +1,14 @@
+@import "sass-partials/variables";
+
+.input_text {
+  width: 100%;
+  padding: $text-input-padding;
+  background-color: $text-input-bg-color;
+  border: none;
+  border-radius: $element-border-radius;
+  outline: none;
+
+  &::placeholder {
+    color: $text-input-placeholder-color;
+  }
+}

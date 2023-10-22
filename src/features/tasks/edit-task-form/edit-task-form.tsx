@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "./edit-task-form.module.scss";
 
 import {
   FormSubmitEvent,
@@ -7,7 +6,7 @@ import {
   Task,
   useTasks,
 } from "features/tasks";
-import { useSetOverlay, Button, Form } from "features/ui";
+import { useSetOverlay, Button, Form, Input } from "features/ui";
 
 type EditTaskProps = {
   task: Task;
@@ -41,13 +40,12 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
 
   return (
     <Form onFormSubmit={handleFormSubmit}>
-      <input
-        className={styles.form_input}
+      <Input
         type="text"
-        placeholder="Change the task content..."
+        placeholder="Change task content..."
         value={taskContent}
-        onChange={handleTaskInput}
-        aria-label="Edit task"
+        onInputChange={handleTaskInput}
+        ariaLabel="Edit task"
         autoFocus
       />
       <Button

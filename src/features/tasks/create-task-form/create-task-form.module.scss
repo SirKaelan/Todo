@@ -1,17 +1,1 @@
 @import "sass-partials/variables";
-
-.form {
-  &_input {
-    width: 100%;
-    padding: $task-input-padding;
-    background-color: $task-input-bg-color;
-    border: none;
-    border-radius: $element-border-radius;
-    // This is temporary, for now
-    outline: none;
-
-    &::placeholder {
-      color: $task-input-placeholder-color;
-    }
-  }
-}

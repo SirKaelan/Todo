@@ -10,6 +10,12 @@ $btn-background-color: rgb(238, 238, 238);
 $border-separator-color: rgb(238, 238, 238);
 $element-border-radius: 6px;
 
+$tasks-header-margin: 2rem;
+$tasks-manager-width: 60rem;
+$tasks-wrapper-padding: 2.8rem;
+$task-category-spacing: 0.5rem;
+$task-list-inset: 1.5rem;
+
 // Tasks page navigation
 $tasks-nav-background-color: rgb(250, 250, 250);
 $tasks-nav-top-bottom-padding: 3rem;
@@ -27,19 +33,13 @@ $task-item-padding: 0.8rem;
 $task-item-border-bottom: 1px solid $border-separator-color;
 $task-item-element-gap: 1.5rem;
 
-// Create task form (Maybe Edit task form too)
-$task-input-padding: 1rem 1.4rem;
-$task-input-bg-color: rgb(245, 245, 245);
-$task-input-placeholder-color: rgb(170, 170, 170);
-
 // Reusable form
 $task-form-element-gap: 1rem;
 
-$tasks-header-margin: 2rem;
-$tasks-manager-width: 60rem;
-$tasks-wrapper-padding: 2.8rem;
-$task-category-spacing: 0.5rem;
-$task-list-inset: 1.5rem;
+// Reusable text input
+$text-input-padding: 1rem 1.4rem;
+$text-input-bg-color: rgb(245, 245, 245);
+$text-input-placeholder-color: rgb(170, 170, 170);
 
 // Reusable button
 $btn-primary-bg-color-default: #007bff;
