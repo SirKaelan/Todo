@@ -7,7 +7,7 @@ import {
   Task,
   useTasks,
 } from "features/tasks";
-import { useSetOverlay, Button } from "features/ui";
+import { useSetOverlay, Button, Form } from "features/ui";
 
 type EditTaskProps = {
   task: Task;
@@ -40,7 +40,7 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className={styles.form}>
+    <Form onFormSubmit={handleFormSubmit}>
       <input
         className={styles.form_input}
         type="text"
@@ -57,6 +57,6 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
       >
         Edit task
       </Button>
-    </form>
+    </Form>
   );
 };

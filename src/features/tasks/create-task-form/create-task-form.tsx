@@ -7,7 +7,7 @@ import {
   Task,
   useTasks,
 } from "features/tasks";
-import { Button } from "features/ui";
+import { Button, Form } from "features/ui";
 
 export const CreateTaskForm = (): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");
@@ -30,7 +30,7 @@ export const CreateTaskForm = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleTaskSubmit} className={styles.form}>
+    <Form onFormSubmit={handleTaskSubmit}>
       <input
         className={styles.form_input}
         type="text"
@@ -46,6 +46,6 @@ export const CreateTaskForm = (): JSX.Element => {
       >
         Add task
       </Button>
-    </form>
+    </Form>
   );
 };

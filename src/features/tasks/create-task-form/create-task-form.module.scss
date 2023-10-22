@@ -1,10 +1,6 @@
 @import "sass-partials/variables";
 
 .form {
-  display: flex;
-  align-items: center;
-  gap: $task-form-element-gap;
-
   &_input {
     width: 100%;
     padding: $task-input-padding;
