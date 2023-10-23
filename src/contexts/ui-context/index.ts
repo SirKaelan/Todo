@@ -1,1 +1,2 @@
-export { UIProvider, useUI } from "./ui-context";
+export { UIProvider } from "./ui-context";
+export { useUI } from "./hooks";

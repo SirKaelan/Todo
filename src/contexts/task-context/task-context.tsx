@@ -1,31 +1,11 @@
 import React from "react";
-import {
-  TaskActionType,
-  TaskAction,
-  TaskContextType,
-  TaskProviderProps,
-  Task,
-  TaskState,
-} from "./types";
 
-const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
-  const { payload } = action;
-
-  switch (action.type) {
-    case TaskActionType.ADD_TASK:
-      return [...state, payload];
-    case TaskActionType.EDIT_TASK:
-      return state.map((task) => (task.id === payload.id ? payload : task));
-    case TaskActionType.REMOVE_TASK:
-      return state.filter((task) => task.id !== payload.id);
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-};
-
-const TaskContext = React.createContext<TaskContextType>(undefined);
+import { TaskContextType, TaskProviderProps, TaskState } from "./types";
+import { taskReducer } from "./reducer";
 
 const INITIAL_STATE: TaskState = [];
+
+export const TaskContext = React.createContext<TaskContextType>(undefined);
 
 export const TaskProvider = ({ children }: TaskProviderProps): JSX.Element => {
   const [state, dispatch] = React.useReducer(taskReducer, INITIAL_STATE);
@@ -33,23 +13,4 @@ export const TaskProvider = ({ children }: TaskProviderProps): JSX.Element => {
   const value = { state, dispatch };
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
-};
-
-export const useTasks = () => {
-  const context = React.useContext(TaskContext);
-
-  if (context === undefined) {
-    throw new Error("useTasks must be used within a TaskProvider");
-  }
-
-  const { state, dispatch } = context;
-
-  const add = (payload: Task) =>
-    dispatch({ type: TaskActionType.ADD_TASK, payload });
-  const edit = (payload: Task) =>
-    dispatch({ type: TaskActionType.EDIT_TASK, payload });
-  const remove = (payload: Task) =>
-    dispatch({ type: TaskActionType.REMOVE_TASK, payload });
-
-  return { state, add, edit, remove };
 };
