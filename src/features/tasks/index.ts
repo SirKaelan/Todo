@@ -8,14 +8,19 @@ export { TaskNavigation } from "./task-navigation/task-navigation";
 export { NavButton } from "./task-navigation/nav-button";
 export { TaskProvider, useTasks } from "./task-context";
 export type {
-  TaskActionType,
   TaskAction,
   Task,
+  TaskState,
   TaskContextType,
   TaskProviderProps,
+  UIAction,
+  UIState,
+  UIProviderProps,
+  UIContextType,
   FormSubmitEvent,
   InputClickEvent,
   InputChangeEvent,
   NavigationButton,
   ButtonClickEvent,
 } from "./types";
+export { TaskActionType, UIActionType } from "./types";

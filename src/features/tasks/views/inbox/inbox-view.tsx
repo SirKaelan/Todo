@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
-import { Popup, useGetOverlay, useSetOverlay } from "features/ui";
+import { Popup, useUI } from "features/ui";
 import {
   CreateTaskForm,
   EditTaskForm,
@@ -14,11 +14,9 @@ export const Inbox = (): JSX.Element => {
   // TODO: Think about changing this value to be an ID
   // and make this component search for the task from state
   const [clickedTask, setClickedTask] = useState<Task>({} as Task);
-  const Tasks = useTasks();
 
-  // TODO: Fix UI state to use a more concise form of the API
-  const showOverlay = useGetOverlay();
-  const setOverlay = useSetOverlay();
+  const Tasks = useTasks();
+  const { state: UIState, setOverlay } = useUI();
 
   return (
     <>
@@ -31,7 +29,7 @@ export const Inbox = (): JSX.Element => {
           <TaskItem key={task.id} task={task} setClickedTask={setClickedTask} />
         ))}
       </TaskList>
-      <Popup show={showOverlay} close={() => setOverlay(false)}>
+      <Popup show={UIState.overlay} close={() => setOverlay("hide")}>
         <EditTaskForm task={clickedTask} />
       </Popup>
     </>

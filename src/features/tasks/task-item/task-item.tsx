@@ -6,7 +6,7 @@ import {
   InputClickEvent,
   ButtonClickEvent,
 } from "features/tasks";
-import { useSetOverlay, Button } from "features/ui";
+import { useUI, Button } from "features/ui";
 
 type TaskItemProps = {
   task: Task;
@@ -20,11 +20,11 @@ export const TaskItem = ({
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const Tasks = useTasks();
-  const setOverlay = useSetOverlay();
+  const UIState = useUI();
 
   const handleTaskClick = (): void => {
     setClickedTask(task);
-    setOverlay(true);
+    UIState.setOverlay("show");
   };
 
   const handleRemoveClick = (e: ButtonClickEvent): void => {

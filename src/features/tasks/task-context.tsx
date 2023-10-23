@@ -6,7 +6,7 @@ import {
   TaskProviderProps,
   Task,
   TaskState,
-} from "features/tasks/types";
+} from "features/tasks";
 
 const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
   const { payload } = action;

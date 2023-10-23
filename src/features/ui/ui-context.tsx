@@ -1,53 +1,52 @@
 import React from "react";
+import {
+  UIActionType,
+  UIAction,
+  UIState,
+  UIProviderProps,
+  UIContextType,
+} from "features/tasks";
 
-type UIElementState = {
-  showOverlay: boolean;
+const uiReducer = (state: UIState, action: UIAction): UIState => {
+  switch (action.type) {
+    case UIActionType.SHOW_OVERLAY:
+      return { ...state, overlay: true };
+    case UIActionType.HIDE_OVERLAY:
+      return { ...state, overlay: false };
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
 };
 
-type UIContextType = [
-  UIElements: UIElementState,
-  setUIElements: React.Dispatch<React.SetStateAction<UIElementState>>
-];
-
-type UIStateProviderProps = {
-  children: JSX.Element;
+const INITIAL_STATE: UIState = {
+  overlay: false,
 };
 
-const UIContext = React.createContext<UIContextType>(
-  [] as unknown as UIContextType
-);
+const UIContext = React.createContext<UIContextType>(undefined);
 
-const initialState: UIElementState = {
-  showOverlay: false,
-};
-
-export const UIStateProvider = ({
-  children,
-}: UIStateProviderProps): JSX.Element => {
-  const [UIElements, setUIElements] =
-    React.useState<UIElementState>(initialState);
+export const UIProvider = ({ children }: UIProviderProps): JSX.Element => {
+  const [state, dispatch] = React.useReducer(uiReducer, INITIAL_STATE);
 
   return (
-    <UIContext.Provider value={[UIElements, setUIElements]}>
+    <UIContext.Provider value={{ state, dispatch }}>
       {children}
     </UIContext.Provider>
   );
 };
 
-// Hooks
-export const useGetOverlay = (): boolean => {
-  const [{ showOverlay }] = React.useContext(UIContext);
-  return showOverlay;
-};
+export const useUI = () => {
+  const context = React.useContext(UIContext);
 
-type SetOverlay = (value: boolean) => void;
+  if (context === undefined)
+    throw new Error("useUI must be used with a UIProvider");
 
-export const useSetOverlay = (): SetOverlay => {
-  const [_, setUIElements] = React.useContext(UIContext);
+  const { state, dispatch } = context;
 
-  return (value: boolean): void => {
-    setUIElements((currUIElements: UIElementState): UIElementState => {
-      return { ...currUIElements, showOverlay: value };
-    });
+  const setOverlay = (action: "show" | "hide") => {
+    if (action === "show") dispatch({ type: UIActionType.SHOW_OVERLAY });
+    else if (action === "hide") dispatch({ type: UIActionType.HIDE_OVERLAY });
+    else throw new Error("Unrecognized action value for 'overlay'.");
   };
+
+  return { state, setOverlay };
 };

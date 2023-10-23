@@ -6,7 +6,7 @@ import {
   Task,
   useTasks,
 } from "features/tasks";
-import { useSetOverlay, Button, Form, Input } from "features/ui";
+import { useUI, Button, Form, Input } from "features/ui";
 
 type EditTaskProps = {
   task: Task;
@@ -16,7 +16,7 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");
 
   const Tasks = useTasks();
-  const setOverlay = useSetOverlay();
+  const UIState = useUI();
 
   // Is there a better way to initialize the state?
   useEffect(() => {
@@ -31,7 +31,7 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
     };
 
     Tasks.edit(newTask);
-    setOverlay(false);
+    UIState.setOverlay("hide");
   };
 
   const handleTaskInput = (e: InputChangeEvent): void => {
