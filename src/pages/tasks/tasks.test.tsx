@@ -3,17 +3,14 @@ import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { testUtils } from "utils";
 import { Tasks } from "./tasks";
 import { UIProvider } from "contexts/ui-context";
-import { PageDataProvider } from "../page-context";
 import { TaskProvider } from "contexts/task-context";
 
 const componentWithProviders = (): JSX.Element => {
   return (
     <UIProvider>
-      <PageDataProvider>
-        <TaskProvider>
-          <Tasks />
-        </TaskProvider>
-      </PageDataProvider>
+      <TaskProvider>
+        <Tasks />
+      </TaskProvider>
     </UIProvider>
   );
 };
