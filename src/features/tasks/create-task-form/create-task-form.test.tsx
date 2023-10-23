@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { testUtils } from "utils";
 import { CreateTaskForm } from "./create-task-form";
-import { TaskProvider } from "../TaskContext";
+import { TaskProvider } from "features/tasks";
 
 describe("create-task-form component tests", () => {
   test("should be able to type in input", async () => {

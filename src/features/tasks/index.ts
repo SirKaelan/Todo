@@ -6,10 +6,13 @@ export { Inbox } from "./views/inbox/inbox-view";
 export { Completed } from "./views/completed/completed-view";
 export { TaskNavigation } from "./task-navigation/task-navigation";
 export { NavButton } from "./task-navigation/nav-button";
-export { TaskProvider, useTasks } from "./TaskContext";
+export { TaskProvider, useTasks } from "./task-context";
 export type {
-  ActionType,
+  TaskActionType,
+  TaskAction,
   Task,
+  TaskContextType,
+  TaskProviderProps,
   FormSubmitEvent,
   InputClickEvent,
   InputChangeEvent,
