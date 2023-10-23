@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./task-navigation.module.scss";
 
-import { useTasks, NavigationButton, NavButton } from "features/tasks";
+import { useTasks } from "contexts/task-context";
+import { NavButton } from "features/tasks";
+import { NavigationButton } from "./types";
 
 export const TaskNavigation = (): JSX.Element => {
   const Tasks = useTasks();

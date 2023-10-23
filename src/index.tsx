@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./sass-partials/_global.scss";
 import App from "./App";
-import { UIProvider } from "features/ui";
+import { UIProvider } from "contexts/ui-context";
 import { PageDataProvider } from "./pages";
 import { BrowserRouter } from "react-router-dom";
 

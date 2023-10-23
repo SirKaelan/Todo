@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  FormSubmitEvent,
-  InputChangeEvent,
-  Task,
-  useTasks,
-} from "features/tasks";
-import { useUI, Button, Form, Input } from "features/ui";
+import { useUI } from "contexts/ui-context";
+import { Task, useTasks } from "contexts/task-context";
+import { FormSubmitEvent, InputChangeEvent } from "types/eventTypes";
+import { Button, Form, Input } from "ui";
 
 type EditTaskProps = {
   task: Task;

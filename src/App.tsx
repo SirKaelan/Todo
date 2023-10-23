@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { TaskProvider } from "features/tasks";
+import { TaskProvider } from "contexts/task-context";
 
 import { Tasks } from "./pages";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./input.module.scss";
 
-import { InputChangeEvent } from "features/tasks";
+import { InputChangeEvent } from "types/eventTypes";
 
 type InputProps = {
   type: "text";

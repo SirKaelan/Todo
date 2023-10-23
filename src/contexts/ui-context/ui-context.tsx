@@ -5,7 +5,7 @@ import {
   UIState,
   UIProviderProps,
   UIContextType,
-} from "features/tasks";
+} from "./types";
 
 const uiReducer = (state: UIState, action: UIAction): UIState => {
   switch (action.type) {

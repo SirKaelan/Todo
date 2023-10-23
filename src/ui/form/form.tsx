@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./form.module.scss";
 
-import { FormSubmitEvent } from "features/tasks";
+import { FormSubmitEvent } from "types/eventTypes";
 
 type FormProps = {
   children: React.ReactElement[];

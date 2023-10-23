@@ -2,9 +2,9 @@ import { screen } from "@testing-library/react";
 import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { testUtils } from "utils";
 import { Tasks } from "./tasks";
-import { UIProvider } from "../../features/ui";
+import { UIProvider } from "contexts/ui-context";
 import { PageDataProvider } from "../page-context";
-import { TaskProvider } from "../../features/tasks";
+import { TaskProvider } from "contexts/task-context";
 
 const componentWithProviders = (): JSX.Element => {
   return (

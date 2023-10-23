@@ -3,7 +3,7 @@ import styles from "./task-navigation.module.scss";
 
 import { Link, useLocation } from "react-router-dom";
 import { genericUtils } from "utils";
-import { NavigationButton } from "features/tasks";
+import { NavigationButton } from "./types";
 
 type NavButtonProps = {
   buttonData: NavigationButton;

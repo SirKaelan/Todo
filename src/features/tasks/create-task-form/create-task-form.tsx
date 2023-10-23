@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import {
-  FormSubmitEvent,
-  InputChangeEvent,
-  Task,
-  useTasks,
-} from "features/tasks";
-import { Button, Form, Input } from "features/ui";
+
+import { FormSubmitEvent, InputChangeEvent } from "types/eventTypes";
+import { Task, useTasks } from "contexts/task-context";
+import { Button, Form, Input } from "ui";
 
 export const CreateTaskForm = (): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import styles from "./inbox-view.module.scss";
-import { Popup, useUI } from "features/ui";
+
 import {
   CreateTaskForm,
   EditTaskForm,
   TaskList,
-  useTasks,
   TaskItem,
-  Task,
 } from "features/tasks";
+import { useTasks, Task } from "contexts/task-context";
+import { useUI } from "contexts/ui-context";
+import { Popup } from "ui";
 
 export const Inbox = (): JSX.Element => {
   // TODO: Think about changing this value to be an ID

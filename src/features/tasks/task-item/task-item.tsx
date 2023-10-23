@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styles from "./task-item.module.scss";
-import {
-  useTasks,
-  Task,
-  InputClickEvent,
-  ButtonClickEvent,
-} from "features/tasks";
-import { useUI, Button } from "features/ui";
+
+import { useUI } from "contexts/ui-context";
+import { Task, useTasks } from "contexts/task-context";
+import { InputClickEvent, ButtonClickEvent } from "types/eventTypes";
+import { Button } from "ui";
 
 type TaskItemProps = {
   task: Task;
