@@ -5,18 +5,14 @@ import { TaskForm, TaskList, TaskItem, InputState } from "features/tasks";
 import { useTasks, Task } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { Popup } from "ui";
-import { FormSubmitEvent } from "types/eventTypes";
+import { ButtonClickEvent, FormSubmitEvent } from "types/eventTypes";
 import { v4 as uuidv4 } from "uuid";
 
 export const Inbox = (): JSX.Element => {
-  // TODO: Think about changing this value to be an ID
-  // and make this component search for the task from state
   const [clickedTask, setClickedTask] = useState<Task>({} as Task);
-
   const Tasks = useTasks();
   const UIState = useUI();
 
-  // Handlers
   const handleCreateSubmit = (
     e: FormSubmitEvent,
     inputState: InputState
@@ -50,6 +46,16 @@ export const Inbox = (): JSX.Element => {
     UIState.setOverlay("hide");
   };
 
+  const handleTaskClick = (task: Task): void => {
+    setClickedTask(task);
+    UIState.setOverlay("show");
+  };
+
+  const handleRemoveClick = (e: ButtonClickEvent, task: Task): void => {
+    e.stopPropagation();
+    Tasks.remove(task);
+  };
+
   const handlePopupClose = () => UIState.setOverlay("hide");
 
   return (
@@ -65,7 +71,12 @@ export const Inbox = (): JSX.Element => {
 
       <TaskList>
         {Tasks.state.map((task) => (
-          <TaskItem key={task.id} task={task} setClickedTask={setClickedTask} />
+          <TaskItem
+            key={task.id}
+            task={task}
+            onRemove={handleRemoveClick}
+            onClick={handleTaskClick}
+          />
         ))}
       </TaskList>
 
