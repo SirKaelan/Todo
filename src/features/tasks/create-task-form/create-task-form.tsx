@@ -1,54 +1,45 @@
 import React, { useState } from "react";
-import styles from "./create-task-form.module.scss";
 import { v4 as uuidv4 } from "uuid";
-import {
-  FormSubmitEvent,
-  InputChangeEvent,
-  Task,
-  useTasks,
-} from "features/tasks";
-import { Button } from "features/ui";
 
-type CreateTaskFormProps = {
-  placeholderText: string;
-};
+import { FormSubmitEvent, InputChangeEvent } from "types/eventTypes";
+import { Task, useTasks } from "contexts/task-context";
+import { Button, Form, Input } from "ui";
 
-export const CreateTaskForm = ({
-  placeholderText,
-}: CreateTaskFormProps): JSX.Element => {
-  const [task, setTask] = useState<string>("");
-
+export const CreateTaskForm = (): JSX.Element => {
+  const [taskContent, setTaskContent] = useState<string>("");
   const Tasks = useTasks();
 
-  const handleTaskSubmit = (e: FormSubmitEvent): void => {
+  const handleCreateSubmit = (e: FormSubmitEvent): void => {
     e.preventDefault();
-
     const newTask: Task = {
       id: uuidv4(),
-      content: task,
+      content: taskContent,
     };
 
     Tasks.add(newTask);
-    setTask("");
+    setTaskContent("");
   };
 
   const handleTaskInput = (e: InputChangeEvent): void => {
-    setTask(e.currentTarget.value);
+    setTaskContent(e.currentTarget.value);
   };
 
   return (
-    <form onSubmit={handleTaskSubmit} className={styles.form}>
-      <input
-        className={styles.form__input}
+    <Form onFormSubmit={handleCreateSubmit}>
+      <Input
         type="text"
-        placeholder={placeholderText}
-        value={task}
-        onChange={handleTaskInput}
-        aria-label="Enter task"
+        placeholder="Enter a task..."
+        value={taskContent}
+        onInputChange={handleTaskInput}
+        ariaLabel="Enter task"
       />
-      <Button color="primary" type="submit" disabled={!task ? true : false}>
+      <Button
+        color="primary"
+        type="submit"
+        disabled={!taskContent ? true : false}
+      >
         Add task
       </Button>
-    </form>
+    </Form>
   );
 };

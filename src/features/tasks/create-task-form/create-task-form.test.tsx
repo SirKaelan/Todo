@@ -1,13 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { setup } from "../../../testUtils/setup";
+import { testUtils } from "utils";
 import { CreateTaskForm } from "./create-task-form";
-import { TaskProvider } from "../TaskContext";
+import { TaskProvider } from "contexts/task-context";
 
 describe("create-task-form component tests", () => {
   test("should be able to type in input", async () => {
-    const { user } = setup(
-      <CreateTaskForm placeholderText="Enter a task..." />
-    );
+    const { user } = testUtils.setup(<CreateTaskForm />);
     const taskInputEl: HTMLInputElement = screen.getByRole("textbox", {
       name: /enter task/i,
     });
@@ -17,7 +15,7 @@ describe("create-task-form component tests", () => {
   });
 
   test("should see disabled button when input is empty", () => {
-    render(<CreateTaskForm placeholderText="Enter a task..." />);
+    render(<CreateTaskForm />);
     const taskInput = screen.getByRole("textbox", { name: /enter task/i });
     const submitBtn = screen.getByRole("button", { name: /add task/i });
     expect(taskInput).toHaveValue("");
@@ -25,9 +23,9 @@ describe("create-task-form component tests", () => {
   });
 
   test("should see empty input and disabled btn after adding task", async () => {
-    const { user } = setup(
+    const { user } = testUtils.setup(
       <TaskProvider>
-        <CreateTaskForm placeholderText="Enter a task..." />
+        <CreateTaskForm />
       </TaskProvider>
     );
     const taskInput = screen.getByRole("textbox", { name: /enter task/i });

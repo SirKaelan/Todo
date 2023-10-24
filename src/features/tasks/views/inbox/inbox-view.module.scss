@@ -1,13 +1,14 @@
-@import "../../../../sass-partials/variables";
+@import "sass-partials/variables";
 
-.tasks__manager {
-  &__headerContainer {
-    width: 100%;
-    margin-bottom: $tasks-header-margin;
+.header {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: $inbox-header-margin;
+    margin-bottom: $inbox-header-margin;
   }
 
-  &__headerTitle {
-    font-size: 2rem;
-    margin-bottom: $tasks-header-margin;
+  &_title {
+    font-size: $inbox-header-title-fontSize;
   }
 }

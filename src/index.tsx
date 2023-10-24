@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./sass-partials/_global.scss";
 import App from "./App";
-import { UIStateProvider } from "./features/ui";
-import { PageDataProvider } from "./pages";
+import { UIProvider } from "contexts/ui-context";
 import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -12,11 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UIStateProvider>
-        <PageDataProvider>
-          <App />
-        </PageDataProvider>
-      </UIStateProvider>
+      <UIProvider>
+        <App />
+      </UIProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

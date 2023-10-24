@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./button.module.scss";
 
-type BtnClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+import { ButtonClickEvent } from "types/eventTypes";
 
 type ButtonProps = {
   color: "primary" | "danger";
   type?: "button" | "reset" | "submit";
   disabled?: boolean;
-  onClick?: (e: BtnClickEvent) => void;
+  onClick?: (e: ButtonClickEvent) => void;
   children: string;
 };
 

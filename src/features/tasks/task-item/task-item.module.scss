@@ -1,26 +1,27 @@
-@import "../../../sass-partials/variables";
+@import "sass-partials/variables";
 
-// I need to decide on a rule organization and naming
-.task-container {
-  display: flex;
-  align-items: center;
-  padding: 0.8rem;
-  border-bottom: 1px solid $border-separator-color;
-  cursor: pointer;
+.task {
+  &_container {
+    display: flex;
+    align-items: center;
+    padding: $task-item-padding;
+    border-bottom: $task-item-border-bottom;
+    cursor: pointer;
+    gap: $task-item-element-gap;
 
-  &:hover {
-    backdrop-filter: brightness(0.95);
+    &:hover {
+      backdrop-filter: brightness(0.95);
+    }
   }
-}
 
-.task-checkbox {
-}
+  &_checkbox {
+  }
 
-.task-content {
-  flex: 1;
-  margin-left: 1.5rem;
+  &_content {
+    flex: 1;
 
-  &.checked {
-    text-decoration: line-through;
+    &.checked {
+      text-decoration: line-through;
+    }
   }
 }
