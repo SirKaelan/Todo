@@ -20,7 +20,7 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
     setTaskContent(task.content);
   }, [task]);
 
-  const handleFormSubmit = (e: FormSubmitEvent) => {
+  const handleEditSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
     const newTask: Task = {
       ...task,
@@ -36,7 +36,7 @@ export const EditTaskForm = ({ task }: EditTaskProps): JSX.Element => {
   };
 
   return (
-    <Form onFormSubmit={handleFormSubmit}>
+    <Form onFormSubmit={handleEditSubmit}>
       <Input
         type="text"
         placeholder="Change task content..."

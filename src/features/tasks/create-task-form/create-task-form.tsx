@@ -9,9 +9,8 @@ export const CreateTaskForm = (): JSX.Element => {
   const [taskContent, setTaskContent] = useState<string>("");
   const Tasks = useTasks();
 
-  const handleTaskSubmit = (e: FormSubmitEvent): void => {
+  const handleCreateSubmit = (e: FormSubmitEvent): void => {
     e.preventDefault();
-
     const newTask: Task = {
       id: uuidv4(),
       content: taskContent,
@@ -26,7 +25,7 @@ export const CreateTaskForm = (): JSX.Element => {
   };
 
   return (
-    <Form onFormSubmit={handleTaskSubmit}>
+    <Form onFormSubmit={handleCreateSubmit}>
       <Input
         type="text"
         placeholder="Enter a task..."
