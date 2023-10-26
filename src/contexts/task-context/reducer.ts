@@ -13,6 +13,14 @@ export const taskReducer = (
       return state.map((task) => (task.id === payload.id ? payload : task));
     case TaskActionType.REMOVE_TASK:
       return state.filter((task) => task.id !== payload.id);
+    case TaskActionType.COMPLETE_TASK:
+      return state.map((task) =>
+        task.id === payload.id ? { ...task, completed: true } : task
+      );
+    case TaskActionType.UNCOMPLETE_TASK:
+      return state.map((task) =>
+        task.id === payload.id ? { ...task, completed: false } : task
+      );
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
