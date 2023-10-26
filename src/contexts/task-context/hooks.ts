@@ -9,11 +9,14 @@ export const useTasks = () => {
     throw new Error("useTasks must be used within a TaskProvider");
   }
 
-  const { state, dispatch } = context;
+  const {
+    state: { tasks, selectedTask },
+    dispatch,
+  } = context;
 
   // Consider putting everything below into an object?
-  const completed = state.filter((task) => task.completed === false);
-  const uncompleted = state.filter((task) => task.completed === true);
+  const completed = tasks.filter((task) => task.completed === false);
+  const uncompleted = tasks.filter((task) => task.completed === true);
 
   const add = (payload: Task) =>
     dispatch({ type: TaskActionType.ADD_TASK, payload });
@@ -25,9 +28,12 @@ export const useTasks = () => {
     dispatch({ type: TaskActionType.COMPLETE_TASK, payload });
   const uncomplete = (payload: Task) =>
     dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload });
+  const select = (payload: Task) =>
+    dispatch({ type: TaskActionType.SELECT_TASK, payload });
 
   return {
-    state,
+    tasks,
+    selectedTask,
     add,
     edit,
     remove,
@@ -35,5 +41,6 @@ export const useTasks = () => {
     uncomplete,
     completed,
     uncompleted,
+    select,
   };
 };

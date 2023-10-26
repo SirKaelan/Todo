@@ -11,9 +11,7 @@ import {
   TaskRemoveHandler,
 } from "./handlerTypes";
 
-type ClickedTaskSetter = React.Dispatch<React.SetStateAction<Task>>;
-
-export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
+export const useTaskHandlers = () => {
   const Tasks = useTasks();
   const UIState = useUI();
 
@@ -45,7 +43,7 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
   };
 
   const handleTaskClick: TaskClickHandler = (task): void => {
-    setClickedTask(task);
+    Tasks.select(task);
     UIState.setOverlay("show");
   };
 

@@ -4,6 +4,7 @@ export enum TaskActionType {
   EDIT_TASK = "EDIT_TASK",
   COMPLETE_TASK = "COMPLETE_TASK",
   UNCOMPLETE_TASK = "UNCOMPLETE_TASK",
+  SELECT_TASK = "SELECT_TASK",
 }
 
 export type Task = {
@@ -12,7 +13,10 @@ export type Task = {
   completed: boolean;
 };
 
-export type TaskState = Task[];
+export type TaskState = {
+  tasks: Task[];
+  selectedTask: Task;
+};
 
 export type TaskAction = {
   type: TaskActionType;

@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import styles from "./inbox-view.module.scss";
+import React from "react";
 
 import { TaskForm, TaskList, TaskItem } from "features/tasks";
-import { useTasks, Task } from "contexts/task-context";
+import { useTasks } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { useTaskHandlers } from "../handlers/taskHandlers";
 import { Popup, Header } from "ui";
 
 export const Inbox = (): JSX.Element => {
-  const [clickedTask, setClickedTask] = useState<Task>({} as Task);
   const Tasks = useTasks();
   const UIState = useUI();
-  const TaskHandlers = useTaskHandlers(setClickedTask);
+  const TaskHandlers = useTaskHandlers();
 
   return (
     <>
@@ -37,7 +35,7 @@ export const Inbox = (): JSX.Element => {
 
       <Popup show={UIState.state.overlay} close={TaskHandlers.handlePopupClose}>
         <TaskForm
-          task={clickedTask}
+          task={Tasks.selectedTask}
           placeholder="Enter a task..."
           onSubmit={TaskHandlers.handleEditSubmit}
           buttonText="Edit task"

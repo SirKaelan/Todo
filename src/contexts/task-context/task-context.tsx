@@ -1,9 +1,12 @@
 import React from "react";
 
-import { TaskContextType, TaskProviderProps, TaskState } from "./types";
+import { Task, TaskContextType, TaskProviderProps, TaskState } from "./types";
 import { taskReducer } from "./reducer";
 
-const INITIAL_STATE: TaskState = [];
+const INITIAL_STATE: TaskState = {
+  tasks: [],
+  selectedTask: {} as Task,
+};
 
 export const TaskContext = React.createContext<TaskContextType>(undefined);
 

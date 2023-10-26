@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import styles from "./completed-view.module.scss";
+import React from "react";
 
 import { TaskList, TaskItem, TaskForm } from "features/tasks";
-import { Task, useTasks } from "contexts/task-context";
+import { useTasks } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { useTaskHandlers } from "../handlers/taskHandlers";
 import { Popup, Header } from "ui";
 
 export const Completed = (): JSX.Element => {
-  // TODO: Get this out to global state
-  const [clickedTask, setClickedTask] = useState<Task>({} as Task);
   const Tasks = useTasks();
   const UIState = useUI();
-  const TaskHandlers = useTaskHandlers(setClickedTask);
+  const TaskHandlers = useTaskHandlers();
 
   return (
     <>
@@ -36,7 +33,7 @@ export const Completed = (): JSX.Element => {
 
       <Popup show={UIState.state.overlay} close={TaskHandlers.handlePopupClose}>
         <TaskForm
-          task={clickedTask}
+          task={Tasks.selectedTask}
           placeholder="Enter a task..."
           onSubmit={TaskHandlers.handleEditSubmit}
           buttonText="Edit task"
