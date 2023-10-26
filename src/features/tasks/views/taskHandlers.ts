@@ -20,6 +20,7 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
     const newTask: Task = {
       id: uuidv4(),
       content: inputState.taskContent.trim(),
+      completed: false,
     };
 
     Tasks.add(newTask);
