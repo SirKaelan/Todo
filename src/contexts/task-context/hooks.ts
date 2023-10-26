@@ -14,33 +14,22 @@ export const useTasks = () => {
     dispatch,
   } = context;
 
-  // Consider putting everything below into an object?
-  const completed = tasks.filter((task) => task.completed === false);
-  const uncompleted = tasks.filter((task) => task.completed === true);
-
-  const add = (payload: Task) =>
-    dispatch({ type: TaskActionType.ADD_TASK, payload });
-  const edit = (payload: Task) =>
-    dispatch({ type: TaskActionType.EDIT_TASK, payload });
-  const remove = (payload: Task) =>
-    dispatch({ type: TaskActionType.REMOVE_TASK, payload });
-  const complete = (payload: Task) =>
-    dispatch({ type: TaskActionType.COMPLETE_TASK, payload });
-  const uncomplete = (payload: Task) =>
-    dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload });
-  const select = (payload: Task) =>
-    dispatch({ type: TaskActionType.SELECT_TASK, payload });
-
   return {
     tasks,
     selectedTask,
-    add,
-    edit,
-    remove,
-    complete,
-    uncomplete,
-    completed,
-    uncompleted,
-    select,
+    completed: tasks.filter((task) => task.completed === false),
+    uncompleted: tasks.filter((task) => task.completed === true),
+    add: (payload: Task) =>
+      dispatch({ type: TaskActionType.ADD_TASK, payload }),
+    edit: (payload: Task) =>
+      dispatch({ type: TaskActionType.EDIT_TASK, payload }),
+    remove: (payload: Task) =>
+      dispatch({ type: TaskActionType.REMOVE_TASK, payload }),
+    complete: (payload: Task) =>
+      dispatch({ type: TaskActionType.COMPLETE_TASK, payload }),
+    uncomplete: (payload: Task) =>
+      dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload }),
+    select: (payload: Task) =>
+      dispatch({ type: TaskActionType.SELECT_TASK, payload }),
   };
 };
