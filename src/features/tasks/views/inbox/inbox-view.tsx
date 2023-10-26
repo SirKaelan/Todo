@@ -5,7 +5,7 @@ import { TaskForm, TaskList, TaskItem } from "features/tasks";
 import { useTasks, Task } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { useTaskHandlers } from "../handlers/taskHandlers";
-import { Popup } from "ui";
+import { Popup, Header } from "ui";
 
 export const Inbox = (): JSX.Element => {
   const [clickedTask, setClickedTask] = useState<Task>({} as Task);
@@ -15,14 +15,13 @@ export const Inbox = (): JSX.Element => {
 
   return (
     <>
-      <header className={styles.header_container}>
-        <h2 className={styles.header_title}>Inbox</h2>
+      <Header content="Inbox">
         <TaskForm
           placeholder="Enter a task..."
           onSubmit={TaskHandlers.handleCreateSubmit}
           buttonText="Add task"
         />
-      </header>
+      </Header>
 
       <TaskList>
         {Tasks.completed.map((task) => (

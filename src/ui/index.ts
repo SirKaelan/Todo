@@ -3,3 +3,4 @@ export { Button } from "./button/button";
 export { Grid } from "./grid/grid";
 export { Form } from "./form/form";
 export { Input } from "./input/input";
+export { Header } from "./header/header";

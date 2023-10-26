@@ -5,7 +5,7 @@ import { TaskList, TaskItem, TaskForm } from "features/tasks";
 import { Task, useTasks } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { useTaskHandlers } from "../handlers/taskHandlers";
-import { Popup } from "ui";
+import { Popup, Header } from "ui";
 
 export const Completed = (): JSX.Element => {
   // TODO: Get this out to global state
@@ -16,22 +16,23 @@ export const Completed = (): JSX.Element => {
 
   return (
     <>
-      {/* TODO: Make reusable header */}
-      <header className={styles.header_container}>
-        <h2 className={styles.header_title}>Completed</h2>
-      </header>
+      <Header content="Completed" />
 
-      <TaskList>
-        {Tasks.uncompleted.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onTaskRemove={TaskHandlers.handleRemoveClick}
-            onTaskClick={TaskHandlers.handleTaskClick}
-            onCheckboxChange={TaskHandlers.handleCheckboxChange}
-          />
-        ))}
-      </TaskList>
+      {Tasks.uncompleted.length ? (
+        <TaskList>
+          {Tasks.uncompleted.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onTaskRemove={TaskHandlers.handleRemoveClick}
+              onTaskClick={TaskHandlers.handleTaskClick}
+              onCheckboxChange={TaskHandlers.handleCheckboxChange}
+            />
+          ))}
+        </TaskList>
+      ) : (
+        <p>No completed tasks!</p>
+      )}
 
       <Popup show={UIState.state.overlay} close={TaskHandlers.handlePopupClose}>
         <TaskForm
