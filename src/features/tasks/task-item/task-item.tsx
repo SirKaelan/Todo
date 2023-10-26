@@ -1,42 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./task-item.module.scss";
 
 import { Task } from "contexts/task-context";
-import { InputClickEvent, ButtonClickEvent } from "types/eventTypes";
+import {
+  InputClickEvent,
+  ButtonClickEvent,
+  InputChangeEvent,
+} from "types/eventTypes";
 import { Button } from "ui";
 
 type TaskItemProps = {
   task: Task;
-  onRemove: (e: ButtonClickEvent, task: Task) => void;
-  onClick: (task: Task) => void;
+  onTaskRemove: (e: ButtonClickEvent, task: Task) => void;
+  onTaskClick: (task: Task) => void;
+  onCheckboxChange: (e: InputChangeEvent, task: Task) => void;
 };
 
 export const TaskItem = ({
   task,
-  onRemove,
-  onClick,
+  onTaskRemove,
+  onTaskClick,
+  onCheckboxChange,
 }: TaskItemProps): JSX.Element => {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-
-  const handleCheckboxChange = (): void => {
-    setIsChecked((currIsChecked: boolean): boolean => !currIsChecked);
-  };
-
   const handleCheckboxClick = (e: InputClickEvent) => e.stopPropagation();
 
   return (
-    <li className={styles.task_container} onClick={() => onClick(task)}>
+    <li className={styles.task_container} onClick={() => onTaskClick(task)}>
       <input
         className={styles.task_checkbox}
         type="checkbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
+        checked={task.completed}
+        onChange={(e) => onCheckboxChange(e, task)}
         onClick={handleCheckboxClick}
       />
-      <p className={`${styles.task_content} ${isChecked && styles.checked}`}>
+      <p
+        className={`${styles.task_content} ${task.completed && styles.checked}`}
+      >
         {task.content}
       </p>
-      <Button color="danger" onClick={(e) => onRemove(e, task)}>
+      <Button color="danger" onClick={(e) => onTaskRemove(e, task)}>
         Remove
       </Button>
     </li>

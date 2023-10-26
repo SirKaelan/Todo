@@ -1,6 +1,10 @@
 import React from "react";
 
-import { FormSubmitEvent, ButtonClickEvent } from "types/eventTypes";
+import {
+  FormSubmitEvent,
+  ButtonClickEvent,
+  InputChangeEvent,
+} from "types/eventTypes";
 import { InputState } from "features/tasks";
 import { Task, useTasks } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
@@ -56,10 +60,16 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
     Tasks.remove(task);
   };
 
+  const handleCheckboxChange = (e: InputChangeEvent, task: Task): void => {
+    if (e.currentTarget.checked) Tasks.complete(task);
+    else Tasks.uncomplete(task);
+  };
+
   return {
     handleCreateSubmit,
     handleEditSubmit,
     handleTaskClick,
     handleRemoveClick,
+    handleCheckboxChange,
   };
 };

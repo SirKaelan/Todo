@@ -31,8 +31,9 @@ export const Inbox = (): JSX.Element => {
           <TaskItem
             key={task.id}
             task={task}
-            onRemove={TaskHandlers.handleRemoveClick}
-            onClick={TaskHandlers.handleTaskClick}
+            onTaskRemove={TaskHandlers.handleRemoveClick}
+            onTaskClick={TaskHandlers.handleTaskClick}
+            onCheckboxChange={TaskHandlers.handleCheckboxChange}
           />
         ))}
       </TaskList>

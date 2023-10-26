@@ -22,5 +22,5 @@ export const useTasks = () => {
   const uncomplete = (payload: Task) =>
     dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload });
 
-  return { state, add, edit, remove };
+  return { state, add, edit, remove, complete, uncomplete };
 };
