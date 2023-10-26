@@ -59,11 +59,14 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
     else Tasks.uncomplete(task);
   };
 
+  const handlePopupClose = () => UIState.setOverlay("hide");
+
   return {
     handleCreateSubmit,
     handleEditSubmit,
     handleTaskClick,
     handleRemoveClick,
     handleCheckboxChange,
+    handlePopupClose,
   };
 };

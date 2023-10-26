@@ -14,9 +14,6 @@ export const Completed = (): JSX.Element => {
   const UIState = useUI();
   const TaskHandlers = useTaskHandlers(setClickedTask);
 
-  // TODO: Might need to move to a central place
-  const handlePopupClose = () => UIState.setOverlay("hide");
-
   return (
     <>
       {/* TODO: Make reusable header */}
@@ -36,7 +33,7 @@ export const Completed = (): JSX.Element => {
         ))}
       </TaskList>
 
-      <Popup show={UIState.state.overlay} close={handlePopupClose}>
+      <Popup show={UIState.state.overlay} close={TaskHandlers.handlePopupClose}>
         <TaskForm
           task={clickedTask}
           placeholder="Enter a task..."

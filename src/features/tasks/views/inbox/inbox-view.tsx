@@ -13,8 +13,6 @@ export const Inbox = (): JSX.Element => {
   const UIState = useUI();
   const TaskHandlers = useTaskHandlers(setClickedTask);
 
-  const handlePopupClose = () => UIState.setOverlay("hide");
-
   return (
     <>
       <header className={styles.header_container}>
@@ -38,7 +36,7 @@ export const Inbox = (): JSX.Element => {
         ))}
       </TaskList>
 
-      <Popup show={UIState.state.overlay} close={handlePopupClose}>
+      <Popup show={UIState.state.overlay} close={TaskHandlers.handlePopupClose}>
         <TaskForm
           task={clickedTask}
           placeholder="Enter a task..."
