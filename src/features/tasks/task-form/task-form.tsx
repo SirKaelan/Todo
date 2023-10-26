@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 import { FormSubmitEvent, InputChangeEvent } from "types/eventTypes";
-import { InputState } from "features/tasks";
+import { EditSubmitHandler, CreateSubmitHandler } from "features/tasks";
 import { Task } from "contexts/task-context";
 import { Button, Form, Input } from "ui";
+
+type TaskSubmitType = EditSubmitHandler | CreateSubmitHandler;
 
 type TaskFormProps = {
   placeholder?: string;
   task?: Task;
-  onSubmit: (e: FormSubmitEvent, inputState: InputState, task?: Task) => void;
+  onSubmit: TaskSubmitType;
   buttonText: string;
 };
 

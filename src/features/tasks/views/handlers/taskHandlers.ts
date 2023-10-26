@@ -1,14 +1,15 @@
 import React from "react";
 
-import {
-  FormSubmitEvent,
-  ButtonClickEvent,
-  InputChangeEvent,
-} from "types/eventTypes";
-import { InputState } from "features/tasks";
 import { Task, useTasks } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { v4 as uuidv4 } from "uuid";
+import {
+  CheckboxChangeHandler,
+  CreateSubmitHandler,
+  EditSubmitHandler,
+  TaskClickHandler,
+  TaskRemoveHandler,
+} from "./handlerTypes";
 
 type ClickedTaskSetter = React.Dispatch<React.SetStateAction<Task>>;
 
@@ -16,10 +17,7 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
   const Tasks = useTasks();
   const UIState = useUI();
 
-  const handleCreateSubmit = (
-    e: FormSubmitEvent,
-    inputState: InputState
-  ): void => {
+  const handleCreateSubmit: CreateSubmitHandler = (e, inputState): void => {
     e.preventDefault();
     const newTask: Task = {
       id: uuidv4(),
@@ -31,11 +29,7 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
     inputState.setTaskContent("");
   };
 
-  const handleEditSubmit = (
-    e: FormSubmitEvent,
-    inputState: InputState,
-    task?: Task
-  ): void => {
+  const handleEditSubmit: EditSubmitHandler = (e, inputState, task): void => {
     e.preventDefault();
 
     if (task === undefined)
@@ -50,17 +44,17 @@ export const useTaskHandlers = (setClickedTask: ClickedTaskSetter) => {
     UIState.setOverlay("hide");
   };
 
-  const handleTaskClick = (task: Task): void => {
+  const handleTaskClick: TaskClickHandler = (task): void => {
     setClickedTask(task);
     UIState.setOverlay("show");
   };
 
-  const handleRemoveClick = (e: ButtonClickEvent, task: Task): void => {
+  const handleRemoveClick: TaskRemoveHandler = (e, task): void => {
     e.stopPropagation();
     Tasks.remove(task);
   };
 
-  const handleCheckboxChange = (e: InputChangeEvent, task: Task): void => {
+  const handleCheckboxChange: CheckboxChangeHandler = (e, task): void => {
     if (e.currentTarget.checked) Tasks.complete(task);
     else Tasks.uncomplete(task);
   };

@@ -2,18 +2,19 @@ import React from "react";
 import styles from "./task-item.module.scss";
 
 import { Task } from "contexts/task-context";
-import {
-  InputClickEvent,
-  ButtonClickEvent,
-  InputChangeEvent,
-} from "types/eventTypes";
+import { InputClickEvent } from "types/eventTypes";
 import { Button } from "ui";
+import {
+  TaskRemoveHandler,
+  TaskClickHandler,
+  CheckboxChangeHandler,
+} from "features/tasks";
 
 type TaskItemProps = {
   task: Task;
-  onTaskRemove: (e: ButtonClickEvent, task: Task) => void;
-  onTaskClick: (task: Task) => void;
-  onCheckboxChange: (e: InputChangeEvent, task: Task) => void;
+  onTaskRemove: TaskRemoveHandler;
+  onTaskClick: TaskClickHandler;
+  onCheckboxChange: CheckboxChangeHandler;
 };
 
 export const TaskItem = ({
