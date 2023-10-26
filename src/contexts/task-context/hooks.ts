@@ -17,6 +17,10 @@ export const useTasks = () => {
     dispatch({ type: TaskActionType.EDIT_TASK, payload });
   const remove = (payload: Task) =>
     dispatch({ type: TaskActionType.REMOVE_TASK, payload });
+  const complete = (payload: Task) =>
+    dispatch({ type: TaskActionType.COMPLETE_TASK, payload });
+  const uncomplete = (payload: Task) =>
+    dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload });
 
   return { state, add, edit, remove };
 };
