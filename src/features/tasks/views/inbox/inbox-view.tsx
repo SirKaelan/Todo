@@ -27,7 +27,7 @@ export const Inbox = (): JSX.Element => {
       </header>
 
       <TaskList>
-        {Tasks.state.map((task) => (
+        {Tasks.completed.map((task) => (
           <TaskItem
             key={task.id}
             task={task}

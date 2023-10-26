@@ -9,8 +9,8 @@ export const TaskNavigation = (): JSX.Element => {
   const Tasks = useTasks();
 
   const navButtons: NavigationButton[] = [
-    { label: "inbox", taskCount: Tasks.state.length },
-    { label: "completed", taskCount: [].length },
+    { label: "inbox", taskCount: Tasks.completed.length },
+    { label: "completed", taskCount: Tasks.uncompleted.length },
   ];
 
   return (

@@ -11,6 +11,10 @@ export const useTasks = () => {
 
   const { state, dispatch } = context;
 
+  // Consider putting everything below into an object?
+  const completed = state.filter((task) => task.completed === false);
+  const uncompleted = state.filter((task) => task.completed === true);
+
   const add = (payload: Task) =>
     dispatch({ type: TaskActionType.ADD_TASK, payload });
   const edit = (payload: Task) =>
@@ -22,5 +26,14 @@ export const useTasks = () => {
   const uncomplete = (payload: Task) =>
     dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload });
 
-  return { state, add, edit, remove, complete, uncomplete };
+  return {
+    state,
+    add,
+    edit,
+    remove,
+    complete,
+    uncomplete,
+    completed,
+    uncompleted,
+  };
 };
