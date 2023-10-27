@@ -18,3 +18,5 @@ export type {
 } from "./views/handlers/handlerTypes";
 
 export type { InputState } from "./types";
+
+export { TasksLayout } from "./views/tasks-layout/tasks-layout";
