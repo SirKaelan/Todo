@@ -2,13 +2,3 @@
   - Describe below how you want to use them
 
 # Minimal Viable Product:
-  - input field
-    > type in the name of the task
-  - a place that shows all tasks
-    > some HTML list
-  - full CRUD functionality for each task
-    > add a task
-    > edit a task
-    > remove a task
-  - checkbox next to a task
-    > when checked, slice through task text

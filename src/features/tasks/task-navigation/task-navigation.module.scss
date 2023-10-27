@@ -7,6 +7,10 @@
   height: 100%;
 
   &_container {
+    display: flex;
+    flex-direction: column;
+    gap: $tasks-nav-button-spacing;
+
     position: sticky;
     top: $tasks-nav-container-top-padding;
   }
