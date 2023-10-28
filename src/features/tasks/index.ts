@@ -8,6 +8,8 @@ export { Completed } from "./views/completed/completed-view";
 
 export { TaskNavigation } from "./task-navigation/task-navigation";
 export { NavButton } from "./task-navigation/nav-button";
+export { useNavButtons } from "./task-navigation/hooks/useNavButtons";
+export type { NavigationButton } from "./task-navigation/types";
 
 export type {
   CreateSubmitHandler,

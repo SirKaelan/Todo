@@ -1,22 +1,19 @@
 import React from "react";
 import styles from "./task-navigation.module.scss";
 
-import { useTasks } from "contexts/task-context";
-import { NavButton } from "features/tasks";
-import { NavigationButton } from "./types";
+import { NavigationButton, NavButton } from "features/tasks";
 
-export const TaskNavigation = (): JSX.Element => {
-  const Tasks = useTasks();
+type TaskNavigationProps = {
+  buttons: NavigationButton[];
+};
 
-  const navButtons: NavigationButton[] = [
-    { label: "inbox", taskCount: Tasks.completed.length },
-    { label: "completed", taskCount: Tasks.uncompleted.length },
-  ];
-
+export const TaskNavigation = ({
+  buttons,
+}: TaskNavigationProps): JSX.Element => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.nav_container}>
-        {navButtons.map((button) => (
+        {buttons.map((button) => (
           <li key={button.label}>
             <NavButton buttonData={button} />
           </li>

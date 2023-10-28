@@ -1,8 +1,9 @@
 @import "sass-partials/variables";
 @import "sass-partials/animations";
+@import "sass-partials/mixins";
 
 .hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -19,8 +20,14 @@
 
   background-color: rgb(238, 238, 238);
 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
   z-index: 1000;
   cursor: pointer;
+
+  @include respond-to("md") {
+    display: flex;
+  }
 
   &:hover,
   &:focus {
@@ -67,7 +74,7 @@
 }
 
 .background {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -81,14 +88,15 @@
   border-radius: 50%;
   z-index: 980;
   transition: transform 0.6s ease-in-out;
+
+  @include respond-to("md") {
+    display: flex;
+  }
 }
 
 .drawer {
-  display: flex;
+  display: none;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 0.5rem;
 
   position: fixed;
   top: 0;
@@ -96,11 +104,23 @@
   right: 0;
   bottom: 0;
 
-  padding: 2rem;
+  padding: 0 2rem;
 
   opacity: 0;
   transform: translateX(100%);
   z-index: 990;
   animation: 0.5s ease-in-out slideOut;
   transition: opacity 0.5s ease-in-out 0.1s;
+
+  @include respond-to("md") {
+    display: flex;
+  }
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 0 1 40rem;
+    margin-top: 20rem;
+  }
 }

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styles from "./hamburger.module.scss";
 
+import { NavigationButton, NavButton } from "features/tasks";
+
 type HamburgerProps = {
-  children: React.ReactNode;
+  buttons: NavigationButton[];
 };
 
-export const Hamburger = ({ children }: HamburgerProps): JSX.Element => {
+export const Hamburger = ({ buttons }: HamburgerProps): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
 
   const handleBurgerClick = () => setShow((prevState) => !prevState);
@@ -21,7 +23,13 @@ export const Hamburger = ({ children }: HamburgerProps): JSX.Element => {
         <div className={`${styles.line} ${styles.line_3}`}></div>
       </div>
       <div className={styles.background}></div>
-      <div className={styles.drawer}>{children}</div>
+      <div className={styles.drawer}>
+        <div className={styles.drawer_container}>
+          {buttons.map((button) => (
+            <NavButton buttonData={button} />
+          ))}
+        </div>
+      </div>
     </>
   );
 };
