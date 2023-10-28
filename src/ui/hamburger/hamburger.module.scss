@@ -1,4 +1,5 @@
 @import "sass-partials/variables";
+@import "sass-partials/animations";
 
 .hamburger {
   display: flex;
@@ -44,6 +45,16 @@
     .line_3 {
       transform: translateY(-8px) rotate(-135deg);
     }
+
+    & ~ .background {
+      transform: scale(90);
+    }
+
+    & ~ .drawer {
+      opacity: 1;
+      transform: translateX(0);
+      animation: 0.5s ease-in-out slideIn 0.1s;
+    }
   }
 }
 
@@ -53,4 +64,43 @@
   height: 0.2rem;
   border-radius: 10px;
   transition: transform 0.15s ease-in-out, opacity 0.1s ease-in-out;
+}
+
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 3%;
+  right: 1.9%;
+  height: 5rem;
+  width: 5rem;
+  background-image: radial-gradient(#8da7be, #80ced7);
+  border-radius: 50%;
+  z-index: 980;
+  transition: transform 0.6s ease-in-out;
+}
+
+.drawer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 2rem;
+
+  opacity: 0;
+  transform: translateX(100%);
+  z-index: 990;
+  animation: 0.5s ease-in-out slideOut;
+  transition: opacity 0.5s ease-in-out 0.1s;
 }
