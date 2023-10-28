@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./task-list.module.scss";
 
 type TaskListProps = {
   // Maybe it should be React.ReactNode
@@ -8,5 +9,5 @@ type TaskListProps = {
 };
 
 export const TaskList = ({ children }: TaskListProps): JSX.Element => {
-  return <ul>{children}</ul>;
+  return <ul className={styles.tasks_container}>{children}</ul>;
 };

@@ -4,7 +4,7 @@ import { TaskForm, TaskList, TaskItem } from "features/tasks";
 import { useTasks } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
 import { useTaskHandlers } from "../handlers/taskHandlers";
-import { Popup, Header } from "ui";
+import { Popup, Header, Hamburger } from "ui";
 
 export const Inbox = (): JSX.Element => {
   const Tasks = useTasks();
@@ -13,6 +13,7 @@ export const Inbox = (): JSX.Element => {
 
   return (
     <>
+      <Hamburger />
       <Header content="Inbox">
         <TaskForm
           placeholder="Enter a task..."
