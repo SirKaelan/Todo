@@ -12,6 +12,7 @@ export const Hamburger = ({ buttons }: HamburgerProps): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
 
   const handleBurgerClick = () => setShow((prevState) => !prevState);
+  const handleButtonClick = () => setShow(false);
 
   return (
     <>
@@ -27,7 +28,7 @@ export const Hamburger = ({ buttons }: HamburgerProps): JSX.Element => {
       <div className={styles.drawer}>
         <div className={styles.drawer_container}>
           {buttons.map((button) => (
-            <HamButton buttonData={button} />
+            <HamButton buttonData={button} onClick={handleButtonClick} />
           ))}
         </div>
       </div>

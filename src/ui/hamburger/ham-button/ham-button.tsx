@@ -6,14 +6,18 @@ import { Link } from "react-router-dom";
 
 type HamButtonProps = {
   buttonData: NavigationButton;
+  onClick: () => void;
 };
 
-export const HamButton = ({ buttonData }: HamButtonProps): JSX.Element => {
+export const HamButton = ({
+  buttonData,
+  onClick,
+}: HamButtonProps): JSX.Element => {
   const endpoint = buttonData.label === "inbox" ? "/" : `/${buttonData.label}`;
 
   return (
-    <Link to={endpoint} className={styles.ham_button}>
-      <span>{buttonData.label}</span>
+    <Link to={endpoint} className={styles.ham_button} onClick={onClick}>
+      {buttonData.label}
     </Link>
   );
 };
