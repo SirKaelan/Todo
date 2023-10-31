@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./hamburger.module.scss";
 
-import { NavigationButton, NavButton } from "features/tasks";
+import { NavigationButton } from "features/tasks";
+import { HamButton } from "ui";
 
 type HamburgerProps = {
   buttons: NavigationButton[];
@@ -26,7 +27,7 @@ export const Hamburger = ({ buttons }: HamburgerProps): JSX.Element => {
       <div className={styles.drawer}>
         <div className={styles.drawer_container}>
           {buttons.map((button) => (
-            <NavButton buttonData={button} />
+            <HamButton buttonData={button} />
           ))}
         </div>
       </div>
