@@ -1,7 +1,6 @@
 import React from "react";
 
-import { TaskForm, TaskList, TaskItem } from "features/tasks";
-import { useTasks } from "contexts/task-context";
+import { TaskForm, TaskList, TaskItem, useTasks } from "features/tasks";
 import { useUI } from "contexts/ui-context";
 import { useTaskHandlers } from "../handlers/taskHandlers";
 import { Popup, Header } from "ui";

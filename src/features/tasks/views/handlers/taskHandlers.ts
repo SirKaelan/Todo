@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Task, useTasks } from "contexts/task-context";
+import { Task } from "contexts/task-context";
+import { useTasks } from "features/tasks";
 import { useUI } from "contexts/ui-context";
 import { v4 as uuidv4 } from "uuid";
 import {

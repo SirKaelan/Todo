@@ -22,3 +22,5 @@ export type {
 export type { InputState } from "./types";
 
 export { TasksLayout } from "./views/tasks-layout/tasks-layout";
+
+export { useTasks } from "./hooks/useTasks";

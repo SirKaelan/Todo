@@ -2,7 +2,7 @@ import React from "react";
 import { TaskContext } from "./task-context";
 import { Task, TaskActionType } from "./types";
 
-export const useTasks = () => {
+export const useTaskState = () => {
   const context = React.useContext(TaskContext);
 
   if (context === undefined) {
@@ -31,5 +31,7 @@ export const useTasks = () => {
       dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload }),
     select: (payload: Task) =>
       dispatch({ type: TaskActionType.SELECT_TASK, payload }),
+    addTasks: (payload: Task[]) =>
+      dispatch({ type: TaskActionType.ADD_TASKS, payload }),
   };
 };

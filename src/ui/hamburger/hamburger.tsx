@@ -28,7 +28,11 @@ export const Hamburger = ({ buttons }: HamburgerProps): JSX.Element => {
       <div className={styles.drawer}>
         <div className={styles.drawer_container}>
           {buttons.map((button) => (
-            <HamButton buttonData={button} onClick={handleButtonClick} />
+            <HamButton
+              key={button.label}
+              buttonData={button}
+              onClick={handleButtonClick}
+            />
           ))}
         </div>
       </div>
