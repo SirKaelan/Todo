@@ -19,3 +19,8 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
+
+%vertical-center {
+  display: flex;
+  align-items: center;
+}

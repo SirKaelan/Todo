@@ -3,7 +3,7 @@ import styles from "./task-item.module.scss";
 
 import { Task } from "contexts/task-context";
 import { InputClickEvent } from "types/eventTypes";
-import { Button } from "ui";
+import { Icon, IconColors, IconNames, IconTypes, IconSizes } from "ui";
 import {
   TaskRemoveHandler,
   TaskClickHandler,
@@ -39,9 +39,17 @@ export const TaskItem = ({
       >
         {task.content}
       </p>
-      <Button color="danger" onClick={(e) => onTaskRemove(e, task)}>
-        Remove
-      </Button>
+      <span
+        className={styles.task_removeButton}
+        onClick={(e) => onTaskRemove(e, task)}
+      >
+        <Icon
+          type={IconTypes.SOLID}
+          name={IconNames.XMARK}
+          color={IconColors.LIGHT_GRAY}
+          size={IconSizes.EXTRA_LARGE}
+        />
+      </span>
     </li>
   );
 };

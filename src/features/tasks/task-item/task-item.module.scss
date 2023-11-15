@@ -1,16 +1,22 @@
 @import "sass-partials/variables";
+@import "sass-partials/mixins";
 
 .task {
   &_container {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     padding: $task-item-padding;
     border-bottom: $task-item-border-bottom;
     cursor: pointer;
     gap: $task-item-element-gap;
+    min-height: $task-item-min-height;
 
     &:hover {
       backdrop-filter: brightness(0.95);
+
+      & > :last-child {
+        opacity: 1;
+      }
     }
   }
 
@@ -19,9 +25,25 @@
 
   &_content {
     flex: 1;
+    @extend %vertical-center;
 
     &.checked {
       text-decoration: line-through;
+    }
+  }
+
+  &_removeButton {
+    @extend %vertical-center;
+    padding: $task-item-remove-button-padding;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+
+    & > * {
+      transition: filter 0.1s ease-in-out;
+    }
+
+    &:hover > * {
+      filter: brightness(0.5);
     }
   }
 }

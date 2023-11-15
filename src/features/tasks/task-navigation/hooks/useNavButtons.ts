@@ -1,5 +1,5 @@
 import { NavigationButton, useTasks } from "features/tasks";
-import { IconNames, IconTypes, IconColors } from "ui";
+import { IconNames, IconTypes, IconColors, IconSizes } from "ui";
 
 export const useNavButtons = (): NavigationButton[] => {
   const Tasks = useTasks();
@@ -11,8 +11,8 @@ export const useNavButtons = (): NavigationButton[] => {
       icon: {
         type: IconTypes.SOLID,
         name: IconNames.INBOX,
-        color: IconColors.BLACK,
-        size: "xl",
+        color: IconColors.GRAY,
+        size: IconSizes.EXTRA_LARGE,
       },
     },
     {
@@ -21,8 +21,8 @@ export const useNavButtons = (): NavigationButton[] => {
       icon: {
         type: IconTypes.SOLID,
         name: IconNames.SQUARECHECK,
-        color: IconColors.BLACK,
-        size: "xl",
+        color: IconColors.GRAY,
+        size: IconSizes.EXTRA_LARGE,
       },
     },
   ];

@@ -3,6 +3,8 @@ export enum IconNames {
   LISTCHECK = "faListCheck",
   SQUARECHECK = "faSquareCheck",
   INBOX = "faInbox",
+  XMARK = "faXmark",
+  CIRCLEXMARK = "faCircleXmark",
 }
 
 export enum IconTypes {
@@ -12,4 +14,13 @@ export enum IconTypes {
 
 export enum IconColors {
   BLACK = "black",
+  GRAY = "#444",
+  LIGHT_GRAY = "#a9a9a9",
+}
+
+export enum IconSizes {
+  EXTRA_SMALL = "xs",
+  SMALL = "sm",
+  LARGE = "lg",
+  EXTRA_LARGE = "xl",
 }
