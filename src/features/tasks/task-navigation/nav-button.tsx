@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import { genericUtils } from "utils";
 import { NavigationButton } from "./types";
 
+import { Icon, IconTypes, IconNames, IconColors } from "ui";
+
 type NavButtonProps = {
   buttonData: NavigationButton;
 };
@@ -19,6 +21,14 @@ export const NavButton = ({ buttonData }: NavButtonProps): JSX.Element => {
       to={endpoint}
       className={`${styles.nav_button} ${endpointMatch && "selected"}`}
     >
+      <div className={styles.nav_icon}>
+        <Icon
+          type={IconTypes.REGULAR}
+          name={IconNames.ENVELOPE}
+          color={IconColors.BLACK}
+          size="xl"
+        />
+      </div>
       <div className={styles.nav_text}>
         {genericUtils.capitalizeFirstLetter(buttonData.label)}
       </div>

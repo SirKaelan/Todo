@@ -17,6 +17,7 @@
 
   &_button {
     display: flex;
+    align-items: center;
     padding: $tasks-nav-button-padding;
     border-radius: $element-border-radius;
     cursor: pointer;
@@ -27,6 +28,7 @@
   }
 
   &_icon {
+    padding: $tasks-nav-icon-padding;
   }
 
   &_text {
@@ -38,7 +40,7 @@
   &_number {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     height: $tasks-nav-number-box-size;
     width: $tasks-nav-number-box-size;
     color: $tasks-nav-number-color;
