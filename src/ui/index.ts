@@ -9,5 +9,6 @@ export { Hamburger } from "./hamburger/hamburger";
 export { HamButton } from "./hamburger/ham-button/ham-button";
 
 export { Icon } from "./icon/icon";
+export type { IconProps } from "./icon/icon";
 export { IconNames, IconTypes, IconColors } from "./icon/icon-enums";
 export { searchIconPack } from "./icon/utils";

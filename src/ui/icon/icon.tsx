@@ -7,14 +7,19 @@ import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
-type IconProps = {
+export type IconProps = {
   type: IconTypes;
   name: IconNames;
   color?: IconColors;
   size?: SizeProp;
 };
 
-export const Icon = ({ type, name, color, size }: IconProps): JSX.Element => {
+export const Icon = ({
+  type,
+  name,
+  color,
+  size,
+}: IconProps): JSX.Element | null => {
   let icon: IconDefinition | undefined = undefined;
   if (type === IconTypes.REGULAR) {
     icon = searchIconPack(far, name);
@@ -22,7 +27,7 @@ export const Icon = ({ type, name, color, size }: IconProps): JSX.Element => {
     icon = searchIconPack(fas, name);
   }
 
-  return (
-    <FontAwesomeIcon icon={icon as IconDefinition} color={color} size={size} />
+  return icon === undefined ? null : (
+    <FontAwesomeIcon icon={icon} color={color} size={size} />
   );
 };
