@@ -1,7 +1,8 @@
 import { useTaskState, Task } from "contexts/task-context";
-import { useLocalStorage } from "services/localStorage";
+import { useLocalStorage, isLocalStorageEnabled } from "services/localStorage";
 
 export const useTasks = () => {
+  const STORAGE_KEY = "tasks";
   const TaskState = useTaskState();
   const LS = useLocalStorage();
   const tasks = TaskState.tasks;
@@ -16,30 +17,41 @@ export const useTasks = () => {
     uncompleted,
     add: (payload: Task) => {
       TaskState.add(payload);
-      LS.addTask(payload);
+      LS.pushItem<Task>(STORAGE_KEY, payload);
     },
     edit: (payload: Task) => {
       TaskState.edit(payload);
-      LS.editTask(payload);
+      LS.editItem<Task>(STORAGE_KEY, payload);
     },
     remove: (payload: Task) => {
       TaskState.remove(payload);
-      LS.removeTask(payload);
+      LS.removeItem<Task>(STORAGE_KEY, payload);
     },
     complete: (payload: Task) => {
       TaskState.complete(payload);
-      LS.completeTask(payload);
+      payload.completed = true;
+      LS.editItem<Task>(STORAGE_KEY, { ...payload, completed: true });
     },
     uncomplete: (payload: Task) => {
       TaskState.uncomplete(payload);
-      LS.uncompleteTask(payload);
+      LS.editItem<Task>(STORAGE_KEY, { ...payload, completed: false });
     },
     select: (payload: Task) => {
       TaskState.select(payload);
     },
     addTasks: (payload: Task[]) => {
       TaskState.addTasks(payload);
-      LS.addTasks(payload);
+      LS.addItems<Task[]>(STORAGE_KEY, payload);
+    },
+    syncTasks: () => {
+      if (isLocalStorageEnabled())
+        console.error("Local storage is not available!");
+      const tasks = LS.getItems<Task[]>(STORAGE_KEY);
+      if (!tasks) {
+        LS.addItems<[]>(STORAGE_KEY, []);
+        return;
+      } else if (tasks.length === 0) return;
+      TaskState.addTasks(tasks);
     },
   };
 };
