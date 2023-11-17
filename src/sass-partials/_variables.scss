@@ -39,9 +39,15 @@ $tasks-nav-icon-padding: 0.25rem 0.5rem;
 // Task item
 $task-item-padding: 0.8rem;
 $task-item-border-bottom: 1px solid $border-separator-color;
-$task-item-element-gap: 1.5rem;
+$task-item-element-gap: 1rem;
 $task-item-min-height: 6rem;
 $task-item-remove-button-padding: 0 0.5rem;
+$task-item-checkbox-bg-color: #777;
+$task-item-checkbox-border-color: #777;
+$task-item-checkbox-border-size: 0.15em;
+$task-item-checkbox-size: 1.15em;
+$task-item-checkbox-checkmark-size: 0.7em;
+$task-item-checkbox-checkmark-color: #fff;
 
 // Reusable form
 $task-form-element-gap: 1rem;

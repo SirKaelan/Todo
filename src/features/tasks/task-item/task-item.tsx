@@ -27,13 +27,15 @@ export const TaskItem = ({
 
   return (
     <li className={styles.task_container} onClick={() => onTaskClick(task)}>
-      <input
-        className={styles.task_checkbox}
-        type="checkbox"
-        checked={task.completed}
-        onChange={(e) => onCheckboxChange(e, task)}
-        onClick={handleCheckboxClick}
-      />
+      <div className={styles.task_checkbox_container}>
+        <input
+          className={styles.task_checkbox_item}
+          type="checkbox"
+          checked={task.completed}
+          onChange={(e) => onCheckboxChange(e, task)}
+          onClick={handleCheckboxClick}
+        />
+      </div>
       <p
         className={`${styles.task_content} ${task.completed && styles.checked}`}
       >
