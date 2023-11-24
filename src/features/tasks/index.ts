@@ -19,8 +19,11 @@ export type {
   CheckboxChangeHandler,
 } from "./views/handlers/handlerTypes";
 
-export type { InputState } from "./types";
+export type { TaskFormData, ErrorsFormat } from "./types";
 
 export { TasksLayout } from "./views/tasks-layout/tasks-layout";
 
 export { useTasks } from "./hooks/useTasks";
+export { useTaskFormValidator } from "./hooks/task-form-validation/useTaskFormValidator";
+
+export type { TaskFormState } from "./task-form/task-form";

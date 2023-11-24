@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Task } from "contexts/task-context";
 import { useTasks } from "features/tasks";
 import { useUI } from "contexts/ui-context";
@@ -16,27 +14,46 @@ export const useTaskHandlers = () => {
   const Tasks = useTasks();
   const UIState = useUI();
 
-  const handleCreateSubmit: CreateSubmitHandler = (e, inputState): void => {
+  const handleCreateSubmit: CreateSubmitHandler = (e, taskFormData): void => {
     e.preventDefault();
+    const { errors, validateForm } = taskFormData.TaskFormValidator;
+    const { isValid } = validateForm(taskFormData.form, null, errors, true);
+
+    const taskInput =
+      e.currentTarget.querySelector<HTMLInputElement>("input[type='text']");
+    taskInput?.focus();
+
+    if (!isValid) return;
+
     const newTask: Task = {
       id: uuidv4(),
-      content: inputState.taskContent.trim(),
+      content: taskFormData.form.content.trim(),
       completed: false,
     };
 
     Tasks.add(newTask);
-    inputState.setTaskContent("");
+    taskFormData.setForm((prevState) => {
+      return { ...prevState, content: "" };
+    });
   };
 
-  const handleEditSubmit: EditSubmitHandler = (e, inputState, task): void => {
+  const handleEditSubmit: EditSubmitHandler = (e, taskFormData, task): void => {
     e.preventDefault();
+    const { errors, validateForm } = taskFormData.TaskFormValidator;
+    const { isValid } = validateForm(taskFormData.form, null, errors, true);
+
+    const taskInput =
+      e.currentTarget.querySelector<HTMLInputElement>("input[type='text']");
+    taskInput?.focus();
+
+    if (!isValid) return;
 
     if (task === undefined)
       throw new Error("'task' prop was not provided to 'TaskForm' component.");
 
     const editedTask: Task = {
       ...(task as Task),
-      content: inputState.taskContent.trim(),
+      content: taskFormData.form.content.trim(),
     };
 
     Tasks.edit(editedTask);

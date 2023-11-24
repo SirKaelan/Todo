@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import { FormSubmitEvent, InputChangeEvent } from "types/eventTypes";
-import { EditSubmitHandler, CreateSubmitHandler } from "features/tasks";
+import {
+  EditSubmitHandler,
+  CreateSubmitHandler,
+  TaskFormData,
+  useTaskFormValidator,
+} from "features/tasks";
 import { Task } from "contexts/task-context";
 import { Button, Form, Input } from "ui";
 
@@ -14,38 +19,63 @@ type TaskFormProps = {
   buttonText: string;
 };
 
+export type TaskFormState = {
+  content: string;
+};
+
 export const TaskForm = ({
   placeholder,
   task,
   onSubmit,
   buttonText,
 }: TaskFormProps): JSX.Element => {
-  const [taskContent, setTaskContent] = useState<string>("");
-  const inputState = { taskContent, setTaskContent };
+  const [form, setForm] = useState<TaskFormState>({ content: "" });
+  const TaskFormValidator = useTaskFormValidator(form);
+  const { errors, validateForm, handleBlurField, handleFocusField } =
+    TaskFormValidator;
+
+  const taskFormData: TaskFormData = {
+    form,
+    setForm,
+    TaskFormValidator,
+  };
 
   useEffect(() => {
-    if (task) setTaskContent(task.content);
+    if (task) {
+      setForm((prevState) => {
+        return { ...prevState, content: task.content };
+      });
+    }
   }, [task]);
 
   const handleTaskInput = (e: InputChangeEvent) => {
-    setTaskContent(e.currentTarget.value);
+    const field = e.target.name;
+    const content = e.target.value;
+    setForm((prevState) => {
+      const newState = { ...prevState, content: content };
+      if (errors[field].touched) validateForm(newState, field, errors);
+      return newState;
+    });
   };
 
   return (
-    <Form onFormSubmit={(e: FormSubmitEvent) => onSubmit(e, inputState, task)}>
+    <Form
+      onFormSubmit={(e: FormSubmitEvent) => onSubmit(e, taskFormData, task)}
+    >
       <Input
         type="text"
         placeholder={placeholder}
-        value={taskContent}
+        value={form.content}
         onInputChange={handleTaskInput}
         ariaLabel={task ? "Edit task" : "Add task"}
         autoFocus={task ? true : false}
+        errorMessage={errors.task.message}
+        name="task"
+        autoComplete="off"
+        onBlur={handleBlurField}
+        onFocus={handleFocusField}
       />
-      <Button
-        color="primary"
-        type="submit"
-        disabled={!taskContent ? true : false}
-      >
+      <Button color="primary" type="submit">
         {buttonText}
       </Button>
     </Form>

@@ -4,16 +4,16 @@ import {
   InputChangeEvent,
   SpanClickEvent,
 } from "types/eventTypes";
-import { InputState } from "features/tasks";
+import { TaskFormData } from "features/tasks";
 import { Task } from "contexts/task-context";
 
 export type CreateSubmitHandler = (
   e: FormSubmitEvent,
-  inputState: InputState
+  taskFormData: TaskFormData
 ) => void;
 export type EditSubmitHandler = (
   e: FormSubmitEvent,
-  inputState: InputState,
+  taskFormData: TaskFormData,
   task?: Task
 ) => void;
 export type TaskClickHandler = (task: Task) => void;
