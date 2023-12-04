@@ -10,6 +10,23 @@ export const Inbox = (): JSX.Element => {
   const UIState = useUI();
   const TaskHandlers = useTaskHandlers();
 
+  // Could maybe try to make a hook out of this (so i can use it in "completed" page as well)
+
+  let draggedTask = 0;
+  let draggedOverTask = 0;
+
+  const handleDragStart = (index: number) => (draggedTask = index);
+  const handleDragEnter = (index: number) => (draggedOverTask = index);
+  const handleDragOver = (e: React.DragEvent<HTMLLIElement>) =>
+    e.preventDefault();
+  const handleDragEnd = () => {
+    const newTasks = [...Tasks.uncompleted];
+    const temp = newTasks[draggedTask];
+    newTasks[draggedTask] = newTasks[draggedOverTask];
+    newTasks[draggedOverTask] = temp;
+    Tasks.addTasks(newTasks);
+  };
+
   return (
     <>
       <Header content="Inbox">
@@ -21,13 +38,17 @@ export const Inbox = (): JSX.Element => {
       </Header>
 
       <TaskList>
-        {Tasks.completed.map((task) => (
+        {Tasks.uncompleted.map((task, index) => (
           <TaskItem
             key={task.id}
             task={task}
             onTaskRemove={TaskHandlers.handleRemoveClick}
             onTaskClick={TaskHandlers.handleTaskClick}
             onCheckboxChange={TaskHandlers.handleCheckboxChange}
+            onDragStart={() => handleDragStart(index)}
+            onDragEnter={() => handleDragEnter(index)}
+            onDragOver={(e) => handleDragOver(e)}
+            onDragEnd={() => handleDragEnd()}
           />
         ))}
       </TaskList>

@@ -17,8 +17,8 @@ export const useTaskState = () => {
   return {
     tasks,
     selectedTask,
-    completed: tasks.filter((task) => task.completed === false),
-    uncompleted: tasks.filter((task) => task.completed === true),
+    completed: tasks.filter((task) => task.completed === true),
+    uncompleted: tasks.filter((task) => task.completed === false),
     add: (payload: Task) =>
       dispatch({ type: TaskActionType.ADD_TASK, payload }),
     edit: (payload: Task) =>

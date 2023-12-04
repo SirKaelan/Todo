@@ -14,9 +14,9 @@ export const Completed = (): JSX.Element => {
     <>
       <Header content="Completed" />
 
-      {Tasks.uncompleted.length ? (
+      {Tasks.completed.length ? (
         <TaskList>
-          {Tasks.uncompleted.map((task) => (
+          {Tasks.completed.map((task) => (
             <TaskItem
               key={task.id}
               task={task}

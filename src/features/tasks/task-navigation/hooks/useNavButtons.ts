@@ -7,7 +7,7 @@ export const useNavButtons = (): NavigationButton[] => {
   return [
     {
       label: "inbox",
-      taskCount: Tasks.completed.length,
+      taskCount: Tasks.uncompleted.length,
       icon: {
         type: IconTypes.SOLID,
         name: IconNames.INBOX,
@@ -17,7 +17,7 @@ export const useNavButtons = (): NavigationButton[] => {
     },
     {
       label: "completed",
-      taskCount: Tasks.uncompleted.length,
+      taskCount: Tasks.completed.length,
       icon: {
         type: IconTypes.SOLID,
         name: IconNames.SQUARECHECK,

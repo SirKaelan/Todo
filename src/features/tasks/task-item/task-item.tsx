@@ -15,6 +15,10 @@ type TaskItemProps = {
   onTaskRemove: TaskRemoveHandler;
   onTaskClick: TaskClickHandler;
   onCheckboxChange: CheckboxChangeHandler;
+  onDragStart?: (e: React.DragEvent<HTMLLIElement>) => void;
+  onDragEnter?: (e: React.DragEvent<HTMLLIElement>) => void;
+  onDragOver?: (e: React.DragEvent<HTMLLIElement>) => void;
+  onDragEnd?: (e: React.DragEvent<HTMLLIElement>) => void;
 };
 
 export const TaskItem = ({
@@ -22,11 +26,23 @@ export const TaskItem = ({
   onTaskRemove,
   onTaskClick,
   onCheckboxChange,
+  onDragStart,
+  onDragEnter,
+  onDragOver,
+  onDragEnd,
 }: TaskItemProps): JSX.Element => {
   const handleCheckboxClick = (e: InputClickEvent) => e.stopPropagation();
 
   return (
-    <li className={styles.task_container} onClick={() => onTaskClick(task)}>
+    <li
+      className={styles.task_container}
+      onClick={() => onTaskClick(task)}
+      draggable="true"
+      onDragStart={onDragStart}
+      onDragEnter={onDragEnter}
+      onDragOver={onDragOver}
+      onDragEnd={onDragEnd}
+    >
       <div className={styles.task_checkbox_container}>
         <input
           className={styles.task_checkbox_item}
