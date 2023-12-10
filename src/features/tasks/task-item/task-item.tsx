@@ -19,6 +19,7 @@ type TaskItemProps = {
   onDragEnter?: (e: React.DragEvent<HTMLLIElement>) => void;
   onDragOver?: (e: React.DragEvent<HTMLLIElement>) => void;
   onDragEnd?: (e: React.DragEvent<HTMLLIElement>) => void;
+  draggable?: "true";
 };
 
 export const TaskItem = ({
@@ -30,6 +31,7 @@ export const TaskItem = ({
   onDragEnter,
   onDragOver,
   onDragEnd,
+  draggable,
 }: TaskItemProps): JSX.Element => {
   const handleCheckboxClick = (e: InputClickEvent) => e.stopPropagation();
 
@@ -37,7 +39,7 @@ export const TaskItem = ({
     <li
       className={styles.task_container}
       onClick={() => onTaskClick(task)}
-      draggable="true"
+      draggable={draggable === undefined ? "false" : "true"}
       onDragStart={onDragStart}
       onDragEnter={onDragEnter}
       onDragOver={onDragOver}

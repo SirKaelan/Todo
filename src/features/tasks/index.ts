@@ -27,3 +27,12 @@ export { useTasks } from "./hooks/useTasks";
 export { useTaskFormValidator } from "./hooks/task-form-validation/useTaskFormValidator";
 
 export type { TaskFormState } from "./task-form/task-form";
+
+export type {
+  DragStartHandler,
+  DragEnterHandler,
+  DragOverHandler,
+  DragEndHandler,
+} from "./hooks/drag-and-drop/types";
+
+export { useTaskListDND } from "./hooks/drag-and-drop/useTaskListDND";
