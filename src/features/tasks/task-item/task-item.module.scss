@@ -1,0 +1,90 @@
+@import "sass-partials/variables";
+@import "sass-partials/mixins";
+
+.task {
+  &_container {
+    display: flex;
+    padding: $task-item-padding;
+    border-bottom: $task-item-border-bottom;
+    cursor: pointer;
+    gap: $task-item-element-gap;
+    min-height: $task-item-min-height;
+
+    &:hover {
+      backdrop-filter: brightness(0.95);
+
+      & > :last-child {
+        opacity: 1;
+      }
+    }
+  }
+
+  &_checkbox {
+    &_container {
+      @extend %vertical-center;
+    }
+
+    &_item[type="checkbox"] {
+      cursor: pointer;
+      appearance: none;
+      width: $task-item-checkbox-size;
+      height: $task-item-checkbox-size;
+      border: $task-item-checkbox-border-size solid
+        $task-item-checkbox-border-color;
+      border-radius: $task-item-checkbox-border-size;
+      display: grid;
+      place-content: center;
+
+      &::before {
+        content: "";
+        width: $task-item-checkbox-checkmark-size;
+        height: $task-item-checkbox-checkmark-size;
+        transform: scale(0);
+        transition: transform 120ms ease-in-out;
+        box-shadow: inset 1em 1em $task-item-checkbox-checkmark-color;
+        transform-origin: bottom left;
+        clip-path: polygon(
+          20% 55%,
+          9% 69%,
+          50% 100%,
+          100% 14%,
+          84% 4%,
+          44% 72%
+        );
+      }
+
+      &:checked {
+        background-color: $task-item-checkbox-bg-color;
+      }
+
+      &:checked::before {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &_content {
+    flex: 1 0;
+    @extend %vertical-center;
+    word-break: break-word;
+
+    &.checked {
+      text-decoration: line-through;
+    }
+  }
+
+  &_removeButton {
+    @extend %vertical-center;
+    padding: $task-item-remove-button-padding;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+
+    & > * {
+      transition: filter 0.1s ease-in-out;
+    }
+
+    &:hover > * {
+      filter: brightness(0.5);
+    }
+  }
+}

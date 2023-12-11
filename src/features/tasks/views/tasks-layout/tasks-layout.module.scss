@@ -1,0 +1,26 @@
+@import "sass-partials/variables";
+@import "sass-partials/mixins";
+
+.tasks {
+  @extend %twelve-column-grid;
+  height: 100%;
+
+  &_navigation {
+    grid-column: span 1;
+
+    @include respond-to("md") {
+      display: none;
+    }
+  }
+
+  &_container {
+    grid-column: span 11;
+    display: flex;
+    justify-content: center;
+    padding: $tasks-wrapper-padding;
+
+    @include respond-to("md") {
+      grid-column: span 12;
+    }
+  }
+}

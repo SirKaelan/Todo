@@ -1,0 +1,26 @@
+@import "sass-partials/variables";
+
+// For adding breakpoints
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`."
+      + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// Creating a standard grid
+// placeholders with extend (placeholders don't compile to css)
+// have comma separated css selectors (less css bloat)
+%twelve-column-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+%vertical-center {
+  display: flex;
+  align-items: center;
+}

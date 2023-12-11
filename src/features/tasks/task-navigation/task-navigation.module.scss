@@ -1,0 +1,49 @@
+@import "sass-partials/variables";
+
+.nav {
+  min-width: $tasks-nav-width;
+  padding: $tasks-nav-padding;
+  background-color: $tasks-nav-background-color;
+  height: 100%;
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: $tasks-nav-button-spacing;
+
+    position: sticky;
+    top: $tasks-nav-container-top-padding;
+  }
+
+  &_button {
+    display: flex;
+    align-items: center;
+    padding: $tasks-nav-button-padding;
+    border-radius: $element-border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $btn-background-color;
+    }
+  }
+
+  &_icon {
+    padding: $tasks-nav-icon-padding;
+  }
+
+  &_text {
+    flex: 1;
+    color: $default-text-color;
+    padding: $tasks-nav-text-padding;
+  }
+
+  &_number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $tasks-nav-number-box-size;
+    width: $tasks-nav-number-box-size;
+    color: $tasks-nav-number-color;
+    font-size: $tasks-nav-number-font-size;
+  }
+}

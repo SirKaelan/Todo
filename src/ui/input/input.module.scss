@@ -1,0 +1,37 @@
+@import "sass-partials/variables";
+
+.input_text {
+  width: 100%;
+  padding: $text-input-padding;
+  background-color: $text-input-bg-color;
+  border: none;
+  border-radius: $element-border-radius;
+  outline: none;
+
+  &::placeholder {
+    color: $text-input-placeholder-color;
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.error_border {
+  outline: 1px solid $error-border-color;
+}
+
+.error_message {
+  position: absolute;
+  top: 0;
+  right: $error-message-box-left-offset;
+  font-size: $error-message-font-size;
+  color: $error-message-text-color;
+  background-color: $error-border-color;
+  padding: $error-message-box-padding;
+  border-radius: $element-border-radius;
+  z-index: -1;
+  transition: transform 0.5s ease-in-out;
+  transform: $error-message-box-Y-offset;
+}

@@ -1,0 +1,26 @@
+An article for using Generics in React:
+  - https://devtrium.com/posts/react-typescript-using-generics-in-react
+
+An article for building forms in React:
+  - https://www.freecodecamp.org/news/how-to-build-forms-in-react/
+
+An article for making a reusable Dialog component (popup overlay):
+  - https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25
+
+An artice about application state management by Kent:
+  - https://kentcdodds.com/blog/application-state-management-with-react?fbclid=IwAR3c1V6oGovssLPf-zXhvcJm9STgF1sHslmhuWeFAzD0BfK_lazFaNtjl18
+
+Great article, by Kent, on how to use the Context API:
+  - https://kentcdodds.com/blog/how-to-use-react-context-effectively?fbclid=IwAR1NqpxriKwFhAeJNxJR2eZ6U0m1pzBLZOLbbDans-84Q3FTZrTW7kiUws8
+
+
+!!! Learn more about component composition !!!
+   - Maybe this is a good source: https://felixgerschau.com/react-component-composition/
+
+!!! Learn more about layout components !!!
+  - Layout components MIGHT be the way to create component composition
+  - Maybe a decent place to start: https://dev.to/olenadrugalya/layout-component-and-why-we-use-it-in-react-d8b
+  - A video recommended by Kent: https://www.youtube.com/watch?v=3XaXKiXtNjw
+
+!!! Learn more about React Design Patterns !!!
+  - Maybe a good place to start: https://aglowiditsolutions.com/blog/react-design-patterns/

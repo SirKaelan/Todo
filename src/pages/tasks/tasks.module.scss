@@ -1,0 +1,7 @@
+@import "sass-partials/variables";
+
+.tasks {
+  &_manager {
+    flex: 0 1 $tasks-manager-width;
+  }
+}
