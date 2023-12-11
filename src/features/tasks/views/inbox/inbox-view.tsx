@@ -1,37 +1,57 @@
-import React, { useState } from "react";
-import styles from "./inbox-view.module.scss";
+import React from "react";
 
 import {
-  CreateTaskForm,
-  EditTaskForm,
+  TaskForm,
   TaskList,
   TaskItem,
+  useTasks,
+  useTaskListDND,
 } from "features/tasks";
-import { useTasks, Task } from "contexts/task-context";
 import { useUI } from "contexts/ui-context";
-import { Popup } from "ui";
+import { useTaskHandlers } from "../handlers/taskHandlers";
+import { Popup, Header } from "ui";
 
 export const Inbox = (): JSX.Element => {
-  // TODO: Think about changing this value to be an ID
-  // and make this component search for the task from state
-  const [clickedTask, setClickedTask] = useState<Task>({} as Task);
-
   const Tasks = useTasks();
-  const { state: UIState, setOverlay } = useUI();
+  const UIState = useUI();
+  const TaskHandlers = useTaskHandlers();
+  const { handleDragEnd, handleDragEnter, handleDragOver, handleDragStart } =
+    useTaskListDND(Tasks.uncompleted);
 
   return (
     <>
-      <header className={styles.header_container}>
-        <h2 className={styles.header_title}>Inbox</h2>
-        <CreateTaskForm />
-      </header>
+      <Header content="Inbox">
+        <TaskForm
+          placeholder="Enter a task..."
+          onSubmit={TaskHandlers.handleCreateSubmit}
+          buttonText="Add task"
+        />
+      </Header>
+
       <TaskList>
-        {Tasks.state.map((task) => (
-          <TaskItem key={task.id} task={task} setClickedTask={setClickedTask} />
+        {Tasks.uncompleted.map((task, index) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onTaskRemove={TaskHandlers.handleRemoveClick}
+            onTaskClick={TaskHandlers.handleTaskClick}
+            onCheckboxChange={TaskHandlers.handleCheckboxChange}
+            draggable="true"
+            onDragStart={() => handleDragStart(index)}
+            onDragEnter={() => handleDragEnter(index)}
+            onDragOver={(e) => handleDragOver(e)}
+            onDragEnd={() => handleDragEnd()}
+          />
         ))}
       </TaskList>
-      <Popup show={UIState.overlay} close={() => setOverlay("hide")}>
-        <EditTaskForm task={clickedTask} />
+
+      <Popup show={UIState.state.overlay} close={TaskHandlers.handlePopupClose}>
+        <TaskForm
+          task={Tasks.selectedTask}
+          placeholder="Enter a task..."
+          onSubmit={TaskHandlers.handleEditSubmit}
+          buttonText="Edit task"
+        />
       </Popup>
     </>
   );

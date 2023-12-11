@@ -1,0 +1,130 @@
+@import "sass-partials/variables";
+@import "sass-partials/animations";
+@import "sass-partials/mixins";
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  transform: scale(0.8);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+
+  background-color: rgb(238, 238, 238);
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
+  z-index: 1000;
+  cursor: pointer;
+
+  @include respond-to("md") {
+    display: flex;
+  }
+
+  &:hover,
+  &:focus {
+    .line_1 {
+      transform: translateY(-2px);
+    }
+
+    .line_3 {
+      transform: translateY(2px);
+    }
+  }
+
+  &.active {
+    .line_1 {
+      transform: translateY(8px) rotate(135deg);
+    }
+
+    .line_2 {
+      opacity: 0;
+    }
+
+    .line_3 {
+      transform: translateY(-8px) rotate(-135deg);
+    }
+
+    & ~ .background {
+      transform: scale(130);
+    }
+
+    & ~ .drawer {
+      opacity: 1;
+      transform: translateX(0);
+      animation: 0.5s ease-in-out slideIn 0.1s;
+    }
+  }
+}
+
+.line {
+  background-color: black;
+  width: 2.5rem;
+  height: 0.2rem;
+  border-radius: 10px;
+  transition: transform 0.15s ease-in-out, opacity 0.1s ease-in-out;
+}
+
+.background {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  height: 3rem;
+  width: 3rem;
+  background-image: radial-gradient(#8da7be, #80ced7);
+  border-radius: 50%;
+  z-index: 980;
+  transition: transform 0.6s ease-in-out;
+
+  @include respond-to("md") {
+    display: flex;
+  }
+}
+
+.drawer {
+  display: none;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 0 2rem;
+
+  opacity: 0;
+  transform: translateX(100%);
+  z-index: 990;
+  animation: 0.5s ease-in-out slideOut;
+  transition: opacity 0.5s ease-in-out 0.1s;
+
+  @include respond-to("md") {
+    display: flex;
+  }
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 0 1 30rem;
+    margin-top: 20rem;
+
+    @include respond-to(sm) {
+      flex: 0 1 20rem;
+    }
+  }
+}

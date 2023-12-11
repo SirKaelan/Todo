@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&family=Roboto:wght@100;300;400;500&display=swap");
+
 $default-text-color: rgb(32, 32, 32);
 $default-font-size: 1.4rem;
-$default-font-family: sans-serif;
+$default-font-family: "Poppins", sans-serif;
 
 $arrow-icon-height: 0.25rem;
 $arrow-icon-thickness: 0.1rem;
@@ -15,9 +17,18 @@ $tasks-wrapper-padding: 2.8rem;
 $task-category-spacing: 0.5rem;
 $task-list-inset: 1.5rem;
 
+// Errors
+$error-border-color: #e34234;
+$error-message-box-left-offset: 1.5%;
+$error-message-box-padding: 0.25rem 0.75rem;
+$error-message-box-Y-offset: translateY(-2rem);
+$error-message-font-size: 1.2rem;
+$error-message-text-color: #fff;
+
 // Inbox page header
 $inbox-header-margin: 2rem;
-$inbox-header-title-fontSize: 2rem;
+$inbox-header-title-fontSize: 2.3rem;
+$inbox-header-title-fontWeight: 500;
 
 // Tasks page navigation
 $tasks-nav-background-color: rgb(250, 250, 250);
@@ -30,11 +41,21 @@ $tasks-nav-text-padding: 0.5rem 0 0.3rem 0.5rem;
 $tasks-nav-number-box-size: 2.4rem;
 $tasks-nav-number-font-size: $default-font-size - 0.2;
 $tasks-nav-number-color: rgb(170, 170, 170);
+$tasks-nav-button-spacing: 0.5rem;
+$tasks-nav-icon-padding: 0.25rem 0.5rem;
 
 // Task item
 $task-item-padding: 0.8rem;
 $task-item-border-bottom: 1px solid $border-separator-color;
-$task-item-element-gap: 1.5rem;
+$task-item-element-gap: 1rem;
+$task-item-min-height: 6rem;
+$task-item-remove-button-padding: 0 0.5rem;
+$task-item-checkbox-bg-color: #777;
+$task-item-checkbox-border-color: #777;
+$task-item-checkbox-border-size: 0.15em;
+$task-item-checkbox-size: 1.15em;
+$task-item-checkbox-checkmark-size: 0.7em;
+$task-item-checkbox-checkmark-color: #fff;
 
 // Reusable form
 $task-form-element-gap: 1rem;
@@ -49,6 +70,11 @@ $btn-primary-bg-color-default: #007bff;
 $btn-primary-bg-color-hover: #0069d9;
 $btn-danger-bg-color-default: #dc3545;
 $btn-danger-bg-color-hover: #c82333;
+$btn-border-radius: 8px;
+$btn-font-size: 1.4rem;
+$btn-fontWeight: 300;
+$btn-height: 2.8em;
+$btn-padding: 5px 10px;
 
 // Screen sizes
 $breakpoints: (

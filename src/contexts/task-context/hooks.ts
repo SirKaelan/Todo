@@ -2,21 +2,36 @@ import React from "react";
 import { TaskContext } from "./task-context";
 import { Task, TaskActionType } from "./types";
 
-export const useTasks = () => {
+export const useTaskState = () => {
   const context = React.useContext(TaskContext);
 
   if (context === undefined) {
     throw new Error("useTasks must be used within a TaskProvider");
   }
 
-  const { state, dispatch } = context;
+  const {
+    state: { tasks, selectedTask },
+    dispatch,
+  } = context;
 
-  const add = (payload: Task) =>
-    dispatch({ type: TaskActionType.ADD_TASK, payload });
-  const edit = (payload: Task) =>
-    dispatch({ type: TaskActionType.EDIT_TASK, payload });
-  const remove = (payload: Task) =>
-    dispatch({ type: TaskActionType.REMOVE_TASK, payload });
-
-  return { state, add, edit, remove };
+  return {
+    tasks,
+    selectedTask,
+    completed: tasks.filter((task) => task.completed === true),
+    uncompleted: tasks.filter((task) => task.completed === false),
+    add: (payload: Task) =>
+      dispatch({ type: TaskActionType.ADD_TASK, payload }),
+    edit: (payload: Task) =>
+      dispatch({ type: TaskActionType.EDIT_TASK, payload }),
+    remove: (payload: Task) =>
+      dispatch({ type: TaskActionType.REMOVE_TASK, payload }),
+    complete: (payload: Task) =>
+      dispatch({ type: TaskActionType.COMPLETE_TASK, payload }),
+    uncomplete: (payload: Task) =>
+      dispatch({ type: TaskActionType.UNCOMPLETE_TASK, payload }),
+    select: (payload: Task) =>
+      dispatch({ type: TaskActionType.SELECT_TASK, payload }),
+    addTasks: (payload: Task[]) =>
+      dispatch({ type: TaskActionType.ADD_TASKS, payload }),
+  };
 };

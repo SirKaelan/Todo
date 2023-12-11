@@ -4,6 +4,7 @@ import styles from "./task-navigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import { genericUtils } from "utils";
 import { NavigationButton } from "./types";
+import { Icon } from "ui";
 
 type NavButtonProps = {
   buttonData: NavigationButton;
@@ -19,6 +20,9 @@ export const NavButton = ({ buttonData }: NavButtonProps): JSX.Element => {
       to={endpoint}
       className={`${styles.nav_button} ${endpointMatch && "selected"}`}
     >
+      <div className={styles.nav_icon}>
+        <Icon {...buttonData.icon} />
+      </div>
       <div className={styles.nav_text}>
         {genericUtils.capitalizeFirstLetter(buttonData.label)}
       </div>

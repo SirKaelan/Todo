@@ -1,0 +1,15 @@
+@import "sass-partials/variables";
+
+.header {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: $inbox-header-margin;
+    margin-bottom: $inbox-header-margin;
+  }
+
+  &_title {
+    font-size: $inbox-header-title-fontSize;
+    font-weight: $inbox-header-title-fontWeight;
+  }
+}
