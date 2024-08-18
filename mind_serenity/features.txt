@@ -1,4 +1,0 @@
-# Reminder for next features:
-  - Describe below how you want to use them
-
-# Minimal Viable Product:
